@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table()
+@Table(name = "StudyProgramJPA")
 public class StudyProgramJPA {
     @Id
     @GeneratedValue
@@ -50,31 +50,4 @@ public class StudyProgramJPA {
         return idStudyProgram;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public void setUpdatedDate(LocalDateTime updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public void setValidFormDate(LocalDateTime validFormDate) {
-        this.validFormDate = validFormDate;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    public void setStudyPlanJPA(StudyPlanJPA studyPlanJPA) {
-        this.studyPlanJPA = studyPlanJPA;
-    }
-
-    public StudyPlanJPA getStudyPlanJPA() {
-        return studyPlanJPA;
-    }
-
-    public void setIsCurrent(boolean isCurrent) {
-        this.isCurrent = isCurrent;
-    }
 }

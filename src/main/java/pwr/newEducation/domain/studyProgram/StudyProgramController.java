@@ -4,6 +4,7 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
 
 @Path("/studyProgram")
@@ -21,6 +22,6 @@ public class StudyProgramController {
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
     public List<StudyProgramDTO> getAllStudyProgram() {
-        return studyProgramService
+        return new ArrayList<StudyProgramDTO>();
     }
 }
