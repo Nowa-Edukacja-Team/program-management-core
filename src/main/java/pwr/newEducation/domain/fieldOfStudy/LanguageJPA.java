@@ -7,7 +7,7 @@ import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
-public class LanguagesJPA {
+public class LanguageJPA {
     @Id
     @GeneratedValue
     private long idLanguages;
