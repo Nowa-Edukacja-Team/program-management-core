@@ -1,5 +1,8 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class DisciplineDTOMapper {
     public DisciplineEntity toEntity(DisciplineDTO disciplineDTO) {
         return DisciplineEntity.builder(disciplineDTO.getIdDisciplineDTO(), disciplineDTO.getName())

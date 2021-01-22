@@ -21,8 +21,8 @@ public class DisciplineEntity {
         return idDisciplineEntity;
     }
 
-    public static Builder builder(DisciplineEntity DisciplineEntity) {
-        return new Builder(DisciplineEntity);
+    public static Builder builder(DisciplineEntity disciplineEntity) {
+        return new Builder(disciplineEntity);
     }
 
     public static Builder builder(long idDisciplineEntity, String name) {

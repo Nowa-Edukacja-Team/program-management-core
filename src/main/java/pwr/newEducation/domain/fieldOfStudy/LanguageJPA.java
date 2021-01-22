@@ -10,10 +10,46 @@ import java.util.Set;
 public class LanguageJPA {
     @Id
     @GeneratedValue
-    private long idLanguages;
-
+    private long idLanguageJPA;
     private String name;
 
-    @OneToMany(mappedBy = "languagesJPA")
-    private Set<FieldOfStudyJPA> fieldOfStudyJPA;
+
+    private LanguageJPA(Builder builder){
+        idLanguageJPA = builder.idLanguageJPA;
+        name = builder.name;
+    }
+
+    public LanguageJPA() {
+
+    }
+
+    public long getIdLanguageJPA() {
+        return idLanguageJPA;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static Builder builder (long idLanguageJPA, String name) {
+        return new Builder(idLanguageJPA, name);
+    }
+
+    public static class Builder {
+        private long idLanguageJPA;
+        private String name;
+
+        Builder() {
+
+        }
+
+        Builder(long idLanguageJPA, String name) {
+            this.idLanguageJPA = idLanguageJPA;
+            this.name = name;
+        }
+
+        public LanguageJPA build() {
+            return new LanguageJPA(this);
+        }
+    }
 }
