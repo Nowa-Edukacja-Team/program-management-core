@@ -2,9 +2,11 @@ package pwr.newEducation.domain.studyProgram;
 
 import pwr.newEducation.domain.learningEffect.LearningEffectEntity;
 import pwr.newEducation.domain.studyPlan.StudyPlanEntity;
+import pwr.newEducation.domain.studyPlan.StudyPlanJPA;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 public class StudyProgramEntity {
     private final long idStudyProgram;
@@ -59,36 +61,9 @@ public class StudyProgramEntity {
         return studyPlanEntity;
     }
 
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    public void setValidFormDate(LocalDateTime validFormDate) {
-        this.validFormDate = validFormDate;
-    }
-
-    public void setUpdatedDate(LocalDateTime updatedDate) {
-        this.updatedDate = updatedDate;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public void setExamRanges(List<String> examRanges) {
-        this.examRanges = examRanges;
-    }
-
-    public void setLearningEffectEntities(List<LearningEffectEntity> learningEffectEntities) {
-        this.learningEffectEntities = learningEffectEntities;
-    }
-
-    public void setStudyPlanEntity(StudyPlanEntity studyPlanEntity) {
-        this.studyPlanEntity = studyPlanEntity;
-    }
-
-    public static Builder builder(StudyProgramEntity studyProgramEntity) {
-        return new Builder(studyProgramEntity);
+    public static Builder builder(long idStudyProgram, int version, LocalDateTime createdDate, LocalDateTime validFormDate,
+                                  boolean isCurrent) {
+        return new Builder(idStudyProgram, version, createdDate, validFormDate, isCurrent);
     }
 
     public static class Builder {
@@ -97,34 +72,18 @@ public class StudyProgramEntity {
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
         private LocalDateTime validFormDate;
+        private boolean isCurrent;
         private List<String> examRanges;
         private StudyPlanEntity studyPlanEntity;
         private List<LearningEffectEntity> learningEffectEntities;
 
-        Builder(StudyProgramEntity studyProgramEntity) {
-            idStudyProgram = studyProgramEntity.idStudyProgram;
-            version = studyProgramEntity.version;
-            createdDate = studyProgramEntity.createdDate;
-            updatedDate = studyProgramEntity.updatedDate;
-            validFormDate = studyProgramEntity.validFormDate;
-            examRanges = studyProgramEntity.examRanges;
-            studyPlanEntity = studyProgramEntity.studyPlanEntity;
-            learningEffectEntities = studyProgramEntity.learningEffectEntities;
-        }
-
-        public Builder withIdStudyProgram(long idStudyProgram) {
+        Builder(long idStudyProgram, int version, LocalDateTime createdDate, LocalDateTime validFormDate,
+                boolean isCurrent) {
             this.idStudyProgram = idStudyProgram;
-            return this;
-        }
-
-        public Builder withVersion(int version) {
             this.version = version;
-            return this;
-        }
-
-        public Builder withCreatedDate(LocalDateTime createdDate) {
             this.createdDate = createdDate;
-            return this;
+            this.validFormDate = validFormDate;
+            this.isCurrent = isCurrent;
         }
 
         public Builder withUpdatedDate(LocalDateTime updatedDate) {
@@ -132,23 +91,13 @@ public class StudyProgramEntity {
             return this;
         }
 
-        public Builder withValidFormDate(LocalDateTime validFormDate) {
-            this.validFormDate = validFormDate;
-            return this;
-        }
-
         public Builder withStudyPlanEntity(StudyPlanEntity studyPlanEntity) {
-            this.studyPlanEntity = studyPlanEntity;
+            this.studyPlanEntity= studyPlanEntity;
             return this;
         }
 
-        public Builder withExamRanges(List<String> examRanges) {
-            this.examRanges = examRanges;
-            return this;
-        }
-
-        public Builder withLearningEffectEntities(List<LearningEffectEntity> learningEffectEntities) {
-            this.learningEffectEntities = learningEffectEntities;
+        public Builder withExamRangeEntities(List<String> examRangeEntities) {
+            this.examRanges = examRangeEntities;
             return this;
         }
 

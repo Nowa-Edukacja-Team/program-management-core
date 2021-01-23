@@ -1,5 +1,7 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
+import pwr.newEducation.domain.studyProgram.StudyProgramJPA;
+
 import javax.persistence.*;
 import java.util.HashSet;
 import java.util.Set;
@@ -43,6 +45,9 @@ public class FieldOfStudyJPA {
     )
     private Set<SpecializationJPA> specializationJPAS = new HashSet<>();
 
+    @OneToMany
+    public Set<StudyProgramJPA> studyProgramJPA;
+
     public String getName() {
         return name;
     }
@@ -79,6 +84,9 @@ public class FieldOfStudyJPA {
         return profileJPA;
     }
 
+    public StudyProgramJPA getStudyProgramJPA() {
+        return studyProgramJPA;
+    }
 
     public void addSpecialization(SpecializationJPA specializationJPA) {
         specializationJPAS.add(specializationJPA);
@@ -128,6 +136,7 @@ public class FieldOfStudyJPA {
         private ModeJPA modeJPA;
         private ProfileJPA profileJPA;
         private Set<SpecializationJPA> specializationJPAS;
+        private
 
         Builder() {}
 

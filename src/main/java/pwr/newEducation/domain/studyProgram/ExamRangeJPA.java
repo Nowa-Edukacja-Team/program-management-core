@@ -1,7 +1,5 @@
 package pwr.newEducation.domain.studyProgram;
 
-import pwr.newEducation.domain.studyPlan.StudyPlanJPA;
-
 import javax.persistence.*;
 
 @Entity
@@ -12,9 +10,6 @@ public class ExamRangeJPA {
     public long idExamRange;
     public int number;
     public String text;
-
-    @OneToOne
-    public StudyProgramJPA studyProgramJPA;
 
     public int getNumber() {
         return number;
@@ -28,19 +23,16 @@ public class ExamRangeJPA {
         return text;
     }
 
-    public StudyProgramJPA getStudyProgramJPA() {
-        return studyProgramJPA;
-    }
+    public static class Builder {
+        public long idExamRange;
+        public int number;
+        public String text;
+        public StudyProgramJPA studyProgramJPA;
 
-    public void setNumber(int number) {
-        this.number = number;
-    }
+        Builder() {}
 
-    public void setStudyProgramJPA(StudyProgramJPA studyProgramJPA) {
-        this.studyProgramJPA = studyProgramJPA;
-    }
+        Builder(long idExamRange, int number, String text) {
 
-    public void setText(String text) {
-        this.text = text;
+        }
     }
 }

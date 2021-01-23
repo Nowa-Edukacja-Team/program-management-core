@@ -10,7 +10,7 @@ public class DeficitJPA {
     public int limit;
 
     @Transient
-    @OneToMany(mappedBy = "id_study_plan")
+    @ManyToOne
     public StudyPlanJPA studyPlanJPA;
 
     public int getSemester() {

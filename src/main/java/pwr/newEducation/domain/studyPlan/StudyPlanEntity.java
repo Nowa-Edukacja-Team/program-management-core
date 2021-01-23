@@ -1,7 +1,5 @@
 package pwr.newEducation.domain.studyPlan;
 
-import pwr.newEducation.domain.studyProgram.StudyProgramEntity;
-
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -44,30 +42,6 @@ public class StudyPlanEntity {
 
     public List<DeficitEntity> getDeficitEntities() {
         return deficitEntities;
-    }
-
-    public void setIdStudyPlan(long idStudyPlan) {
-        this.idStudyPlan = idStudyPlan;
-    }
-
-    public void setVersion(int version) {
-        this.version = version;
-    }
-
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
-    }
-
-    public void setModifiedDate(LocalDateTime modifiedDate) {
-        this.modifiedDate = modifiedDate;
-    }
-
-    public void setValidFromDate(LocalDateTime validFromDate) {
-        this.validFromDate = validFromDate;
-    }
-
-    public void setDeficitEntities(List<DeficitEntity> deficitEntities) {
-        this.deficitEntities = deficitEntities;
     }
 
     public static class Builder {
