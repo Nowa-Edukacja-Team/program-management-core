@@ -1,6 +1,5 @@
 package pwr.newEducation.domain.studyPlan;
 
-import pwr.newEducation.domain.studyProgram.ExamRangeJPA;
 import pwr.newEducation.domain.studyProgram.StudyProgramJPA;
 
 import javax.persistence.*;
@@ -70,6 +69,10 @@ public class StudyPlanJPA implements Serializable {
         deficits = builder.deficits;
     }
 
+    public static Builder builder(LocalDateTime createdDate, LocalDateTime validFormDate, boolean isCurrent) {
+        return new Builder(createdDate, validFormDate, isCurrent);
+    }
+
     public static class Builder {
         private long idStudyPlan;
         private int version;
@@ -82,13 +85,20 @@ public class StudyPlanJPA implements Serializable {
 
         Builder() {}
 
-        Builder(long idStudyPlan, int version, LocalDateTime createdDate, LocalDateTime validFormDate,
-                boolean isCurrent) {
-            this.idStudyPlan = idStudyPlan;
-            this.version = version;
+        Builder(LocalDateTime createdDate, LocalDateTime validFormDate, boolean isCurrent) {
             this.createdDate = createdDate;
             this.validFormDate = validFormDate;
             this.isCurrent = isCurrent;
+        }
+
+        public Builder withIdStudyPlan(long idStudyPlan) {
+            this.idStudyPlan = idStudyPlan;
+            return this;
+        }
+
+        public Builder withVersion(int version) {
+            this.version = version;
+            return this;
         }
 
         public Builder withUpdatedDate(LocalDateTime updatedDate) {

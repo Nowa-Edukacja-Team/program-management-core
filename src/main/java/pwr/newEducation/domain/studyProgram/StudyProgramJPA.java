@@ -1,5 +1,6 @@
 package pwr.newEducation.domain.studyProgram;
 
+import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPA;
 import pwr.newEducation.domain.studyPlan.StudyPlanJPA;
 
 import javax.persistence.*;
@@ -15,7 +16,7 @@ public class StudyProgramJPA implements Serializable {
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private LocalDateTime validFormDate;
+    private LocalDateTime validFromDate;
     private boolean isCurrent;
 
     @OneToOne
@@ -23,6 +24,12 @@ public class StudyProgramJPA implements Serializable {
 
     @OneToMany
     private Set<ExamRangeJPA> examRange;
+
+    @ManyToOne
+    private FieldOfStudyJPA fieldOfStudy;
+
+    @ManyToMany
+    private Set<ModuleJPA> modules;
 
     public int getVersion() {
         return version;
@@ -40,8 +47,8 @@ public class StudyProgramJPA implements Serializable {
         return updatedDate;
     }
 
-    public LocalDateTime getValidFormDate() {
-        return validFormDate;
+    public LocalDateTime getValidFromDate() {
+        return validFromDate;
     }
 
     public long getIdStudyProgram() {
@@ -56,9 +63,16 @@ public class StudyProgramJPA implements Serializable {
         return examRange;
     }
 
-    public static Builder builder(long idStudyProgram, int version, LocalDateTime createdDate,
-                                  LocalDateTime validFormDate, boolean isCurrent) {
-        return new Builder(idStudyProgram, version, createdDate, validFormDate, isCurrent);
+    public FieldOfStudyJPA getFieldOfStudy() {
+        return fieldOfStudy;
+    }
+
+    public Set<ModuleJPA> getModules() {
+        return modules;
+    }
+
+    public static Builder builder(LocalDateTime createdDate, LocalDateTime validFromDate, boolean isCurrent) {
+        return new Builder(createdDate, validFromDate, isCurrent);
     }
 
     public StudyProgramJPA(){ }
@@ -68,10 +82,12 @@ public class StudyProgramJPA implements Serializable {
         version = builder.version;;
         createdDate = builder.createdDate;
         updatedDate = builder.updatedDate;
-        validFormDate = builder.validFormDate;
+        validFromDate = builder.validFromDate;
         isCurrent = builder.isCurrent;
         studyPlan = builder.studyPlan;
         examRange = builder.examRange;
+        fieldOfStudy = builder.fieldOfStudy;
+        modules = builder.modules;
     }
 
     public static class Builder {
@@ -79,20 +95,40 @@ public class StudyProgramJPA implements Serializable {
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
-        private LocalDateTime validFormDate;
+        private LocalDateTime validFromDate;
         private boolean isCurrent;
         private StudyPlanJPA studyPlan;
         private Set<ExamRangeJPA> examRange;
+        private FieldOfStudyJPA fieldOfStudy;
+        private Set<ModuleJPA> modules;
 
         Builder() {}
 
-        Builder(long idStudyProgram, int version, LocalDateTime createdDate, LocalDateTime validFormDate,
+        Builder(LocalDateTime createdDate, LocalDateTime validFromDate,
                 boolean isCurrent) {
-            this.idStudyProgram = idStudyProgram;
-            this.version = version;
             this.createdDate = createdDate;
-            this.validFormDate = validFormDate;
+            this.validFromDate = validFromDate;
             this.isCurrent = isCurrent;
+        }
+
+        public Builder withIdStudyProgram(long idStudyProgram) {
+            this.idStudyProgram = idStudyProgram;
+            return this;
+        }
+
+        public Builder withVersion(int version) {
+            this.version = version;
+            return this;
+        }
+
+        public Builder withFieldOfStudy(FieldOfStudyJPA fieldOfStudy) {
+            this.fieldOfStudy = fieldOfStudy;
+            return this;
+        }
+
+        public Builder withModules(Set<ModuleJPA> modules) {
+            this.modules = modules;
+            return this;
         }
 
         public Builder withUpdatedDate(LocalDateTime updatedDate) {

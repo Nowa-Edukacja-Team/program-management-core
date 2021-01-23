@@ -1,24 +1,19 @@
 package pwr.newEducation.domain.studyPlan;
 
-import java.time.LocalDateTime;
-import java.util.List;
+import pwr.newEducation.domain.studyProgram.StudyProgramEntity;
+
+import java.time.LocalDateTime;;
+import java.util.Set;
 
 public class StudyPlanEntity {
     private long idStudyPlan;
     private int version;
     private LocalDateTime createdDate;
-    private LocalDateTime modifiedDate;
+    private LocalDateTime updatedDate;
     private LocalDateTime validFromDate;
-    private List<DeficitEntity> deficitEntities;
-
-    StudyPlanEntity(Builder builder) {
-        idStudyPlan = builder.idStudyPlan;
-        version = builder.version;
-        createdDate = builder.createdDate;
-        modifiedDate = builder.modifiedDate;
-        validFromDate = builder.validFromDate;
-        deficitEntities = builder.deficitEntities;
-    }
+    private boolean isCurrent;
+    private Set<DeficitEntity> deficits;
+    private StudyProgramEntity studyProgram;
 
     public long getIdStudyPlan() {
         return idStudyPlan;
@@ -32,33 +27,59 @@ public class StudyPlanEntity {
         return createdDate;
     }
 
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
+    public LocalDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
     public LocalDateTime getValidFromDate() {
         return validFromDate;
     }
 
-    public List<DeficitEntity> getDeficitEntities() {
-        return deficitEntities;
+    public boolean getIsCurrent() {
+        return isCurrent;
+    }
+
+    public Set<DeficitEntity> getDeficits() {
+        return deficits;
+    }
+
+    public StudyProgramEntity getStudyProgram() {
+        return studyProgram;
+    }
+
+    public StudyPlanEntity() {}
+
+    StudyPlanEntity(Builder builder) {
+        idStudyPlan = builder.idStudyPlan;;
+        version = builder.version;;
+        createdDate = builder.createdDate;
+        updatedDate = builder.updatedDate;
+        validFromDate = builder.validFormDate;
+        isCurrent = builder.isCurrent;
+        studyProgram = builder.studyProgram;
+        deficits = builder.deficits;
+    }
+
+    public static Builder builder(LocalDateTime createdDate, LocalDateTime validFormDate, boolean isCurrent) {
+        return new Builder(createdDate, validFormDate, isCurrent);
     }
 
     public static class Builder {
         private long idStudyPlan;
         private int version;
         private LocalDateTime createdDate;
-        private LocalDateTime modifiedDate;
-        private LocalDateTime validFromDate;
-        private List<DeficitEntity> deficitEntities;
+        private LocalDateTime updatedDate;
+        private LocalDateTime validFormDate;
+        private boolean isCurrent;
+        private StudyProgramEntity studyProgram;
+        private Set<DeficitEntity> deficits;
 
-        Builder(StudyPlanEntity studyPlanEntity) {
-            idStudyPlan = studyPlanEntity.idStudyPlan;
-            version = studyPlanEntity.version;
-            createdDate = studyPlanEntity.createdDate;
-            modifiedDate = studyPlanEntity.modifiedDate;
-            validFromDate = studyPlanEntity.validFromDate;
-            deficitEntities = studyPlanEntity.deficitEntities;
+        Builder() {}
+
+        Builder(LocalDateTime createdDate, LocalDateTime validFormDate, boolean isCurrent) {
+            this.createdDate = createdDate;
+            this.validFormDate = validFormDate;
+            this.isCurrent = isCurrent;
         }
 
         public Builder withIdStudyPlan(long idStudyPlan) {
@@ -71,24 +92,23 @@ public class StudyPlanEntity {
             return this;
         }
 
-        public Builder withCreatedDate(LocalDateTime createdDate) {
-            this.createdDate = createdDate;
+        public Builder withUpdatedDate(LocalDateTime updatedDate) {
+            this.updatedDate = updatedDate;
             return this;
         }
 
-        public Builder withModfiedDate(LocalDateTime modfiedDate) {
-            this.modifiedDate = modfiedDate;
+        public Builder withStudyProgram(StudyProgramEntity studyProgram) {
+            this.studyProgram = studyProgram;
             return this;
         }
 
-        public Builder withValidFromDate(LocalDateTime validFromDate) {
-            this.validFromDate = validFromDate;
+        public Builder withDeficits(Set<DeficitEntity> deficits) {
+            this.deficits = deficits;
             return this;
         }
 
-        public Builder withDeficitEntities(List<DeficitEntity> deficitEntities) {
-            this.deficitEntities = deficitEntities;
-            return this;
+        public StudyPlanEntity build() {
+            return new StudyPlanEntity(this);
         }
     }
 }
