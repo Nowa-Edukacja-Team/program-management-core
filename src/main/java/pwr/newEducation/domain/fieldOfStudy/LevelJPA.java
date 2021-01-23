@@ -13,6 +13,6 @@ public class LevelJPA {
     private long idLevelJPA;
     private String name;
 
-    @OneToMany(mappedBy = "levelJPA")
-    private Set<FieldOfStudyJPA> fieldOfStudyJPAS;
+    //@OneToMany(mappedBy = "levelJPA")
+    //private Set<FieldOfStudyJPA> fieldOfStudyJPAS;
 }

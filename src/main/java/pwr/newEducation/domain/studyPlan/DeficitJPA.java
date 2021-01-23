@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class DeficitJPA {
     @Id
     public int semester;
-    public int limit;
+    public int limitValue;
 
     @Transient
     @OneToMany(mappedBy = "id_study_plan")
@@ -17,8 +17,8 @@ public class DeficitJPA {
         return semester;
     }
 
-    public int getLimit() {
-        return limit;
+    public int getLimitValue() {
+        return limitValue;
     }
 
     public StudyPlanJPA getStudyPlanJPA() {
@@ -29,8 +29,8 @@ public class DeficitJPA {
         this.semester = semester;
     }
 
-    public void setLimit(int limit) {
-        this.limit = limit;
+    public void setLimitValue(int limitValue) {
+        this.limitValue = limitValue;
     }
 
     public void setStudyPlanJPA(StudyPlanJPA studyPlanJPA) {

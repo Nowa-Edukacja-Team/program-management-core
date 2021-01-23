@@ -1,5 +1,8 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class FacultyDTOMapper {
     public FacultyEntity toEntity(FacultyDTO facultyDTO) {
         return FacultyEntity.builder(facultyDTO.getIdFacultyDTO(), facultyDTO.getName())

@@ -13,10 +13,10 @@ import java.util.List;
 @RequestScoped
 public class StudyProgramController {
 
-    @Inject
+    //@Inject
     StudyProgramService studyProgramService;
 
-    @Inject
+    //@Inject
     StudyProgramDTOMapper studyProgramDTOMapper;
 
     @GET

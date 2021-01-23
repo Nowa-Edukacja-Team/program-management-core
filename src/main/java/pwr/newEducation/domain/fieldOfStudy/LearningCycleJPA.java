@@ -13,6 +13,6 @@ public class LearningCycleJPA {
     public long idLearningCycle;
     public String name;
 
-    @OneToMany(mappedBy = "learningCycleJPA")
-    public Set<FieldOfStudyJPA> fieldOfStudyJPAS;
+    //@OneToMany(mappedBy = "learningCycleJPA")
+    //public Set<FieldOfStudyJPA> fieldOfStudyJPAS;
 }

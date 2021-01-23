@@ -16,12 +16,12 @@ public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA
     }
 
     public void insertStudyProgram(StudyProgramEntity studyProgramEntity) {
-        persist();
+        //persist();
 
     }
 
     public void updateStudyProgram(StudyProgramEntity studyProgramEntity) {
-        StudyProgramJPA studyProgramJPA = findById(studyProgramEntity.);
+        //StudyProgramJPA studyProgramJPA = findById(studyProgramEntity.);
 
     }
 
