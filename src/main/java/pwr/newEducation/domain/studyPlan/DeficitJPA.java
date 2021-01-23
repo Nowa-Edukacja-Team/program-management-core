@@ -3,37 +3,56 @@ package pwr.newEducation.domain.studyPlan;
 import javax.persistence.*;
 
 @Entity
-@Table
 public class DeficitJPA {
     @Id
-    public int semester;
-    public int limitValue;
+    @GeneratedValue
+    private long idDeficit;
+    private int semester;
+    private int limitECTS;
 
-    @Transient
-    @OneToMany(mappedBy = "id_study_plan")
-    public StudyPlanJPA studyPlanJPA;
+    public long getIdDeficit() {
+        return idDeficit;
+    }
 
     public int getSemester() {
         return semester;
     }
 
-    public int getLimitValue() {
-        return limitValue;
+    public int getLimit() {
+        return limitECTS;
     }
 
-    public StudyPlanJPA getStudyPlanJPA() {
-        return studyPlanJPA;
+    public DeficitJPA() {}
+
+    public static Builder builder(int semester, int limitECTS) {
+        return new Builder(semester, limitECTS);
     }
 
-    public void setSemester(int semester) {
-        this.semester = semester;
+    DeficitJPA(Builder builder) {
+        idDeficit = builder.idDeficit;
+        semester = builder.semester;
+        limitECTS = builder.limitECTS;
     }
 
-    public void setLimitValue(int limitValue) {
-        this.limitValue = limitValue;
-    }
+    public static class Builder {
+        private long idDeficit;
+        private int semester;
+        private int limitECTS;
 
-    public void setStudyPlanJPA(StudyPlanJPA studyPlanJPA) {
-        this.studyPlanJPA = studyPlanJPA;
+        Builder(int semester, int limitECTS) {
+            this.semester = semester;
+            this.limitECTS = limitECTS;
+        }
+
+        Builder() {}
+
+        public Builder withIdDeficit(long idDeficit) {
+            this.idDeficit = idDeficit;
+            return this;
+        }
+
+        public DeficitJPA build() {
+            return new DeficitJPA(this);
+        }
     }
 }

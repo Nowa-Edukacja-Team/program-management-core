@@ -1,33 +1,38 @@
 package pwr.newEducation.domain.studyProgram;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.panache.common.Page;
+import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPA;
 
+import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.util.List;
 
-@Singleton
+@Dependent
 public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA> {
-    public List<StudyProgramJPA> getAll() {
+    List<StudyProgramJPA> getAll() {
         return findAll().list();
     }
 
-    public StudyProgramJPA getById(Long id) {
+    List<StudyProgramJPA> getAllLatestVersions() {
+        return findAll().firstResult();
+    }
+
+
+    StudyProgramJPA getById(long id) {
         return findById(id);
     }
 
-    public void insertStudyProgram(StudyProgramEntity studyProgramEntity) {
-        //persist();
-
+    StudyProgramJPA getLatestVersion(FieldOfStudyJPA fieldOfStudyJPA) {
+        return find("fieldOfStudy", fieldOfStudyJPA).firstResult();
     }
 
-    public void updateStudyProgram(StudyProgramEntity studyProgramEntity) {
-        //StudyProgramJPA studyProgramJPA = findById(studyProgramEntity.);
-
+    void insertStudyProgram(StudyProgramJPA studyProgramJPA) {
+        persist(studyProgramJPA);
     }
 
-    public void deleteStudyProgram(long id) {
-
+    void deleteStudyProgram(StudyProgramJPA studyProgramJPA) {
+        delete(studyProgramJPA);
     }
-
-
 }

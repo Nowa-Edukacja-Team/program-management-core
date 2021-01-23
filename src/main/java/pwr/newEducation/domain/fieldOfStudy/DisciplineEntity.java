@@ -1,7 +1,7 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
 public class DisciplineEntity {
-    private long idDisciplineEntity;
+    private long idDiscipline;
     private String name;
 
     private DisciplineEntity() {
@@ -9,7 +9,7 @@ public class DisciplineEntity {
     }
 
     private DisciplineEntity(Builder builder) {
-        this.idDisciplineEntity = builder.idDisciplineEntity;
+        this.idDiscipline = builder.idDiscipline;
         this.name = builder.name;
     }
 
@@ -17,20 +17,20 @@ public class DisciplineEntity {
         return name;
     }
 
-    public long getIdDisciplineEntity() {
-        return idDisciplineEntity;
+    public long getIdDiscipline() {
+        return idDiscipline;
     }
 
-    public static Builder builder(DisciplineEntity DisciplineEntity) {
-        return new Builder(DisciplineEntity);
+    public static Builder builder(DisciplineEntity disciplineEntity) {
+        return new Builder(disciplineEntity);
     }
 
-    public static Builder builder(long idDisciplineEntity, String name) {
-        return new Builder(idDisciplineEntity, name);
+    public static Builder builder(long idDiscipline, String name) {
+        return new Builder(idDiscipline, name);
     }
 
     public static class Builder {
-        private long idDisciplineEntity;
+        private long idDiscipline;
         private String name;
 
         Builder() {
@@ -38,12 +38,12 @@ public class DisciplineEntity {
         }
 
         Builder(DisciplineEntity disciplineEntity) {
-            idDisciplineEntity = disciplineEntity.idDisciplineEntity;
+            idDiscipline = disciplineEntity.idDiscipline;
             name = disciplineEntity.name;
         }
 
-        private Builder(long idDisciplineEntity, String name) {
-            this.idDisciplineEntity = idDisciplineEntity;
+        private Builder(long idDiscipline, String name) {
+            this.idDiscipline = idDiscipline;
             this.name = name;
         }
 

@@ -1,7 +1,5 @@
 package pwr.newEducation.domain.studyProgram;
 
-import pwr.newEducation.domain.studyPlan.StudyPlanJPA;
-
 import javax.persistence.*;
 
 @Entity
@@ -9,12 +7,9 @@ import javax.persistence.*;
 public class ExamRangeJPA {
     @Id
     @GeneratedValue
-    public long idExamRange;
-    public int number;
-    public String text;
-
-    @OneToOne
-    public StudyProgramJPA studyProgramJPA;
+    private long idExamRange;
+    private int number;
+    private String text;
 
     public int getNumber() {
         return number;
@@ -28,19 +23,39 @@ public class ExamRangeJPA {
         return text;
     }
 
-    public StudyProgramJPA getStudyProgramJPA() {
-        return studyProgramJPA;
+    public ExamRangeJPA() {
+
     }
 
-    public void setNumber(int number) {
-        this.number = number;
+    ExamRangeJPA(Builder builder) {
+        this.idExamRange = builder.idExamRange;
+        this.number = builder.number;
+        this.text = builder.text;
     }
 
-    public void setStudyProgramJPA(StudyProgramJPA studyProgramJPA) {
-        this.studyProgramJPA = studyProgramJPA;
+    public static Builder builder(int number, String text) {
+        return new Builder(number, text);
     }
 
-    public void setText(String text) {
-        this.text = text;
+    public static class Builder {
+        private long idExamRange;
+        private int number;
+        private String text;
+
+        Builder() {}
+
+        Builder(int number, String text) {
+            this.number = number;
+            this.text = text;
+        }
+
+        public Builder withIdExamRange(long idExamRange) {
+            this.idExamRange = idExamRange;
+            return this;
+        }
+
+        public ExamRangeJPA build() {
+            return new ExamRangeJPA(this);
+        }
     }
 }

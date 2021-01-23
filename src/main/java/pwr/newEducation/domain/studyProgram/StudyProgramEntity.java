@@ -1,94 +1,80 @@
 package pwr.newEducation.domain.studyProgram;
 
-import pwr.newEducation.domain.learningEffect.LearningEffectEntity;
+import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyEntity;
 import pwr.newEducation.domain.studyPlan.StudyPlanEntity;
 
 import java.time.LocalDateTime;
-import java.util.List;
+import java.util.Set;
 
 public class StudyProgramEntity {
-    private final long idStudyProgram;
+    private long idStudyProgram;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private LocalDateTime validFormDate;
-    private StudyPlanEntity studyPlanEntity;
-    private List<LearningEffectEntity> learningEffectEntities;
-    private List<String> examRanges;
+    private LocalDateTime validFromDate;
+    private boolean isCurrent;
+    private StudyPlanEntity studyPlan;
+    private Set<ExamRangeEntity> examRange;
+    private FieldOfStudyEntity fieldOfStudy;
+    private Set<ModuleEntity> modules;
 
-    StudyProgramEntity(Builder builder) {
-        idStudyProgram = builder.idStudyProgram;
-        version = builder.version;;
-        createdDate = builder.createdDate;
-        updatedDate = builder.updatedDate;
-        validFormDate = builder.validFormDate;
-        examRanges = builder.examRanges;
-        studyPlanEntity= builder.studyPlanEntity;
-        learningEffectEntities = builder.learningEffectEntities;
+    public int getVersion() {
+        return version;
     }
 
-    public long getIdStudyProgram() {
-        return idStudyProgram;
-    }
-
-    public LocalDateTime getValidFormDate() {
-        return validFormDate;
-    }
-
-    public LocalDateTime getUpdatedDate() {
-        return updatedDate;
+    public boolean getIsCurrent() {
+        return isCurrent;
     }
 
     public LocalDateTime getCreatedDate() {
         return createdDate;
     }
 
-    public int getVersion() {
-        return version;
+    public LocalDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
-    public List<LearningEffectEntity> getLearningEffectEntities() {
-        return learningEffectEntities;
+    public LocalDateTime getValidFromDate() {
+        return validFromDate;
     }
 
-    public List<String> getExamRanges() {
-        return examRanges;
+    public long getIdStudyProgram() {
+        return idStudyProgram;
     }
 
-    public StudyPlanEntity getStudyPlanEntity() {
-        return studyPlanEntity;
+    public StudyPlanEntity getStudyPlan() {
+        return studyPlan;
     }
 
-    public void setVersion(int version) {
-        this.version = version;
+    public Set<ExamRangeEntity> getExamRange() {
+        return examRange;
     }
 
-    public void setValidFormDate(LocalDateTime validFormDate) {
-        this.validFormDate = validFormDate;
+    public FieldOfStudyEntity getFieldOfStudy() {
+        return fieldOfStudy;
     }
 
-    public void setUpdatedDate(LocalDateTime updatedDate) {
-        this.updatedDate = updatedDate;
+    public Set<ModuleEntity> getModules() {
+        return modules;
     }
 
-    public void setCreatedDate(LocalDateTime createdDate) {
-        this.createdDate = createdDate;
+    public static Builder builder(LocalDateTime createdDate, LocalDateTime validFromDate, boolean isCurrent) {
+        return new Builder(createdDate, validFromDate, isCurrent);
     }
 
-    public void setExamRanges(List<String> examRanges) {
-        this.examRanges = examRanges;
-    }
+    public StudyProgramEntity(){ }
 
-    public void setLearningEffectEntities(List<LearningEffectEntity> learningEffectEntities) {
-        this.learningEffectEntities = learningEffectEntities;
-    }
-
-    public void setStudyPlanEntity(StudyPlanEntity studyPlanEntity) {
-        this.studyPlanEntity = studyPlanEntity;
-    }
-
-    public static Builder builder(StudyProgramEntity studyProgramEntity) {
-        return new Builder(studyProgramEntity);
+    StudyProgramEntity(Builder builder) {
+        idStudyProgram = builder.idStudyProgram;;
+        version = builder.version;;
+        createdDate = builder.createdDate;
+        updatedDate = builder.updatedDate;
+        validFromDate = builder.validFromDate;
+        isCurrent = builder.isCurrent;
+        studyPlan = builder.studyPlan;
+        examRange = builder.examRange;
+        fieldOfStudy = builder.fieldOfStudy;
+        modules = builder.modules;
     }
 
     public static class Builder {
@@ -96,20 +82,20 @@ public class StudyProgramEntity {
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
-        private LocalDateTime validFormDate;
-        private List<String> examRanges;
-        private StudyPlanEntity studyPlanEntity;
-        private List<LearningEffectEntity> learningEffectEntities;
+        private LocalDateTime validFromDate;
+        private boolean isCurrent;
+        private StudyPlanEntity studyPlan;
+        private Set<ExamRangeEntity> examRange;
+        private FieldOfStudyEntity fieldOfStudy;
+        private Set<ModuleEntity> modules;
 
-        Builder(StudyProgramEntity studyProgramEntity) {
-            idStudyProgram = studyProgramEntity.idStudyProgram;
-            version = studyProgramEntity.version;
-            createdDate = studyProgramEntity.createdDate;
-            updatedDate = studyProgramEntity.updatedDate;
-            validFormDate = studyProgramEntity.validFormDate;
-            examRanges = studyProgramEntity.examRanges;
-            studyPlanEntity = studyProgramEntity.studyPlanEntity;
-            learningEffectEntities = studyProgramEntity.learningEffectEntities;
+        Builder() {}
+
+        Builder(LocalDateTime createdDate, LocalDateTime validFromDate,
+                boolean isCurrent) {
+            this.createdDate = createdDate;
+            this.validFromDate = validFromDate;
+            this.isCurrent = isCurrent;
         }
 
         public Builder withIdStudyProgram(long idStudyProgram) {
@@ -122,8 +108,13 @@ public class StudyProgramEntity {
             return this;
         }
 
-        public Builder withCreatedDate(LocalDateTime createdDate) {
-            this.createdDate = createdDate;
+        public Builder withFieldOfStudy(FieldOfStudyEntity fieldOfStudy) {
+            this.fieldOfStudy = fieldOfStudy;
+            return this;
+        }
+
+        public Builder withModules(Set<ModuleEntity> modules) {
+            this.modules = modules;
             return this;
         }
 
@@ -132,23 +123,13 @@ public class StudyProgramEntity {
             return this;
         }
 
-        public Builder withValidFormDate(LocalDateTime validFormDate) {
-            this.validFormDate = validFormDate;
+        public Builder withStudyPlan(StudyPlanEntity studyPlan) {
+            this.studyPlan = studyPlan;
             return this;
         }
 
-        public Builder withStudyPlanEntity(StudyPlanEntity studyPlanEntity) {
-            this.studyPlanEntity = studyPlanEntity;
-            return this;
-        }
-
-        public Builder withExamRanges(List<String> examRanges) {
-            this.examRanges = examRanges;
-            return this;
-        }
-
-        public Builder withLearningEffectEntities(List<LearningEffectEntity> learningEffectEntities) {
-            this.learningEffectEntities = learningEffectEntities;
+        public Builder withExamRange(Set<ExamRangeEntity> examRange) {
+            this.examRange = examRange;
             return this;
         }
 

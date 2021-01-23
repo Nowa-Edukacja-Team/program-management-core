@@ -10,9 +10,46 @@ import java.util.Set;
 public class LearningCycleJPA {
     @Id
     @GeneratedValue
-    public long idLearningCycle;
-    public String name;
+    private long idLearningCycleJPA;
+    private String name;
 
-    //@OneToMany(mappedBy = "learningCycleJPA")
-    //public Set<FieldOfStudyJPA> fieldOfStudyJPAS;
+
+    private LearningCycleJPA(Builder builder){
+        idLearningCycleJPA = builder.idLearningCycleJPA;
+        name = builder.name;
+    }
+
+    public LearningCycleJPA() {
+
+    }
+
+    public long getIdLearningCycleJPA() {
+        return idLearningCycleJPA;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public static Builder builder (long idLearningCycleJPA, String name) {
+        return new Builder(idLearningCycleJPA, name);
+    }
+
+    public static class Builder {
+        private long idLearningCycleJPA;
+        private String name;
+
+        Builder() {
+
+        }
+
+        Builder(long idLearningCycleJPA, String name) {
+            this.idLearningCycleJPA = idLearningCycleJPA;
+            this.name = name;
+        }
+
+        public LearningCycleJPA build() {
+            return new LearningCycleJPA(this);
+        }
+    }
 }

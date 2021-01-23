@@ -1,5 +1,8 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
+import javax.enterprise.context.ApplicationScoped;
+
+@ApplicationScoped
 public class ProfileJPAMapper {
     public ProfileEntity toEntity(ProfileJPA profileJPA) {
         return ProfileEntity.builder(profileJPA.getIdProfileJPA(), profileJPA.getName())
