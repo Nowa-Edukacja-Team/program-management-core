@@ -7,21 +7,21 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class FieldOfStudyJPAMapper {
     @Inject
-    private FacultyJPAMapper facultyJPAMapper;
+    FacultyJPAMapper facultyJPAMapper;
     @Inject
-    private LanguageJPAMapper languageJPAMapper;
+    LanguageJPAMapper languageJPAMapper;
     @Inject
-    private DisciplineJPAMapper disciplineJPAMapper;
+    DisciplineJPAMapper disciplineJPAMapper;
     @Inject
-    private LearningCycleJPAMapper learningCycleJPAMapper;
+    LearningCycleJPAMapper learningCycleJPAMapper;
     @Inject
-    private LevelJPAMapper levelJPAMapper;
+    LevelJPAMapper levelJPAMapper;
     @Inject
-    private ModeJPAMapper modeJPAMapper;
+    ModeJPAMapper modeJPAMapper;
     @Inject
-    private ProfileJPAMapper profileJPAMapper;
+    ProfileJPAMapper profileJPAMapper;
     @Inject
-    private SpecializationJPAMapper specializationJPAMapper;
+    SpecializationJPAMapper specializationJPAMapper;
 
     public FieldOfStudyEntity toEntity(FieldOfStudyJPA fieldOfStudyJPA) {
         return FieldOfStudyEntity.builder(fieldOfStudyJPA.getIdFieldOFStudy(), fieldOfStudyJPA.getName(),

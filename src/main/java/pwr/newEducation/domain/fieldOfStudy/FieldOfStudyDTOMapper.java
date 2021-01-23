@@ -7,21 +7,21 @@ import java.util.stream.Collectors;
 @ApplicationScoped
 public class FieldOfStudyDTOMapper {
     @Inject
-    private FacultyDTOMapper facultyDTOMapper;
+    FacultyDTOMapper facultyDTOMapper;
     @Inject
-    private LanguageDTOMapper languageDTOMapper;
+    LanguageDTOMapper languageDTOMapper;
     @Inject
-    private DisciplineDTOMapper disciplineDTOMapper;
+    DisciplineDTOMapper disciplineDTOMapper;
     @Inject
-    private LearningCycleDTOMapper learningCycleDTOMapper;
+    LearningCycleDTOMapper learningCycleDTOMapper;
     @Inject
-    private LevelDTOMapper levelDTOMapper;
+    LevelDTOMapper levelDTOMapper;
     @Inject
-    private ModeDTOMapper modeDTOMapper;
+    ModeDTOMapper modeDTOMapper;
     @Inject
-    private ProfileDTOMapper profileDTOMapper;
+    ProfileDTOMapper profileDTOMapper;
     @Inject
-    private SpecializationDTOMapper specializationDTOMapper;
+    SpecializationDTOMapper specializationDTOMapper;
 
     public FieldOfStudyEntity toEntity(FieldOfStudyDTO fieldOfStudyDTO) {
         return FieldOfStudyEntity.builder(fieldOfStudyDTO.getIdFieldOFStudy(), fieldOfStudyDTO.getName(),

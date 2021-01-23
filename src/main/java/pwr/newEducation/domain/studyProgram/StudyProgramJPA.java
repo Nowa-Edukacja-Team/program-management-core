@@ -3,11 +3,12 @@ package pwr.newEducation.domain.studyProgram;
 import pwr.newEducation.domain.studyPlan.StudyPlanJPA;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-public class StudyProgramJPA {
+public class StudyProgramJPA implements Serializable {
     @Id
     @GeneratedValue
     private long idStudyProgram;

@@ -3,12 +3,12 @@ package pwr.newEducation.domain.studyPlan;
 import pwr.newEducation.domain.studyProgram.StudyProgramJPA;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-@Table()
-public class StudyPlanJPA {
+public class StudyPlanJPA implements Serializable {
     @Id
     @GeneratedValue
     public String idStudyPlan;
@@ -21,10 +21,6 @@ public class StudyPlanJPA {
 
     @Transient
     @OneToMany
-    @JoinColumns({
-            @JoinColumn(name = "id_study_plan", referencedColumnName = "id_study_plan"),
-            @JoinColumn(name = "version", referencedColumnName = "version")
-    })
     public Set<DeficitJPA> deficitJPA;
 
     @Transient

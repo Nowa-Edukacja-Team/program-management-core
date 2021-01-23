@@ -3,37 +3,31 @@ package pwr.newEducation.domain.studyPlan;
 import javax.persistence.*;
 
 @Entity
-@Table
 public class DeficitJPA {
     @Id
+    @GeneratedValue
+    private long idDeficit;
     public int semester;
-    public int limit;
+    public int limitS;
 
-    @Transient
     @ManyToOne
-    public StudyPlanJPA studyPlanJPA;
+    public StudyPlanJPA studyPlan;
+
+    public long getIdDeficit() {
+        return idDeficit;
+    }
 
     public int getSemester() {
         return semester;
     }
 
     public int getLimit() {
-        return limit;
+        return limitS;
     }
 
     public StudyPlanJPA getStudyPlanJPA() {
-        return studyPlanJPA;
+        return studyPlan;
     }
 
-    public void setSemester(int semester) {
-        this.semester = semester;
-    }
-
-    public void setLimit(int limit) {
-        this.limit = limit;
-    }
-
-    public void setStudyPlanJPA(StudyPlanJPA studyPlanJPA) {
-        this.studyPlanJPA = studyPlanJPA;
-    }
+    public DeficitJPA() {}
 }

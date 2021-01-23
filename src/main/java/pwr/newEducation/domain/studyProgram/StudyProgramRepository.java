@@ -2,10 +2,11 @@ package pwr.newEducation.domain.studyProgram;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 
+import javax.enterprise.context.Dependent;
 import javax.inject.Singleton;
 import java.util.List;
 
-@Singleton
+@Dependent
 public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA> {
     public List<StudyProgramJPA> getAll() {
         return findAll().list();

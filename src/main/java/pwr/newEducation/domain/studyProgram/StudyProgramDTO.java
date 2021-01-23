@@ -37,6 +37,17 @@ public class StudyProgramDTO {
     private StudyProgramDTO() {
     }
 
+    StudyProgramDTO(Builder builder) {
+        this.learningEffect = builder.learningEffectDTOS;
+        this.examRanges = builder.examRanges;
+        this.validFormDate = builder.validFormDate;
+        this.version = builder.version;
+        this.createdDate = builder.createdDate;
+        this.studyPlan = builder.studyPlanDTO;;
+        this.idStudyProgram = builder.idStudyProgram;;
+        this.updatedDate = builder.updatedDate;
+    }
+
     StudyProgramDTO (long idStudyProgram, int version, LocalDateTime createdDate, LocalDateTime validFormDate) {
 
     }

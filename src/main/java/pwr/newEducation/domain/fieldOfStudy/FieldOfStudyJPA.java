@@ -84,7 +84,7 @@ public class FieldOfStudyJPA {
         return profileJPA;
     }
 
-    public StudyProgramJPA getStudyProgramJPA() {
+    public Set<StudyProgramJPA> getStudyProgramJPA() {
         return studyProgramJPA;
     }
 
