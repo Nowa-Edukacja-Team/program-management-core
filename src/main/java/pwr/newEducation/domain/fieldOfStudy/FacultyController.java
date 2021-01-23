@@ -1,6 +1,7 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
 import javax.annotation.security.PermitAll;
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
