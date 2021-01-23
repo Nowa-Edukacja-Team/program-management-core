@@ -35,14 +35,7 @@ public class FieldOfStudyJPA {
     @ManyToOne
     private ProfileJPA profileJPA;
 
-    @ManyToMany(cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "fields_of_studies_to_specialization",
-            joinColumns = @JoinColumn(name = "id_field_of_study"),
-            inverseJoinColumns = @JoinColumn(name = "id_specialization")
-    )
+    @ManyToMany
     private Set<SpecializationJPA> specializationJPAS = new HashSet<>();
 
     @OneToMany

@@ -12,23 +12,17 @@ public class StudyProgramJPA implements Serializable {
     @Id
     @GeneratedValue
     private long idStudyProgram;
-    @Id
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
     private LocalDateTime validFormDate;
     private boolean isCurrent;
 
-    @Transient
-    @ManyToOne
-    @JoinColumns({
-            @JoinColumn(name = "id_study_plan", referencedColumnName = "id_study_plan"),
-            @JoinColumn(name = "version", referencedColumnName = "version")
-    })
-    private StudyPlanJPA studyPlanJPA;
+    @OneToOne
+    private StudyPlanJPA studyPlan;
 
     @OneToMany
-    private Set<ExamRangeJPA> examRangeJPAS;
+    private Set<ExamRangeJPA> examRange;
 
     public int getVersion() {
         return version;
@@ -54,12 +48,12 @@ public class StudyProgramJPA implements Serializable {
         return idStudyProgram;
     }
 
-    public StudyPlanJPA getStudyPlanJPA() {
-        return studyPlanJPA;
+    public StudyPlanJPA getStudyPlan() {
+        return studyPlan;
     }
 
-    public Set<ExamRangeJPA> getExamRangeJPAS() {
-        return examRangeJPAS;
+    public Set<ExamRangeJPA> getExamRange() {
+        return examRange;
     }
 
     public static Builder builder(long idStudyProgram, int version, LocalDateTime createdDate,
@@ -76,8 +70,8 @@ public class StudyProgramJPA implements Serializable {
         updatedDate = builder.updatedDate;
         validFormDate = builder.validFormDate;
         isCurrent = builder.isCurrent;
-        studyPlanJPA = builder.studyPlanJPA;
-        examRangeJPAS = builder.examRangeJPAS;
+        studyPlan = builder.studyPlan;
+        examRange = builder.examRange;
     }
 
     public static class Builder {
@@ -87,8 +81,8 @@ public class StudyProgramJPA implements Serializable {
         private LocalDateTime updatedDate;
         private LocalDateTime validFormDate;
         private boolean isCurrent;
-        private StudyPlanJPA studyPlanJPA;
-        private Set<ExamRangeJPA> examRangeJPAS;
+        private StudyPlanJPA studyPlan;
+        private Set<ExamRangeJPA> examRange;
 
         Builder() {}
 
@@ -106,13 +100,13 @@ public class StudyProgramJPA implements Serializable {
             return this;
         }
 
-        public Builder withStudyPlanJPA(StudyPlanJPA studyPlanJPA) {
-            this.studyPlanJPA = studyPlanJPA;
+        public Builder withStudyPlan(StudyPlanJPA studyPlan) {
+            this.studyPlan = studyPlan;
             return this;
         }
 
-        public Builder withExamRangeJPAS(Set<ExamRangeJPA> examRangeJPAS) {
-            this.examRangeJPAS = examRangeJPAS;
+        public Builder withExamRange(Set<ExamRangeJPA> examRange) {
+            this.examRange = examRange;
             return this;
         }
 

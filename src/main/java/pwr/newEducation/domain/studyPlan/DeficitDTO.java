@@ -3,10 +3,56 @@ package pwr.newEducation.domain.studyPlan;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeficitDTO {
-
+    @JsonProperty("idDeficit")
+    private long idDeficit;
+    
     @JsonProperty("semester")
-    public int semester;
+    private int semester;
 
     @JsonProperty("limit")
-    public int limit;
+    private int limitECTS;
+
+    public long getIdDeficit() {
+        return idDeficit;
+    }
+
+    public int getSemester() {
+        return semester;
+    }
+
+    public int getLimitECTS() {
+        return limitECTS;
+    }
+
+    DeficitDTO(Builder builder) {
+        idDeficit = builder.idDeficit;
+        semester = builder.semester;
+        limitECTS = builder.limitECTS;
+    }
+
+    public static Builder builder(int semester, int limitECTS) {
+        return new Builder(semester, limitECTS);
+    }
+
+    public static class Builder {
+        private long idDeficit;
+        private int semester;
+        private int limitECTS;
+
+        Builder(int semester, int limitECTS) {
+            this.semester = semester;
+            this.limitECTS = limitECTS;
+        }
+
+        Builder() {}
+
+        public DeficitDTO.Builder withIdDeficit(long idDeficit) {
+            this.idDeficit = idDeficit;
+            return this;
+        }
+
+        public DeficitDTO build() {
+            return new DeficitDTO(this);
+        }
+    }
 }

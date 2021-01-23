@@ -26,7 +26,7 @@ public class StudyProgramDTO {
     private LocalDateTime validFormDate;
 
     @JsonProperty("examRanges")
-    private List<String> examRanges;
+    private List<ExamRangeDTO> examRanges;
 
     @JsonProperty("studyPlan")
     private StudyPlanDTO studyPlan;
@@ -58,7 +58,7 @@ public class StudyProgramDTO {
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
         private LocalDateTime validFormDate;
-        private List<String> examRanges;
+        private List<ExamRangeDTO> examRanges;
         private StudyPlanDTO studyPlanDTO;
         private List<LearningEffectDTO> learningEffectDTOS;
 
@@ -84,7 +84,7 @@ public class StudyProgramDTO {
             return this;
         }
 
-        public StudyProgramDTO.Builder withExamRanges(List<String> examRanges) {
+        public StudyProgramDTO.Builder withExamRanges(List<ExamRangeDTO> examRanges) {
             this.examRanges = examRanges;
             return this;
         }

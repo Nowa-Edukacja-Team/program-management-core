@@ -1,5 +1,6 @@
 package pwr.newEducation.domain.studyPlan;
 
+import pwr.newEducation.domain.studyProgram.ExamRangeJPA;
 import pwr.newEducation.domain.studyProgram.StudyProgramJPA;
 
 import javax.persistence.*;
@@ -11,23 +12,20 @@ import java.util.Set;
 public class StudyPlanJPA implements Serializable {
     @Id
     @GeneratedValue
-    public String idStudyPlan;
-    @Id
-    public int version;
-    public LocalDateTime createdDate;
-    public LocalDateTime modifiedDate;
-    public LocalDateTime validFromDate;
-    public boolean isCurrent;
+    private long idStudyPlan;
+    private int version;
+    private LocalDateTime createdDate;
+    private LocalDateTime updatedDate;
+    private LocalDateTime validFromDate;
+    private boolean isCurrent;
 
-    @Transient
     @OneToMany
-    public Set<DeficitJPA> deficitJPA;
+    private Set<DeficitJPA> deficits;
 
-    @Transient
-    @OneToOne(mappedBy = "id_study_plan")
-    public StudyProgramJPA studyProgramJPA;
+    @OneToOne
+    private StudyProgramJPA studyProgram;
 
-    public String getIdStudyPlan() {
+    public long getIdStudyPlan() {
         return idStudyPlan;
     }
 
@@ -39,8 +37,8 @@ public class StudyPlanJPA implements Serializable {
         return createdDate;
     }
 
-    public LocalDateTime getModifiedDate() {
-        return modifiedDate;
+    public LocalDateTime getUpdatedDate() {
+        return updatedDate;
     }
 
     public LocalDateTime getValidFromDate() {
@@ -51,11 +49,65 @@ public class StudyPlanJPA implements Serializable {
         return isCurrent;
     }
 
-    public Set<DeficitJPA> getDeficitJPA() {
-        return deficitJPA;
+    public Set<DeficitJPA> getDeficits() {
+        return deficits;
     }
 
-    public StudyProgramJPA getStudyProgramJPA() {
-        return studyProgramJPA;
+    public StudyProgramJPA getStudyProgram() {
+        return studyProgram;
+    }
+
+    public StudyPlanJPA() {}
+
+    StudyPlanJPA(Builder builder) {
+        idStudyPlan = builder.idStudyPlan;;
+        version = builder.version;;
+        createdDate = builder.createdDate;
+        updatedDate = builder.updatedDate;
+        validFromDate = builder.validFormDate;
+        isCurrent = builder.isCurrent;
+        studyProgram = builder.studyProgram;
+        deficits = builder.deficits;
+    }
+
+    public static class Builder {
+        private long idStudyPlan;
+        private int version;
+        private LocalDateTime createdDate;
+        private LocalDateTime updatedDate;
+        private LocalDateTime validFormDate;
+        private boolean isCurrent;
+        private StudyProgramJPA studyProgram;
+        private Set<DeficitJPA> deficits;
+
+        Builder() {}
+
+        Builder(long idStudyPlan, int version, LocalDateTime createdDate, LocalDateTime validFormDate,
+                boolean isCurrent) {
+            this.idStudyPlan = idStudyPlan;
+            this.version = version;
+            this.createdDate = createdDate;
+            this.validFormDate = validFormDate;
+            this.isCurrent = isCurrent;
+        }
+
+        public Builder withUpdatedDate(LocalDateTime updatedDate) {
+            this.updatedDate = updatedDate;
+            return this;
+        }
+
+        public Builder withStudyProgram(StudyProgramJPA studyProgram) {
+            this.studyProgram = studyProgram;
+            return this;
+        }
+
+        public Builder withDeficits(Set<DeficitJPA> deficits) {
+            this.deficits = deficits;
+            return this;
+        }
+
+        public StudyPlanJPA build() {
+            return new StudyPlanJPA(this);
+        }
     }
 }
