@@ -1,6 +1,7 @@
 package pwr.newEducation.domain.studyProgram;
 
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPA;
+import pwr.newEducation.domain.learningEffect.LearningEffectJPA;
 import pwr.newEducation.domain.studyPlan.StudyPlanJPA;
 
 import javax.persistence.*;
@@ -30,6 +31,9 @@ public class StudyProgramJPA implements Serializable {
 
     @ManyToMany
     private Set<ModuleJPA> modules;
+
+    @ManyToMany
+    private Set<LearningEffectJPA> learningEffects;
 
     public int getVersion() {
         return version;
@@ -71,6 +75,10 @@ public class StudyProgramJPA implements Serializable {
         return modules;
     }
 
+    public Set<LearningEffectJPA> getLearningEffects() {
+        return learningEffects;
+    }
+
     public static Builder builder(LocalDateTime createdDate, LocalDateTime validFromDate, boolean isCurrent) {
         return new Builder(createdDate, validFromDate, isCurrent);
     }
@@ -88,6 +96,7 @@ public class StudyProgramJPA implements Serializable {
         examRange = builder.examRange;
         fieldOfStudy = builder.fieldOfStudy;
         modules = builder.modules;
+        learningEffects = builder.learningEffects;
     }
 
     public static class Builder {
@@ -101,6 +110,7 @@ public class StudyProgramJPA implements Serializable {
         private Set<ExamRangeJPA> examRange;
         private FieldOfStudyJPA fieldOfStudy;
         private Set<ModuleJPA> modules;
+        private Set<LearningEffectJPA> learningEffects;
 
         Builder() {}
 

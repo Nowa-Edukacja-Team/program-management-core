@@ -17,6 +17,8 @@ public class ModuleJPA {
 
     ModuleJPA(Builder builder) {
         this.name = builder.name;
+        this.blocks = builder.blocks;
+        this.idModule = builder.idModule;
     }
 
     public String getName() {
