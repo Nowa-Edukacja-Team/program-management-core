@@ -1,0 +1,62 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: management-core
+  namespace: demo
+spec:
+  selector:
+    matchLabels: 
+      app: management-core
+      tier: backend
+      track: stable
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: management-core
+        tier: backend
+        track: stable
+    spec:
+      containers:
+        - name: management-core
+          image: "quarkus/program-management-core-fast-jar:latest"
+          imagePullPolicy: Never
+          ports:
+            - name: http
+              containerPort: 8080
+              protocol: TCP
+          livenessProbe:
+            tcpSocket:
+              port: 8080
+            initialDelaySeconds: 600
+            timeoutSeconds: 1
+          env:
+            - name: CORE_DATABASE_HOST
+              value: quick-postgres
+            - name: CORE_DATABASE_PORT
+              value: "5432"
+            - name: POSTGRES_USER
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_USER
+            - name: POSTGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: postgres-secret
+                  key: POSTGRES_PASSWORD
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: management-core
+spec:
+  type: NodePort
+  ports:
+    - nodePort: 31316
+      port: 8080
+      protocol: TCP
+      targetPort: 8080
+  selector:
+    app: management-core

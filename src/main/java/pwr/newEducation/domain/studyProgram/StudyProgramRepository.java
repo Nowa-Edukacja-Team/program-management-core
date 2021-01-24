@@ -20,6 +20,7 @@ public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA
         return findAll().firstResult();
     }
 
+
     StudyProgramJPA getById(long id) {
         return findById(id);
     }

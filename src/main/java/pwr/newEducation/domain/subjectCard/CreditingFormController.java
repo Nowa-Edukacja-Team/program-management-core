@@ -1,7 +1,6 @@
-package pwr.newEducation.domain.fieldOfStudy;
+package pwr.newEducation.domain.subjectCard;
 
 import javax.annotation.security.PermitAll;
-import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.Consumes;
@@ -12,20 +11,22 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("/faculties")
+@Path("/creditingForms")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @PermitAll
 @RequestScoped
-public class FacultyController {
+public class CreditingFormController {
     @Inject
-    FacultyService facultyService;
+    CreditingFormService creditingFormService;
 
     @Inject
-    FacultyDTOMapper facultyDTOMapper;
+    CreditingFormDTOMapper creditingFormDTOMapper;
 
     @GET
-    public List<FacultyDTO> getAllFaculties() {
-        return facultyService.getAllFaculties().stream().map(facultyDTOMapper::toDTO).collect(Collectors.toList());
+    public List<CreditingFormDTO> getAllCreditingForms() {
+        return creditingFormService.getAllCreditingForms().stream()
+                .map(creditingFormDTOMapper::toDTO)
+                .collect(Collectors.toList());
     }
 }
