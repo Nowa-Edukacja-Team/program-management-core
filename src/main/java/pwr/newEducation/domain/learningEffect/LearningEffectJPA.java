@@ -1,14 +1,21 @@
 package pwr.newEducation.domain.learningEffect;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.util.Set;
 
-public class LearningEffectDTO {
+public class LearningEffectJPA {
+    @Id
+    @GeneratedValue
     private long idLearningEffect;
     private String content;
     private String universalCharacteristics;
     private String qualificationCharacteristics;
     private String engCompQualificationCharacteristics;
-    private Set<LearningEffectRangeDTO> learningEffectRanges;
+
+    @ManyToOne
+    private Set<LearningEffectRangeJPA> learningEffectRanges;
 
     public long getIdLearningEffect() {
         return idLearningEffect;
@@ -30,13 +37,13 @@ public class LearningEffectDTO {
         return universalCharacteristics;
     }
 
-    public Set<LearningEffectRangeDTO> getLearningEffectRanges() {
+    public Set<LearningEffectRangeJPA> getLearningEffectRanges() {
         return learningEffectRanges;
     }
 
-    public LearningEffectDTO() {}
+    public LearningEffectJPA() {}
 
-    LearningEffectDTO(Builder builder) {
+    LearningEffectJPA(Builder builder) {
         this.idLearningEffect = builder.idLearningEffect;
         this.universalCharacteristics = builder.universalCharacteristics;
         this.content = builder.content;
@@ -57,7 +64,7 @@ public class LearningEffectDTO {
         private String universalCharacteristics;
         private String qualificationCharacteristics;
         private String engCompQualificationCharacteristics;
-        private Set<LearningEffectRangeDTO> learningEffectRanges;
+        private Set<LearningEffectRangeJPA> learningEffectRanges;
 
         Builder() {}
 
@@ -74,13 +81,13 @@ public class LearningEffectDTO {
             return this;
         }
 
-        public Builder withLearningEffectRanges(Set<LearningEffectRangeDTO> learningEffectRanges) {
+        public Builder withLearningEffectRanges(Set<LearningEffectRangeJPA> learningEffectRanges) {
             this.learningEffectRanges = learningEffectRanges;
             return this;
         }
 
-        public LearningEffectDTO build() {
-            return new LearningEffectDTO(this);
+        public LearningEffectJPA build() {
+            return new LearningEffectJPA(this);
         }
     }
 }
