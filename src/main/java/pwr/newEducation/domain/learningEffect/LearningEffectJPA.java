@@ -1,10 +1,9 @@
 package pwr.newEducation.domain.learningEffect;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 import java.util.Set;
 
+@Entity
 public class LearningEffectJPA {
     @Id
     @GeneratedValue
@@ -14,7 +13,7 @@ public class LearningEffectJPA {
     private String qualificationCharacteristics;
     private String engCompQualificationCharacteristics;
 
-    @ManyToOne
+    @OneToMany
     private Set<LearningEffectRangeJPA> learningEffectRanges;
 
     public long getIdLearningEffect() {

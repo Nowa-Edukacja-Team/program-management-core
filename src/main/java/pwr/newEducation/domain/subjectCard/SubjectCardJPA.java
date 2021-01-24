@@ -3,14 +3,14 @@ package pwr.newEducation.domain.subjectCard;
 import pwr.newEducation.domain.studyProgram.ModuleJPA;
 import pwr.newEducation.domain.studyProgram.StudyProgramJPA;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
 public class SubjectCardJPA {
+    @Id
+    @GeneratedValue
 	private long idSubjectCards;
     private int version;
     private LocalDateTime createdDate;
@@ -34,7 +34,7 @@ public class SubjectCardJPA {
     private Set<CreditingFormJPA> creditingForm;
     @OneToMany
     private Set<StudyProgramJPA> studyProgram;
-    @ManyToOne
+    @OneToMany
     private Set<SubjectObjectiveJPA> subjectObjectiveJPA;
 
     public Set<SubjectKindJPA> getSubjectKind() {
@@ -197,7 +197,7 @@ public class SubjectCardJPA {
         this.idSupervisor = idSupervisor;
     }
 
-    private SubjectCardJPA() {}
+    public SubjectCardJPA() {}
 
     private SubjectCardJPA(SubjectCardJPA.Builder builder) {
         this.idSubjectCards = builder.idSubjectCards;
