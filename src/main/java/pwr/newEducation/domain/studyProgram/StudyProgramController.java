@@ -24,4 +24,10 @@ public class StudyProgramController {
     public List<StudyProgramDTO> getAllStudyProgram() {
         return new ArrayList<StudyProgramDTO>();
     }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    public void insertStudyProgram(StudyProgramDTO studyProgramDTO) {
+        
+    }
 }

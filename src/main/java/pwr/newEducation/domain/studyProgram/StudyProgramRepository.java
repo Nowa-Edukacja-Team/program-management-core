@@ -2,6 +2,7 @@ package pwr.newEducation.domain.studyProgram;
 
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Page;
+import io.quarkus.panache.common.Sort;
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPA;
 
 import javax.enterprise.context.Dependent;
@@ -24,14 +25,10 @@ public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA
     }
 
     StudyProgramJPA getLatestVersion(FieldOfStudyJPA fieldOfStudyJPA) {
-        return find("fieldOfStudy", fieldOfStudyJPA).firstResult();
+        return list("fieldOfStudy", Sort.by("version").descending(), fieldOfStudyJPA).get(0);
     }
 
     void insertStudyProgram(StudyProgramJPA studyProgramJPA) {
         persist(studyProgramJPA);
-    }
-
-    void deleteStudyProgram(StudyProgramJPA studyProgramJPA) {
-        delete(studyProgramJPA);
     }
 }
