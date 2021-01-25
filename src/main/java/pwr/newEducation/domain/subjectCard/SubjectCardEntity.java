@@ -23,7 +23,7 @@ public class SubjectCardEntity {
     private int semester;
     private int lastSemester;
     private Set<ModuleEntity> module;
-    private int idSupervisor;
+    private String idSupervisor;
     private Set<SubjectKindEntity> subjectKind;
     private Set<CreditingFormEntity> creditingForm;
     private Set<StudyProgramEntity> studyProgram;
@@ -209,7 +209,7 @@ public class SubjectCardEntity {
         this.lastSemester = lastSemester;
     }
 
-    public int getIdSupervisor() {
+    public String getIdSupervisor() {
         return idSupervisor;
     }
 
@@ -221,7 +221,7 @@ public class SubjectCardEntity {
         this.subjectKind = subjectKind;
     }
 
-    public void setIdSupervisor(int idSupervisor) {
+    public void setIdSupervisor(String idSupervisor) {
         this.idSupervisor = idSupervisor;
     }
 
@@ -273,7 +273,7 @@ public class SubjectCardEntity {
                                   int semester,
                                   int lastSemester,
                                   Set<ModuleEntity> module,
-                                  int idSupervisor,
+                                  String idSupervisor,
                                   Set<SubjectKindEntity> subjectKind,
                                   Set<CreditingFormEntity> creditingForm,
                                   Set<StudyProgramEntity> studyProgram,
@@ -306,7 +306,7 @@ public class SubjectCardEntity {
         private int semester;
         private int lastSemester;
         private Set<ModuleEntity> module;
-        private int idSupervisor;
+        private String idSupervisor;
         private Set<SubjectKindEntity> subjectKind;
         private Set<CreditingFormEntity> creditingForm;
         private Set<StudyProgramEntity> studyProgram;
@@ -360,7 +360,7 @@ public class SubjectCardEntity {
                          int semester,
                          int lastSemester,
                          Set<ModuleEntity> module,
-                         int idSupervisor,
+                         String idSupervisor,
                          Set<SubjectKindEntity> subjectKind,
                          Set<CreditingFormEntity> creditingForm,
                          Set<StudyProgramEntity> studyProgram,

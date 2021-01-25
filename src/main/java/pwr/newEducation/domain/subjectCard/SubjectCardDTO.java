@@ -23,7 +23,7 @@ public class SubjectCardDTO {
     private int semester;
     private int lastSemester;
     private Set<ModuleDTO> module;
-    private int idSupervisor;
+    private String idSupervisor;
     private Set<SubjectKindDTO> subjectKind;
     private Set<CreditingFormDTO> creditingForm;
     private Set<StudyProgramDTO> studyProgram;
@@ -209,7 +209,7 @@ public class SubjectCardDTO {
         this.lastSemester = lastSemester;
     }
 
-    public int getIdSupervisor() {
+    public String getIdSupervisor() {
         return idSupervisor;
     }
 
@@ -221,7 +221,7 @@ public class SubjectCardDTO {
         this.subjectKind = subjectKind;
     }
 
-    public void setIdSupervisor(int idSupervisor) {
+    public void setIdSupervisor(String idSupervisor) {
         this.idSupervisor = idSupervisor;
     }
 
@@ -273,7 +273,7 @@ public class SubjectCardDTO {
                                   int semester,
                                   int lastSemester,
                                   Set<ModuleDTO> module,
-                                  int idSupervisor,
+                                  String idSupervisor,
                                   Set<SubjectKindDTO> subjectKind,
                                   Set<CreditingFormDTO> creditingForm,
                                   Set<StudyProgramDTO> studyProgram,
@@ -306,7 +306,7 @@ public class SubjectCardDTO {
         private int semester;
         private int lastSemester;
         private Set<ModuleDTO> module;
-        private int idSupervisor;
+        private String idSupervisor;
         private Set<SubjectKindDTO> subjectKind;
         private Set<CreditingFormDTO> creditingForm;
         private Set<StudyProgramDTO> studyProgram;
@@ -360,7 +360,7 @@ public class SubjectCardDTO {
                          int semester,
                          int lastSemester,
                          Set<ModuleDTO> module,
-                         int idSupervisor,
+                         String idSupervisor,
                          Set<SubjectKindDTO> subjectKind,
                          Set<CreditingFormDTO> creditingForm,
                          Set<StudyProgramDTO> studyProgram,

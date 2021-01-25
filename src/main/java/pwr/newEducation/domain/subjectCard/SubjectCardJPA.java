@@ -30,7 +30,7 @@ public class SubjectCardJPA implements Serializable {
     private int lastSemester;
     @OneToMany
     private Set<ModuleJPA> module;
-    private int idSupervisor;
+    private String idSupervisor;
     @OneToMany
     private Set<SubjectKindJPA> subjectKind;
     @OneToMany
@@ -224,7 +224,7 @@ public class SubjectCardJPA implements Serializable {
         this.lastSemester = lastSemester;
     }
 
-    public int getIdSupervisor() {
+    public String getIdSupervisor() {
         return idSupervisor;
     }
 
@@ -236,7 +236,7 @@ public class SubjectCardJPA implements Serializable {
         this.subjectKind = subjectKind;
     }
 
-    public void setIdSupervisor(int idSupervisor) {
+    public void setIdSupervisor(String idSupervisor) {
         this.idSupervisor = idSupervisor;
     }
 
@@ -288,7 +288,7 @@ public class SubjectCardJPA implements Serializable {
                                   int semester,
                                   int lastSemester,
                                   Set<ModuleJPA> module,
-                                  int idSupervisor,
+                                  String idSupervisor,
                                   Set<SubjectKindJPA> subjectKind,
                                   Set<CreditingFormJPA> creditingForm,
                                   Set<StudyProgramJPA> studyProgram,
@@ -321,7 +321,7 @@ public class SubjectCardJPA implements Serializable {
         private int semester;
         private int lastSemester;
         private Set<ModuleJPA> module;
-        private int idSupervisor;
+        private String idSupervisor;
         private Set<SubjectKindJPA> subjectKind;
         private Set<CreditingFormJPA> creditingForm;
         private Set<StudyProgramJPA> studyProgram;
@@ -375,7 +375,7 @@ public class SubjectCardJPA implements Serializable {
                          int semester,
                          int lastSemester,
                          Set<ModuleJPA> module,
-                         int idSupervisor,
+                         String idSupervisor,
                          Set<SubjectKindJPA> subjectKind,
                          Set<CreditingFormJPA> creditingForm,
                          Set<StudyProgramJPA> studyProgram,
