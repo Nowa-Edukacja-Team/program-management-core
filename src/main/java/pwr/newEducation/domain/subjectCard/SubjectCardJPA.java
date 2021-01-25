@@ -1,17 +1,20 @@
 package pwr.newEducation.domain.subjectCard;
 
+import pwr.newEducation.domain.learningEffect.SubjectLearningEffectJPA;
 import pwr.newEducation.domain.studyProgram.ModuleJPA;
 import pwr.newEducation.domain.studyProgram.StudyProgramJPA;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
 @Entity
-public class SubjectCardJPA {
+public class SubjectCardJPA implements Serializable {
     @Id
     @GeneratedValue
-	private long idSubjectCards;
+    private long idSubjectCards;
+    @Id
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -35,19 +38,15 @@ public class SubjectCardJPA {
     @OneToMany
     private Set<StudyProgramJPA> studyProgram;
     @OneToMany
-    private Set<SubjectObjectiveJPA> subjectObjectiveJPA;
-
-    public Set<SubjectKindJPA> getSubjectKind() {
-        return subjectKind;
-    }
-
-    public void setSubjectKind(Set<SubjectKindJPA> subjectKind) {
-        this.subjectKind = subjectKind;
-    }
-
-    public long getIdSubjectCards() {
-        return idSubjectCards;
-    }
+    private Set<SubjectObjectiveJPA> subjectObjective;
+    @OneToMany
+    private Set<SubjectPrerequisiteJPA> subjectPrerequisites;
+    @OneToMany
+    private Set<LiteratureJPA> literature;
+    @OneToMany
+    private Set<TeachingToolJPA> teachingTools;
+    @OneToMany
+    private Set<SubjectLearningEffectJPA> subjectLearningEffects;
 
     public Set<ModuleJPA> getModule() {
         return module;
@@ -73,12 +72,48 @@ public class SubjectCardJPA {
         this.studyProgram = studyProgram;
     }
 
-    public Set<SubjectObjectiveJPA> getSubjectObjectiveJPA() {
-        return subjectObjectiveJPA;
+    public Set<SubjectObjectiveJPA> getSubjectObjective() {
+        return subjectObjective;
     }
 
-    public void setSubjectObjectiveJPA(Set<SubjectObjectiveJPA> subjectObjectiveJPA) {
-        this.subjectObjectiveJPA = subjectObjectiveJPA;
+    public void setSubjectObjective(Set<SubjectObjectiveJPA> subjectObjective) {
+        this.subjectObjective = subjectObjective;
+    }
+
+    public Set<SubjectPrerequisiteJPA> getSubjectPrerequisites() {
+        return subjectPrerequisites;
+    }
+
+    public void setSubjectPrerequisites(Set<SubjectPrerequisiteJPA> subjectPrerequisites) {
+        this.subjectPrerequisites = subjectPrerequisites;
+    }
+
+    public Set<LiteratureJPA> getLiterature() {
+        return literature;
+    }
+
+    public void setLiterature(Set<LiteratureJPA> literature) {
+        this.literature = literature;
+    }
+
+    public Set<TeachingToolJPA> getTeachingTools() {
+        return teachingTools;
+    }
+
+    public void setTeachingTools(Set<TeachingToolJPA> teachingTools) {
+        this.teachingTools = teachingTools;
+    }
+
+    public Set<SubjectLearningEffectJPA> getSubjectLearningEffects() {
+        return subjectLearningEffects;
+    }
+
+    public void setSubjectLearningEffects(Set<SubjectLearningEffectJPA> subjectLearningEffects) {
+        this.subjectLearningEffects = subjectLearningEffects;
+    }
+
+    public long getIdSubjectCards() {
+        return idSubjectCards;
     }
 
     public void setIdSubjectCards(long idSubjectCards) {
@@ -193,13 +228,21 @@ public class SubjectCardJPA {
         return idSupervisor;
     }
 
+    public Set<SubjectKindJPA> getSubjectKind() {
+        return subjectKind;
+    }
+
+    public void setSubjectKind(Set<SubjectKindJPA> subjectKind) {
+        this.subjectKind = subjectKind;
+    }
+
     public void setIdSupervisor(int idSupervisor) {
         this.idSupervisor = idSupervisor;
     }
 
     public SubjectCardJPA() {}
 
-    private SubjectCardJPA(SubjectCardJPA.Builder builder) {
+    private SubjectCardJPA(Builder builder) {
         this.idSubjectCards = builder.idSubjectCards;
         this.version = builder.version;
         this.createdDate = builder.createdDate;
@@ -219,6 +262,11 @@ public class SubjectCardJPA {
         this.subjectKind = builder.subjectKind;
         this.creditingForm = builder.creditingForm;
         this.studyProgram = builder.studyProgram;
+        this.subjectObjective = builder.subjectObjective;
+        this.subjectPrerequisites = builder.subjectPrerequisites;
+        this.literature = builder.literature;
+        this.teachingTools = builder.teachingTools;
+        this.subjectLearningEffects = builder.subjectLearningEffects;
     }
 
     public static Builder builder(SubjectCardJPA subjectCardJPA) {
@@ -226,30 +274,35 @@ public class SubjectCardJPA {
     }
 
     public static Builder builder(long idSubjectCards,
-                                    int version,
-                                    LocalDateTime createdDate,
-                                    LocalDateTime updatedDate,
-                                    LocalDateTime validFromDate,
-                                    boolean isCurrent,
-                                    String subjectCode,
-                                    String name,
-                                    boolean isGroup,
-                                    int zzuHours,
-                                    int cnpsHours,
-                                    int subjectECTS,
-                                    int semester,
-                                    int lastSemester,
-                                    Set<ModuleJPA> module,
-                                    int idSupervisor,
-                                    Set<SubjectKindJPA> subjectKind,
-                                    Set<CreditingFormJPA> creditingForm,
-                                    Set<StudyProgramJPA> studyProgram,
-                                    Set<SubjectObjectiveJPA> subjectObjective)
+                                  int version,
+                                  LocalDateTime createdDate,
+                                  LocalDateTime updatedDate,
+                                  LocalDateTime validFromDate,
+                                  boolean isCurrent,
+                                  String subjectCode,
+                                  String name,
+                                  boolean isGroup,
+                                  int zzuHours,
+                                  int cnpsHours,
+                                  int subjectECTS,
+                                  int semester,
+                                  int lastSemester,
+                                  Set<ModuleJPA> module,
+                                  int idSupervisor,
+                                  Set<SubjectKindJPA> subjectKind,
+                                  Set<CreditingFormJPA> creditingForm,
+                                  Set<StudyProgramJPA> studyProgram,
+                                  Set<SubjectObjectiveJPA> subjectObjective,
+                                  Set<SubjectPrerequisiteJPA> subjectPrerequisites,
+                                  Set<LiteratureJPA> literature,
+                                  Set<TeachingToolJPA> teachingTools,
+                                  Set<SubjectLearningEffectJPA> subjectLearningEffects)
     {
         return new Builder(idSubjectCards, version, createdDate, updatedDate, validFromDate,
                 isCurrent, subjectCode, name, isGroup, zzuHours, cnpsHours, subjectECTS,
                 semester, lastSemester, module, idSupervisor, subjectKind, creditingForm,
-                studyProgram, subjectObjective);
+                studyProgram, subjectObjective, subjectPrerequisites, literature,
+                teachingTools, subjectLearningEffects);
     }
 
     public static class Builder {
@@ -272,7 +325,11 @@ public class SubjectCardJPA {
         private Set<SubjectKindJPA> subjectKind;
         private Set<CreditingFormJPA> creditingForm;
         private Set<StudyProgramJPA> studyProgram;
-        private Set<SubjectObjectiveJPA> subjectObjectiveJPA;
+        private Set<SubjectObjectiveJPA> subjectObjective;
+        private Set<SubjectPrerequisiteJPA> subjectPrerequisites;
+        private Set<LiteratureJPA> literature;
+        private Set<TeachingToolJPA> teachingTools;
+        private Set<SubjectLearningEffectJPA> subjectLearningEffects;
 
         Builder() {}
 
@@ -296,7 +353,11 @@ public class SubjectCardJPA {
             subjectKind = subjectCardJPA.subjectKind;
             creditingForm = subjectCardJPA.creditingForm;
             studyProgram = subjectCardJPA.studyProgram;
-            subjectObjectiveJPA = subjectCardJPA.subjectObjectiveJPA;
+            subjectObjective = subjectCardJPA.subjectObjective;
+            subjectPrerequisites = subjectCardJPA.subjectPrerequisites;
+            literature = subjectCardJPA.literature;
+            teachingTools = subjectCardJPA.teachingTools;
+            subjectLearningEffects = subjectCardJPA.subjectLearningEffects;
         }
 
         private Builder( long idSubjectCards,
@@ -318,7 +379,11 @@ public class SubjectCardJPA {
                          Set<SubjectKindJPA> subjectKind,
                          Set<CreditingFormJPA> creditingForm,
                          Set<StudyProgramJPA> studyProgram,
-                         Set<SubjectObjectiveJPA> subjectObjectiveJPA)
+                         Set<SubjectObjectiveJPA> subjectObjective,
+                         Set<SubjectPrerequisiteJPA> subjectPrerequisites,
+                         Set<LiteratureJPA> literature,
+                         Set<TeachingToolJPA> teachingTools,
+                         Set<SubjectLearningEffectJPA> subjectLearningEffects)
         {
             this.idSubjectCards = idSubjectCards;
             this.version = version;
@@ -339,7 +404,11 @@ public class SubjectCardJPA {
             this.subjectKind = subjectKind;
             this.creditingForm = creditingForm;
             this.studyProgram = studyProgram;
-            this.subjectObjectiveJPA = subjectObjectiveJPA;
+            this.subjectObjective = subjectObjective;
+            this.subjectPrerequisites = subjectPrerequisites;
+            this.literature = literature;
+            this.teachingTools = teachingTools;
+            this.subjectLearningEffects = subjectLearningEffects;
         }
 
         public SubjectCardJPA build() {

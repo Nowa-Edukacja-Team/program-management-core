@@ -1,5 +1,6 @@
 package pwr.newEducation.domain.subjectCard;
 
+import pwr.newEducation.domain.learningEffect.SubjectLearningEffectDTO;
 import pwr.newEducation.domain.studyProgram.ModuleDTO;
 import pwr.newEducation.domain.studyProgram.StudyProgramDTO;
 
@@ -27,6 +28,10 @@ public class SubjectCardDTO {
     private Set<CreditingFormDTO> creditingForm;
     private Set<StudyProgramDTO> studyProgram;
     private Set<SubjectObjectiveDTO> subjectObjective;
+    private Set<SubjectPrerequisiteDTO> subjectPrerequisites;
+    private Set<LiteratureDTO> literature;
+    private Set<TeachingToolDTO> teachingTools;
+    private Set<SubjectLearningEffectDTO> subjectLearningEffects;
 
     public Set<ModuleDTO> getModule() {
         return module;
@@ -60,16 +65,40 @@ public class SubjectCardDTO {
         this.subjectObjective = subjectObjective;
     }
 
+    public Set<SubjectPrerequisiteDTO> getSubjectPrerequisites() {
+        return subjectPrerequisites;
+    }
+
+    public void setSubjectPrerequisites(Set<SubjectPrerequisiteDTO> subjectPrerequisites) {
+        this.subjectPrerequisites = subjectPrerequisites;
+    }
+
+    public Set<LiteratureDTO> getLiterature() {
+        return literature;
+    }
+
+    public void setLiterature(Set<LiteratureDTO> literature) {
+        this.literature = literature;
+    }
+
+    public Set<TeachingToolDTO> getTeachingTools() {
+        return teachingTools;
+    }
+
+    public void setTeachingTools(Set<TeachingToolDTO> teachingTools) {
+        this.teachingTools = teachingTools;
+    }
+
+    public Set<SubjectLearningEffectDTO> getSubjectLearningEffects() {
+        return subjectLearningEffects;
+    }
+
+    public void setSubjectLearningEffects(Set<SubjectLearningEffectDTO> subjectLearningEffects) {
+        this.subjectLearningEffects = subjectLearningEffects;
+    }
+
     public long getIdSubjectCards() {
         return idSubjectCards;
-    }
-
-    public Set<SubjectKindDTO> getSubjectKind() {
-        return subjectKind;
-    }
-
-    public void setSubjectKind(Set<SubjectKindDTO> subjectKind) {
-        this.subjectKind = subjectKind;
     }
 
     public void setIdSubjectCards(long idSubjectCards) {
@@ -184,14 +213,21 @@ public class SubjectCardDTO {
         return idSupervisor;
     }
 
+    public Set<SubjectKindDTO> getSubjectKind() {
+        return subjectKind;
+    }
+
+    public void setSubjectKind(Set<SubjectKindDTO> subjectKind) {
+        this.subjectKind = subjectKind;
+    }
+
     public void setIdSupervisor(int idSupervisor) {
         this.idSupervisor = idSupervisor;
     }
 
-
     private SubjectCardDTO() {}
 
-    private SubjectCardDTO(SubjectCardDTO.Builder builder) {
+    private SubjectCardDTO(Builder builder) {
         this.idSubjectCards = builder.idSubjectCards;
         this.version = builder.version;
         this.createdDate = builder.createdDate;
@@ -211,7 +247,11 @@ public class SubjectCardDTO {
         this.subjectKind = builder.subjectKind;
         this.creditingForm = builder.creditingForm;
         this.studyProgram = builder.studyProgram;
-
+        this.subjectObjective = builder.subjectObjective;
+        this.subjectPrerequisites = builder.subjectPrerequisites;
+        this.literature = builder.literature;
+        this.teachingTools = builder.teachingTools;
+        this.subjectLearningEffects = builder.subjectLearningEffects;
     }
 
     public static Builder builder(SubjectCardDTO subjectCardDTO) {
@@ -219,30 +259,35 @@ public class SubjectCardDTO {
     }
 
     public static Builder builder(long idSubjectCards,
-                                                    int version,
-                                                    LocalDateTime createdDate,
-                                                    LocalDateTime updatedDate,
-                                                    LocalDateTime validFromDate,
-                                                    boolean isCurrent,
-                                                    String subjectCode,
-                                                    String name,
-                                                    boolean isGroup,
-                                                    int zzuHours,
-                                                    int cnpsHours,
-                                                    int subjectECTS,
-                                                    int semester,
-                                                    int lastSemester,
-                                                    Set<ModuleDTO> module,
-                                                    int idSupervisor,
-                                                    Set<SubjectKindDTO> subjectKind,
-                                                    Set<CreditingFormDTO> creditingForm,
-                                                    Set<StudyProgramDTO> studyProgram,
-                                                    Set<SubjectObjectiveDTO> subjectObjective)
+                                  int version,
+                                  LocalDateTime createdDate,
+                                  LocalDateTime updatedDate,
+                                  LocalDateTime validFromDate,
+                                  boolean isCurrent,
+                                  String subjectCode,
+                                  String name,
+                                  boolean isGroup,
+                                  int zzuHours,
+                                  int cnpsHours,
+                                  int subjectECTS,
+                                  int semester,
+                                  int lastSemester,
+                                  Set<ModuleDTO> module,
+                                  int idSupervisor,
+                                  Set<SubjectKindDTO> subjectKind,
+                                  Set<CreditingFormDTO> creditingForm,
+                                  Set<StudyProgramDTO> studyProgram,
+                                  Set<SubjectObjectiveDTO> subjectObjective,
+                                  Set<SubjectPrerequisiteDTO> subjectPrerequisites,
+                                  Set<LiteratureDTO> literature,
+                                  Set<TeachingToolDTO> teachingTools,
+                                  Set<SubjectLearningEffectDTO> subjectLearningEffects)
     {
         return new Builder(idSubjectCards, version, createdDate, updatedDate, validFromDate,
                 isCurrent, subjectCode, name, isGroup, zzuHours, cnpsHours, subjectECTS,
                 semester, lastSemester, module, idSupervisor, subjectKind, creditingForm,
-                studyProgram, subjectObjective);
+                studyProgram, subjectObjective, subjectPrerequisites, literature,
+                teachingTools, subjectLearningEffects);
     }
 
     public static class Builder {
@@ -266,6 +311,10 @@ public class SubjectCardDTO {
         private Set<CreditingFormDTO> creditingForm;
         private Set<StudyProgramDTO> studyProgram;
         private Set<SubjectObjectiveDTO> subjectObjective;
+        private Set<SubjectPrerequisiteDTO> subjectPrerequisites;
+        private Set<LiteratureDTO> literature;
+        private Set<TeachingToolDTO> teachingTools;
+        private Set<SubjectLearningEffectDTO> subjectLearningEffects;
 
         Builder() {}
 
@@ -290,6 +339,10 @@ public class SubjectCardDTO {
             creditingForm = subjectCardDTO.creditingForm;
             studyProgram = subjectCardDTO.studyProgram;
             subjectObjective = subjectCardDTO.subjectObjective;
+            subjectPrerequisites = subjectCardDTO.subjectPrerequisites;
+            literature = subjectCardDTO.literature;
+            teachingTools = subjectCardDTO.teachingTools;
+            subjectLearningEffects = subjectCardDTO.subjectLearningEffects;
         }
 
         private Builder( long idSubjectCards,
@@ -311,7 +364,11 @@ public class SubjectCardDTO {
                          Set<SubjectKindDTO> subjectKind,
                          Set<CreditingFormDTO> creditingForm,
                          Set<StudyProgramDTO> studyProgram,
-                         Set<SubjectObjectiveDTO> subjectObjectiveDTO)
+                         Set<SubjectObjectiveDTO> subjectObjective,
+                         Set<SubjectPrerequisiteDTO> subjectPrerequisites,
+                         Set<LiteratureDTO> literature,
+                         Set<TeachingToolDTO> teachingTools,
+                         Set<SubjectLearningEffectDTO> subjectLearningEffects)
         {
             this.idSubjectCards = idSubjectCards;
             this.version = version;
@@ -332,7 +389,11 @@ public class SubjectCardDTO {
             this.subjectKind = subjectKind;
             this.creditingForm = creditingForm;
             this.studyProgram = studyProgram;
-            this.subjectObjective = subjectObjectiveDTO;
+            this.subjectObjective = subjectObjective;
+            this.subjectPrerequisites = subjectPrerequisites;
+            this.literature = literature;
+            this.teachingTools = teachingTools;
+            this.subjectLearningEffects = subjectLearningEffects;
         }
 
         public SubjectCardDTO build() {
