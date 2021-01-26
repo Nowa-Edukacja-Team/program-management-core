@@ -20,4 +20,8 @@ public class StudyPlanRepository implements PanacheRepository<StudyPlanJPA> {
         return streamAll().map(studyPlanJPAMapper::toEntity)
                 .collect(Collectors.toList());
     }
+
+    public StudyPlanJPA getById(long id) {
+        return findById(id);
+    }
 }

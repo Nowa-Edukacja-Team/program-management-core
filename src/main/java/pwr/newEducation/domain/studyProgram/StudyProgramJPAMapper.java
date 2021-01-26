@@ -1,10 +1,17 @@
 package pwr.newEducation.domain.studyProgram;
 
+import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyDTO;
+import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyEntity;
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPAMapper;
+import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyRepository;
+import pwr.newEducation.domain.studyPlan.StudyPlanDTO;
+import pwr.newEducation.domain.studyPlan.StudyPlanEntity;
 import pwr.newEducation.domain.studyPlan.StudyPlanJPAMapper;
+import pwr.newEducation.domain.studyPlan.StudyPlanRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.HashSet;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
@@ -21,14 +28,36 @@ public class StudyProgramJPAMapper {
     @Inject
     StudyPlanJPAMapper studyPlanJPAMapper;
 
+    @Inject
+    StudyPlanRepository studyPlanRepository;
+
+    @Inject
+    ModuleRepository moduleRepository;
+
+    @Inject
+    ExamRangeRepository examRangeRepository;
+
+    @Inject
+    FieldOfStudyRepository fieldOfStudyRepository;
+
     public StudyProgramJPA toJPA(StudyProgramEntity studyProgramEntity) {
         return StudyProgramJPA.builder(studyProgramEntity.getCreatedDate(), studyProgramEntity.getValid(),
                 studyProgramEntity.getIsCurrent())
-                .withExamRange(studyProgramEntity.getExamRange().stream().map(examRangeJPAMapper::toJPA).collect(Collectors.toSet()))
-                .withFieldOfStudy(fieldOfStudyJPAMapper.toJPA(studyProgramEntity.getFieldOfStudy()))
+                .withExamRange(studyProgramEntity.getExamRange().stream()
+                        .map(ExamRangeEntity::getIdExamRange)
+                        .map(examRangeRepository::findById).collect(Collectors.toSet()))
+                .withFieldOfStudy(studyProgramEntity.getFieldOfStudy()
+                        .map(FieldOfStudyEntity::getIdFieldOFStudy)
+                        .map(fieldOfStudyRepository::findById)
+                        .orElseThrow(() -> new RuntimeException("Field of study is required!")))
                 .withIdStudyProgram(studyProgramEntity.getIdStudyProgram())
-                .withModules(studyProgramEntity.getModules().stream().map(moduleJPAMapper::toJPA).collect(Collectors.toSet()))
-                .withStudyPlan(studyPlanJPAMapper.toJPA(studyProgramEntity.getStudyPlan()))
+                .withModules(studyProgramEntity.getModules().stream()
+                        .map(ModuleEntity::getIdModule)
+                        .map(moduleRepository::findById).collect(Collectors.toSet()))
+                .withStudyPlan(studyProgramEntity.getStudyPlan()
+                        .map(StudyPlanEntity::getIdStudyPlan)
+                        .map(studyPlanRepository::getById)
+                        .orElse(null))
                 .withUpdatedDate(studyProgramEntity.getUpdatedDate())
                 .withVersion(studyProgramEntity.getVersion())
                 .build();
@@ -38,12 +67,12 @@ public class StudyProgramJPAMapper {
         return StudyProgramEntity.builder(studyProgramJPA.getCreatedDate(), studyProgramJPA.getValid(),
                 studyProgramJPA.getIsCurrent())
                 .withExamRange(studyProgramJPA.getExamRange().stream().map(examRangeJPAMapper::toEntity).collect(Collectors.toSet()))
-                .withFieldOfStudy(fieldOfStudyJPAMapper.toEntity(studyProgramJPA.getFieldOfStudy()))
-                .withIdStudyProgram(studyProgramJPA.getIdStudyProgram())
+                .withFieldOfStudy(studyProgramJPA.getFieldOfStudy().map(fieldOfStudyJPAMapper::toEntity).orElse(null))
+                .withIdStudyProgram(studyProgramJPA.getId())
                 .withVersion(studyProgramJPA.getVersion())
                 .withModules(studyProgramJPA.getModules().stream().map(moduleJPAMapper::toEntity).collect(Collectors.toSet()))
                 .withUpdatedDate(studyProgramJPA.getUpdatedDate())
-                .withStudyPlan(studyPlanJPAMapper.toEntity(studyProgramJPA.getStudyPlan()))
+                .withStudyPlan(studyProgramJPA.getStudyPlan().map(studyPlanJPAMapper::toEntity).orElse(null))
                 .build();
     }
 }

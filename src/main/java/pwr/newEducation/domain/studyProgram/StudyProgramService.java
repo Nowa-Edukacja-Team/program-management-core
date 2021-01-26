@@ -1,11 +1,15 @@
 package pwr.newEducation.domain.studyProgram;
 
-import io.quarkus.panache.common.Sort;
+import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyDTO;
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPA;
+import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyRepository;
+import pwr.newEducation.domain.studyPlan.StudyPlanDTO;
+import pwr.newEducation.domain.studyPlan.StudyPlanJPA;
+import pwr.newEducation.domain.studyPlan.StudyPlanRepository;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
-import java.util.List;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Dependent
@@ -16,8 +20,11 @@ public class StudyProgramService {
     @Inject
     StudyProgramJPAMapper studyProgramJPAMapper;
 
-    void insertStudyProgram(StudyProgramEntity studyProgramEntity) {
-        studyProgramRepository.insertStudyProgram(studyProgramJPAMapper.toJPA(studyProgramEntity));
+    @Inject
+    StudyProgramDTOMapper studyProgramDTOMapper;
+
+    void insertStudyProgram(StudyProgramDTO studyProgram) {
+        studyProgramRepository.persist(studyProgramJPAMapper.toJPA(studyProgramDTOMapper.toEntity(studyProgram)));
     }
 
     List<StudyProgramEntity> getAllStudyPrograms(int pageIndex, int pageSize) {

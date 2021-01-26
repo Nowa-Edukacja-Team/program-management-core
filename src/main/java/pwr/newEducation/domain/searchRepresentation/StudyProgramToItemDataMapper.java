@@ -7,7 +7,7 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class StudyProgramToItemDataMapper {
     public ItemDataEntity toEntity(StudyProgramJPA studyProgramJPA) {
-        return ItemDataEntity.builder(studyProgramJPA.getIdStudyProgram(), studyProgramJPA.getCreatedDate().toString())
+        return ItemDataEntity.builder(studyProgramJPA.getId(), studyProgramJPA.getCreatedDate().toString())
                 .build();
     }
 }
