@@ -8,7 +8,6 @@ import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -160,6 +159,11 @@ public class StudyProgramJPA implements Serializable {
 
         public Builder withExamRange(Set<ExamRangeJPA> examRange) {
             this.examRange = examRange;
+            return this;
+        }
+
+        public Builder withLearningEffects(Set<LearningEffectJPA> learningEffects) {
+            this.learningEffects = learningEffects;
             return this;
         }
 

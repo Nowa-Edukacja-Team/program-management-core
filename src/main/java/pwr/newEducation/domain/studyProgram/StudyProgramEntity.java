@@ -7,7 +7,6 @@ import pwr.newEducation.domain.studyPlan.StudyPlanEntity;
 
 import java.time.LocalDateTime;
 import java.util.Collections;
-import java.util.List;
 import java.util.Optional;
 import java.util.Set;
 
@@ -84,6 +83,7 @@ public class StudyProgramEntity {
         examRange = builder.examRange;
         fieldOfStudy = builder.fieldOfStudy;
         modules = builder.modules;
+        learningEffects = builder.learningEffects;
     }
 
     public static class Builder {
@@ -97,6 +97,7 @@ public class StudyProgramEntity {
         private Set<ExamRangeEntity> examRange;
         private FieldOfStudyEntity fieldOfStudy;
         private Set<ModuleEntity> modules;
+        private Set<LearningEffectEntity> learningEffects;
 
         Builder() {}
 
@@ -139,6 +140,11 @@ public class StudyProgramEntity {
 
         public Builder withExamRange(Set<ExamRangeEntity> examRange) {
             this.examRange = examRange;
+            return this;
+        }
+
+        public Builder withLearningEffects(Set<LearningEffectEntity> learningEffects) {
+            this.learningEffects = learningEffects;
             return this;
         }
 

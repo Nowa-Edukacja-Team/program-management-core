@@ -163,6 +163,11 @@ public class StudyProgramDTO {
             return this;
         }
 
+        public Builder withLearningEffects(List<LearningEffectDTO> learningEffects) {
+            this.learningEffect = learningEffects;
+            return this;
+        }
+
         public StudyProgramDTO build() {
             return new StudyProgramDTO(this);
         }
