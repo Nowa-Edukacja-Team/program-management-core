@@ -1,7 +1,7 @@
 package pwr.newEducation.domain.studyProgram;
 
 public class BlockEntity {
-    private long idBlock;
+    private long id;
     private String name;
 
     public String getName() {
@@ -9,7 +9,7 @@ public class BlockEntity {
     }
 
     public long getIdBlock() {
-        return idBlock;
+        return id;
     }
 
     public BlockEntity() {}
@@ -23,7 +23,7 @@ public class BlockEntity {
     }
 
     public static class Builder {
-        private long idBlock;
+        private long id;
         private String name;
 
         Builder() { }
@@ -32,8 +32,8 @@ public class BlockEntity {
             this.name = name;
         }
 
-        public Builder withIdBlock(long idBlock) {
-            this.idBlock = idBlock;
+        public Builder withIdBlock(long id) {
+            this.id = id;
             return this;
         }
 

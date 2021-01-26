@@ -5,7 +5,7 @@ import java.util.Optional;
 import java.util.Set;
 
 public class FieldOfStudyDTO {
-    private long idFieldOFStudy;
+    private long id;
     private String name;
     private FacultyDTO facultyDTO;
     private LanguageDTO languageDTO;
@@ -41,7 +41,7 @@ public class FieldOfStudyDTO {
     }
 
     public long getIdFieldOFStudy() {
-        return idFieldOFStudy;
+        return id;
     }
 
     public ModeDTO getModeDTO() {
@@ -59,7 +59,7 @@ public class FieldOfStudyDTO {
     public FieldOfStudyDTO() {}
 
     private FieldOfStudyDTO(FieldOfStudyDTO.Builder builder) {
-        idFieldOFStudy = builder.idFieldOFStudy;
+        id = builder.id;
         name = builder.name;
         facultyDTO = builder.facultyDTO;
         languageDTO = builder.languageDTO;
@@ -72,15 +72,15 @@ public class FieldOfStudyDTO {
 
     }
 
-    public static FieldOfStudyDTO.Builder builder(long idFieldOFStudy, String name, FacultyDTO facultyDTO, LanguageDTO languageDTO,
+    public static FieldOfStudyDTO.Builder builder(long id, String name, FacultyDTO facultyDTO, LanguageDTO languageDTO,
                                                      DisciplineDTO disciplineDTO, LearningCycleDTO learningCycleDTO, LevelDTO levelDTO,
                                                      ModeDTO modeDTO, ProfileDTO profileDTO, Set<SpecializationDTO> specializationDTOS) {
-        return new FieldOfStudyDTO.Builder(idFieldOFStudy, name, facultyDTO, languageDTO, disciplineDTO, learningCycleDTO, levelDTO,
+        return new FieldOfStudyDTO.Builder(id, name, facultyDTO, languageDTO, disciplineDTO, learningCycleDTO, levelDTO,
                 modeDTO, profileDTO, specializationDTOS);
     }
 
     public static class Builder {
-        private long idFieldOFStudy;
+        private long id;
         private String name;
         private FacultyDTO facultyDTO;
         private LanguageDTO languageDTO;
@@ -93,12 +93,12 @@ public class FieldOfStudyDTO {
 
         Builder() {}
 
-        Builder(long idFieldOFStudy, String name, FacultyDTO facultyDTO, LanguageDTO languageDTO,
+        Builder(long id, String name, FacultyDTO facultyDTO, LanguageDTO languageDTO,
                 DisciplineDTO disciplineDTO, LearningCycleDTO learningCycleDTO, LevelDTO levelDTO, ModeDTO modeDTO,
                 ProfileDTO profileDTO, Set<SpecializationDTO> specializationEntities) {
             this.disciplineDTO = disciplineDTO;
             this.facultyDTO = facultyDTO;
-            this.idFieldOFStudy = idFieldOFStudy;
+            this.id = id;
             this.name = name;
             this.languageDTO = languageDTO;
             this.learningCycleDTO = learningCycleDTO;

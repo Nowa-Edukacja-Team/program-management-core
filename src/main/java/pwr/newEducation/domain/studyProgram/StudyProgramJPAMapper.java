@@ -22,7 +22,7 @@ public class StudyProgramJPAMapper {
     StudyPlanJPAMapper studyPlanJPAMapper;
 
     public StudyProgramJPA toJPA(StudyProgramEntity studyProgramEntity) {
-        return StudyProgramJPA.builder(studyProgramEntity.getCreatedDate(), studyProgramEntity.getValidFromDate(),
+        return StudyProgramJPA.builder(studyProgramEntity.getCreatedDate(), studyProgramEntity.getValid(),
                 studyProgramEntity.getIsCurrent())
                 .withExamRange(studyProgramEntity.getExamRange().stream().map(examRangeJPAMapper::toJPA).collect(Collectors.toSet()))
                 .withFieldOfStudy(fieldOfStudyJPAMapper.toJPA(studyProgramEntity.getFieldOfStudy()))
@@ -35,7 +35,7 @@ public class StudyProgramJPAMapper {
     }
 
     public StudyProgramEntity toEntity(StudyProgramJPA studyProgramJPA) {
-        return StudyProgramEntity.builder(studyProgramJPA.getCreatedDate(), studyProgramJPA.getValidFromDate(),
+        return StudyProgramEntity.builder(studyProgramJPA.getCreatedDate(), studyProgramJPA.getValid(),
                 studyProgramJPA.getIsCurrent())
                 .withExamRange(studyProgramJPA.getExamRange().stream().map(examRangeJPAMapper::toEntity).collect(Collectors.toSet()))
                 .withFieldOfStudy(fieldOfStudyJPAMapper.toEntity(studyProgramJPA.getFieldOfStudy()))

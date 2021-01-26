@@ -10,7 +10,7 @@ import java.util.Set;
 public class FieldOfStudyJPA {
     @Id
     @GeneratedValue
-    private long idFieldOFStudy;
+    private long id;
 
     private String name;
 
@@ -66,7 +66,7 @@ public class FieldOfStudyJPA {
     }
 
     public long getIdFieldOFStudy() {
-        return idFieldOFStudy;
+        return id;
     }
 
     public ModeJPA getModeJPA() {
@@ -98,7 +98,7 @@ public class FieldOfStudyJPA {
     public FieldOfStudyJPA() {}
 
     private FieldOfStudyJPA(Builder builder) {
-        idFieldOFStudy = builder.idFieldOFStudy;
+        id = builder.id;
         name = builder.name;
         facultyJPA = builder.facultyJPA;
         languageJPA = builder.languageJPA;
@@ -111,15 +111,15 @@ public class FieldOfStudyJPA {
 
     }
 
-    public static Builder builder(long idFieldOFStudy, String name, FacultyJPA facultyJPA, LanguageJPA languageJPA,
+    public static Builder builder(long id, String name, FacultyJPA facultyJPA, LanguageJPA languageJPA,
                                   DisciplineJPA disciplineJPA, LearningCycleJPA learningCycleJPA, LevelJPA levelJPA,
                                   ModeJPA modeJPA, ProfileJPA profileJPA, Set<SpecializationJPA> specializationJPAS) {
-        return new Builder(idFieldOFStudy, name, facultyJPA, languageJPA, disciplineJPA, learningCycleJPA, levelJPA,
+        return new Builder(id, name, facultyJPA, languageJPA, disciplineJPA, learningCycleJPA, levelJPA,
                 modeJPA, profileJPA, specializationJPAS);
     }
 
     public static class Builder {
-        private long idFieldOFStudy;
+        private long id;
         private String name;
         private FacultyJPA facultyJPA;
         private LanguageJPA languageJPA;
@@ -133,12 +133,12 @@ public class FieldOfStudyJPA {
 
         Builder() {}
 
-        Builder(long idFieldOFStudy, String name, FacultyJPA facultyJPA, LanguageJPA languageJPA,
+        Builder(long id, String name, FacultyJPA facultyJPA, LanguageJPA languageJPA,
                 DisciplineJPA disciplineJPA, LearningCycleJPA learningCycleJPA, LevelJPA levelJPA, ModeJPA modeJPA,
                 ProfileJPA profileJPA, Set<SpecializationJPA> specializationJPAS) {
             this.disciplineJPA = disciplineJPA;
             this.facultyJPA = facultyJPA;
-            this.idFieldOFStudy = idFieldOFStudy;
+            this.id = id;
             this.name = name;
             this.languageJPA = languageJPA;
             this.learningCycleJPA = learningCycleJPA;

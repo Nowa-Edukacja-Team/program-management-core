@@ -3,7 +3,7 @@ package pwr.newEducation.domain.learningEffect;
 import java.util.Set;
 
 public class LearningEffectEntity {
-    private long idLearningEffect;
+    private long id;
     private String content;
     private String universalCharacteristics;
     private String qualificationCharacteristics;
@@ -11,7 +11,7 @@ public class LearningEffectEntity {
     private Set<LearningEffectRangeEntity> learningEffectRanges;
 
     public long getIdLearningEffect() {
-        return idLearningEffect;
+        return id;
     }
 
     public String getContent() {
@@ -37,7 +37,7 @@ public class LearningEffectEntity {
     public LearningEffectEntity() {}
 
     LearningEffectEntity(LearningEffectEntity.Builder builder) {
-        this.idLearningEffect = builder.idLearningEffect;
+        this.id = builder.id;
         this.universalCharacteristics = builder.universalCharacteristics;
         this.content = builder.content;
         this.engCompQualificationCharacteristics = builder.engCompQualificationCharacteristics;
@@ -52,7 +52,7 @@ public class LearningEffectEntity {
     }
 
     public static class Builder {
-        private long idLearningEffect;
+        private long id;
         private String content;
         private String universalCharacteristics;
         private String qualificationCharacteristics;
@@ -69,8 +69,8 @@ public class LearningEffectEntity {
             this.universalCharacteristics = universalCharacteristics;
         }
 
-        public Builder withIdLearningEffect(long idLearningEffect) {
-            this.idLearningEffect = idLearningEffect;
+        public Builder withIdLearningEffect(long id) {
+            this.id = id;
             return this;
         }
 

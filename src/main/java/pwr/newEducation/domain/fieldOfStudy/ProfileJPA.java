@@ -9,12 +9,12 @@ import javax.persistence.Id;
 public class ProfileJPA {
     @Id
     @GeneratedValue
-    private long idProfileJPA;
+    private long id;
     private String name;
 
 
     private ProfileJPA(Builder builder){
-        idProfileJPA = builder.idProfileJPA;
+        id = builder.id;
         name = builder.name;
     }
 
@@ -23,27 +23,27 @@ public class ProfileJPA {
     }
 
     public long getIdProfileJPA() {
-        return idProfileJPA;
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public static Builder builder (long idProfileJPA, String name) {
-        return new Builder(idProfileJPA, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idProfileJPA;
+        private long id;
         private String name;
 
         Builder() {
 
         }
 
-        Builder(long idProfileJPA, String name) {
-            this.idProfileJPA = idProfileJPA;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

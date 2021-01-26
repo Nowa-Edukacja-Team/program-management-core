@@ -5,12 +5,12 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class SpecializationEntity {
-    private long idSpecializationEntity;
+    private long id;
     private String name;
     private Set<FieldOfStudyEntity> fieldOfStudyEntities = new HashSet<>();
 
     private SpecializationEntity(Builder builder){
-        idSpecializationEntity = builder.idSpecializationEntity;
+        id = builder.id;
         name = builder.name;
         fieldOfStudyEntities = builder.fieldOfStudyEntities;
     }
@@ -20,7 +20,7 @@ public class SpecializationEntity {
     }
 
     public long getIdSpecializationEntity() {
-        return idSpecializationEntity;
+        return id;
     }
 
     public String getName() {
@@ -31,12 +31,12 @@ public class SpecializationEntity {
         return fieldOfStudyEntities;
     }
 
-    public static Builder builder (long idSpecializationEntity, String name) {
-        return new Builder(idSpecializationEntity, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idSpecializationEntity;
+        private long id;
         private String name;
         private Set<FieldOfStudyEntity> fieldOfStudyEntities;
 
@@ -44,8 +44,8 @@ public class SpecializationEntity {
 
         }
 
-        Builder(long idSpecializationEntity, String name) {
-            this.idSpecializationEntity = idSpecializationEntity;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;;
         }
 

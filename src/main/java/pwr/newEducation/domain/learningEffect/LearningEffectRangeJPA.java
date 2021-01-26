@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class LearningEffectRangeJPA {
     @Id
     @GeneratedValue
-    private long idLearningEffectRange;
+    private long id;
     private String name;
 
     public String getName() {
@@ -16,14 +16,14 @@ public class LearningEffectRangeJPA {
     }
 
     public long getIdLearningEffectRange() {
-        return idLearningEffectRange;
+        return id;
     }
 
     public LearningEffectRangeJPA() {}
 
     LearningEffectRangeJPA(Builder builder) {
         this.name = builder.name;
-        this.idLearningEffectRange = builder.idLearningEffectRange;
+        this.id = builder.id;
     }
 
     public static Builder builder(String name) {
@@ -31,7 +31,7 @@ public class LearningEffectRangeJPA {
     }
 
     public static class Builder {
-        private long idLearningEffectRange;
+        private long id;
         private String name;
 
         Builder() { }
@@ -40,8 +40,8 @@ public class LearningEffectRangeJPA {
             this.name = name;
         }
 
-        public Builder withIdLearningEffectRange(long idLearningEffectRange) {
-            this.idLearningEffectRange = idLearningEffectRange;
+        public Builder withIdLearningEffectRange(long id) {
+            this.id = id;
             return this;
         }
 

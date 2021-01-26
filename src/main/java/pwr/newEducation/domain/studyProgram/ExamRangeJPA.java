@@ -7,7 +7,7 @@ import javax.persistence.*;
 public class ExamRangeJPA {
     @Id
     @GeneratedValue
-    private long idExamRange;
+    private long id;
     private int number;
     private String text;
 
@@ -16,7 +16,7 @@ public class ExamRangeJPA {
     }
 
     public long getIdExamRange() {
-        return idExamRange;
+        return id;
     }
 
     public String getText() {
@@ -28,7 +28,7 @@ public class ExamRangeJPA {
     }
 
     ExamRangeJPA(Builder builder) {
-        this.idExamRange = builder.idExamRange;
+        this.id = builder.id;
         this.number = builder.number;
         this.text = builder.text;
     }
@@ -38,7 +38,7 @@ public class ExamRangeJPA {
     }
 
     public static class Builder {
-        private long idExamRange;
+        private long id;
         private int number;
         private String text;
 
@@ -49,8 +49,8 @@ public class ExamRangeJPA {
             this.text = text;
         }
 
-        public Builder withIdExamRange(long idExamRange) {
-            this.idExamRange = idExamRange;
+        public Builder withIdExamRange(long id) {
+            this.id = id;
             return this;
         }
 

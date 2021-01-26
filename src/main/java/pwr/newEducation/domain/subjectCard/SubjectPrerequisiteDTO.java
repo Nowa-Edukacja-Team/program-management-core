@@ -1,47 +1,47 @@
 package pwr.newEducation.domain.subjectCard;
 
 public class SubjectPrerequisiteDTO {
-    private long idSubjectPrerequisite;
+    private long id;
     private String content;
 
     private SubjectPrerequisiteDTO(Builder builder) {
-        this.idSubjectPrerequisite = builder.idSubjectPrerequisite;
+        this.id = builder.id;
         this.content = builder.content;
     }
 
     public long getIdSubjectPrerequisite() {
-        return idSubjectPrerequisite;
+        return id;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setIdSubjectPrerequisite(long idSubjectPrerequisite) {
-        this.idSubjectPrerequisite = idSubjectPrerequisite;
+    public void setIdSubjectPrerequisite(long id) {
+        this.id = id;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
-    public static Builder builder(long idSubjectPrerequisite, String content) {
-        return new Builder(idSubjectPrerequisite, content);
+    public static Builder builder(long id, String content) {
+        return new Builder(id, content);
     }
 
     public static class Builder {
-        private long idSubjectPrerequisite;
+        private long id;
         private String content;
 
         Builder() {}
 
         Builder(SubjectPrerequisiteDTO subjectPrerequisiteDTO) {
-            idSubjectPrerequisite = subjectPrerequisiteDTO.idSubjectPrerequisite;
+            id = subjectPrerequisiteDTO.id;
             content = subjectPrerequisiteDTO.content;
         }
 
-        private Builder(long idSubjectPrerequisite, String content){
-            this.idSubjectPrerequisite = idSubjectPrerequisite;
+        private Builder(long id, String content){
+            this.id = id;
             this.content = content;
         }
 

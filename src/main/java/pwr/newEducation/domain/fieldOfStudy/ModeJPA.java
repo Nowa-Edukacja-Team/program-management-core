@@ -8,12 +8,12 @@ import javax.persistence.Id;
 public class ModeJPA {
     @Id
     @GeneratedValue
-    private long idModeJPA;
+    private long id;
     private String name;
 
 
     private ModeJPA(Builder builder){
-        idModeJPA = builder.idModeJPA;
+        id = builder.id;
         name = builder.name;
     }
 
@@ -22,27 +22,27 @@ public class ModeJPA {
     }
 
     public long getIdModeJPA() {
-        return idModeJPA;
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public static Builder builder (long idModeJPA, String name) {
-        return new Builder(idModeJPA, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idModeJPA;
+        private long id;
         private String name;
 
         Builder() {
 
         }
 
-        Builder(long idModeJPA, String name) {
-            this.idModeJPA = idModeJPA;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

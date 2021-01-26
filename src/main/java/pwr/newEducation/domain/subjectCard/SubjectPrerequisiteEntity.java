@@ -1,13 +1,13 @@
 package pwr.newEducation.domain.subjectCard;
 
 public class SubjectPrerequisiteEntity {
-    private long idSubjectPrerequisite;
+    private long id;
     private String content;
 
     private SubjectPrerequisiteEntity() {}
 
     private SubjectPrerequisiteEntity(Builder builder) {
-        this.idSubjectPrerequisite = builder.idSubjectPrerequisite;
+        this.id = builder.id;
         this.content = builder.content;
     }
 
@@ -16,38 +16,38 @@ public class SubjectPrerequisiteEntity {
     }
 
     public long getIdSubjectPrerequisite() {
-        return idSubjectPrerequisite;
+        return id;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
-    public void setIdSubjectPrerequisite(long idSubjectPrerequisite) {
-        this.idSubjectPrerequisite = idSubjectPrerequisite;
+    public void setIdSubjectPrerequisite(long id) {
+        this.id = id;
     }
 
     public static Builder builder(SubjectPrerequisiteEntity SubjectPrerequisiteEntity) {
         return new Builder(SubjectPrerequisiteEntity);
     }
 
-    public static Builder builder(long idSubjectPrerequisite, String content) {
-        return new Builder(idSubjectPrerequisite, content);
+    public static Builder builder(long id, String content) {
+        return new Builder(id, content);
     }
 
     public static class Builder {
-        private long idSubjectPrerequisite;
+        private long id;
         private String content;
 
         Builder () {}
 
         Builder(SubjectPrerequisiteEntity SubjectPrerequisiteEntity) {
-            idSubjectPrerequisite = SubjectPrerequisiteEntity.idSubjectPrerequisite;
+            id = SubjectPrerequisiteEntity.id;
             content = SubjectPrerequisiteEntity.content;
         }
 
-        Builder(long idSubjectPrerequisite, String content) {
-            this.idSubjectPrerequisite = idSubjectPrerequisite;
+        Builder(long id, String content) {
+            this.id = id;
             this.content = content;
         }
 

@@ -22,7 +22,7 @@ public class StudyProgramDTOMapper {
     StudyPlanDTOMapper studyPlanDTOMapper;
 
     public StudyProgramDTO toDTO(StudyProgramEntity studyProgramEntity) {
-        return StudyProgramDTO.builder(studyProgramEntity.getCreatedDate(), studyProgramEntity.getValidFromDate(),
+        return StudyProgramDTO.builder(studyProgramEntity.getCreatedDate(), studyProgramEntity.getValid(),
                 studyProgramEntity.getIsCurrent())
                 .withExamRange(studyProgramEntity.getExamRange().stream().map(examRangeDTOMapper::toDTO).collect(Collectors.toList()))
                 .withFieldOfStudy(fieldOfStudyDTOMapper.toDTO(studyProgramEntity.getFieldOfStudy()))
@@ -35,7 +35,7 @@ public class StudyProgramDTOMapper {
     }
 
     public StudyProgramEntity toEntity(StudyProgramDTO studyProgramDTO) {
-        return StudyProgramEntity.builder(studyProgramDTO.getCreatedDate(), studyProgramDTO.getValidFromDate(),
+        return StudyProgramEntity.builder(studyProgramDTO.getCreatedDate(), studyProgramDTO.getValid(),
                 studyProgramDTO.getIsCurrent())
                 .withExamRange(studyProgramDTO.getExamRange().stream().map(examRangeDTOMapper::toEntity).collect(Collectors.toSet()))
                 .withFieldOfStudy(fieldOfStudyDTOMapper.toEntity(studyProgramDTO.getFieldOfStudy()))

@@ -6,12 +6,12 @@ import javax.persistence.*;
 public class DeficitJPA {
     @Id
     @GeneratedValue
-    private long idDeficit;
+    private long id;
     private int semester;
     private int limitECTS;
 
     public long getIdDeficit() {
-        return idDeficit;
+        return id;
     }
 
     public int getSemester() {
@@ -29,13 +29,13 @@ public class DeficitJPA {
     }
 
     DeficitJPA(Builder builder) {
-        idDeficit = builder.idDeficit;
+        id = builder.id;
         semester = builder.semester;
         limitECTS = builder.limitECTS;
     }
 
     public static class Builder {
-        private long idDeficit;
+        private long id;
         private int semester;
         private int limitECTS;
 
@@ -46,8 +46,8 @@ public class DeficitJPA {
 
         Builder() {}
 
-        public Builder withIdDeficit(long idDeficit) {
-            this.idDeficit = idDeficit;
+        public Builder withIdDeficit(long id) {
+            this.id = id;
             return this;
         }
 

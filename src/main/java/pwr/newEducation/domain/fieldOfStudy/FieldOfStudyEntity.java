@@ -6,7 +6,7 @@ import java.util.Set;
 
 @Dependent
 public class FieldOfStudyEntity {
-    private long idFieldOFStudy;
+    private long id;
     private String name;
     private FacultyEntity facultyEntity;
     private LanguageEntity languageEntity;
@@ -42,7 +42,7 @@ public class FieldOfStudyEntity {
     }
 
     public long getIdFieldOFStudy() {
-        return idFieldOFStudy;
+        return id;
     }
 
     public ModeEntity getModeEntity() {
@@ -71,7 +71,7 @@ public class FieldOfStudyEntity {
     public FieldOfStudyEntity() {}
 
     private FieldOfStudyEntity(FieldOfStudyEntity.Builder builder) {
-        idFieldOFStudy = builder.idFieldOFStudy;
+        id = builder.id;
         name = builder.name;
         facultyEntity = builder.facultyEntity;
         languageEntity = builder.languageEntity;
@@ -84,15 +84,15 @@ public class FieldOfStudyEntity {
 
     }
 
-    public static FieldOfStudyEntity.Builder builder(long idFieldOFStudy, String name, FacultyEntity facultyEntity, LanguageEntity languageEntity,
+    public static FieldOfStudyEntity.Builder builder(long id, String name, FacultyEntity facultyEntity, LanguageEntity languageEntity,
                                                   DisciplineEntity disciplineEntity, LearningCycleEntity learningCycleEntity, LevelEntity levelEntity,
                                                   ModeEntity modeEntity, ProfileEntity profileEntity, Set<SpecializationEntity> specializationEntityS) {
-        return new FieldOfStudyEntity.Builder(idFieldOFStudy, name, facultyEntity, languageEntity, disciplineEntity, learningCycleEntity, levelEntity,
+        return new FieldOfStudyEntity.Builder(id, name, facultyEntity, languageEntity, disciplineEntity, learningCycleEntity, levelEntity,
                 modeEntity, profileEntity, specializationEntityS);
     }
 
     public static class Builder {
-        private long idFieldOFStudy;
+        private long id;
         private String name;
         private FacultyEntity facultyEntity;
         private LanguageEntity languageEntity;
@@ -105,12 +105,12 @@ public class FieldOfStudyEntity {
 
         Builder() {}
 
-        Builder(long idFieldOFStudy, String name, FacultyEntity facultyEntity, LanguageEntity languageEntity,
+        Builder(long id, String name, FacultyEntity facultyEntity, LanguageEntity languageEntity,
                 DisciplineEntity disciplineEntity, LearningCycleEntity learningCycleEntity, LevelEntity levelEntity, ModeEntity modeEntity,
                 ProfileEntity profileEntity, Set<SpecializationEntity> specializationEntities) {
             this.disciplineEntity = disciplineEntity;
             this.facultyEntity = facultyEntity;
-            this.idFieldOFStudy = idFieldOFStudy;
+            this.id = id;
             this.name = name;
             this.languageEntity = languageEntity;
             this.learningCycleEntity = learningCycleEntity;

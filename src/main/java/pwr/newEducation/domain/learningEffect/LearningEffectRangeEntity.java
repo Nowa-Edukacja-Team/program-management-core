@@ -1,7 +1,7 @@
 package pwr.newEducation.domain.learningEffect;
 
 public class LearningEffectRangeEntity {
-    private long idLearningEffectRange;
+    private long id;
     private String name;
 
     public String getName() {
@@ -9,14 +9,14 @@ public class LearningEffectRangeEntity {
     }
 
     public long getIdLearningEffectRange() {
-        return idLearningEffectRange;
+        return id;
     }
 
     public LearningEffectRangeEntity() {}
 
     LearningEffectRangeEntity(Builder builder) {
         this.name = builder.name;
-        this.idLearningEffectRange = builder.idLearningEffectRange;
+        this.id = builder.id;
     }
 
     public static Builder builder(String name) {
@@ -24,7 +24,7 @@ public class LearningEffectRangeEntity {
     }
 
     public static class Builder {
-        private long idLearningEffectRange;
+        private long id;
         private String name;
 
         Builder() { }
@@ -33,8 +33,8 @@ public class LearningEffectRangeEntity {
             this.name = name;
         }
 
-        public LearningEffectRangeEntity.Builder withIdLearningEffectRange(long idLearningEffectRange) {
-            this.idLearningEffectRange = idLearningEffectRange;
+        public LearningEffectRangeEntity.Builder withIdLearningEffectRange(long id) {
+            this.id = id;
             return this;
         }
 

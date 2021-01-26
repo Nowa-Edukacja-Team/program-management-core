@@ -9,14 +9,14 @@ import javax.persistence.Id;
 public class KnowledgeVerificationFormJPA {
     @Id
     @GeneratedValue
-    private long idKnowledgeVerificationForm;
+    private long id;
     private String name;
     private float weight;
 
     public KnowledgeVerificationFormJPA() {}
 
     private KnowledgeVerificationFormJPA(Builder builder) {
-        this.idKnowledgeVerificationForm = builder.idKnowledgeVerificationForm;
+        this.id = builder.id;
         this.name = builder.name;
         this.weight = builder.weight;
     }
@@ -34,40 +34,40 @@ public class KnowledgeVerificationFormJPA {
     }
 
     public long getIdKnowledgeVerificationForm() {
-        return idKnowledgeVerificationForm;
+        return id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setIdKnowledgeVerificationForm(long idKnowledgeVerificationForm) {
-        this.idKnowledgeVerificationForm = idKnowledgeVerificationForm;
+    public void setIdKnowledgeVerificationForm(long id) {
+        this.id = id;
     }
 
     public static Builder builder(KnowledgeVerificationFormJPA knowledgeVerificationFormJPA) {
         return new Builder(knowledgeVerificationFormJPA);
     }
 
-    public static Builder builder(long idKnowledgeVerificationForm, String name, float weight) {
-        return new Builder(idKnowledgeVerificationForm, name, weight);
+    public static Builder builder(long id, String name, float weight) {
+        return new Builder(id, name, weight);
     }
 
     public static class Builder {
-        private long idKnowledgeVerificationForm;
+        private long id;
         private String name;
         private float weight;
 
         Builder () {}
 
         Builder(KnowledgeVerificationFormJPA knowledgeVerificationFormJPA) {
-            idKnowledgeVerificationForm = knowledgeVerificationFormJPA.idKnowledgeVerificationForm;
+            id = knowledgeVerificationFormJPA.id;
             name = knowledgeVerificationFormJPA.name;
             weight = knowledgeVerificationFormJPA.weight;
         }
 
-        Builder(long idKnowledgeVerificationForm, String name, float weight) {
-            this.idKnowledgeVerificationForm = idKnowledgeVerificationForm;
+        Builder(long id, String name, float weight) {
+            this.id = id;
             this.name = name;
             this.weight = weight;
         }

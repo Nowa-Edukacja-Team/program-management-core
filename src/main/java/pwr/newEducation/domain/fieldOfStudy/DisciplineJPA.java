@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class DisciplineJPA {
     @Id
     @GeneratedValue
-    public long idDiscipline;
+    public long id;
     public String name;
 
     public DisciplineJPA() {
@@ -20,28 +20,28 @@ public class DisciplineJPA {
     }
 
     public long getIdDiscipline() {
-        return idDiscipline;
+        return id;
     }
 
     public DisciplineJPA(Builder builder) {
-        this.idDiscipline = builder.idDiscipline;
+        this.id = builder.id;
         this.name = builder.name;
     }
 
-    public static Builder builder (long idDiscipline, String name) {
-        return new Builder(idDiscipline, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idDiscipline;
+        private long id;
         private String name;
 
         Builder() {
 
         }
 
-        Builder(long idDiscipline, String name) {
-            this.idDiscipline = idDiscipline;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

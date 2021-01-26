@@ -1,13 +1,13 @@
 package pwr.newEducation.domain.subjectCard;
 
 public class CreditingFormEntity {
-	private long idCreditingForm;
+	private long id;
     private String name;
 
     private CreditingFormEntity() {}
 
     private CreditingFormEntity(Builder builder) {
-        this.idCreditingForm = builder.idCreditingForm;
+        this.id = builder.id;
         this.name = builder.name;
     }
 
@@ -16,38 +16,38 @@ public class CreditingFormEntity {
     }
 
     public long getIdCreditingForm() {
-        return idCreditingForm;
+        return id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setIdCreditingForm(long idCreditingForm) {
-        this.idCreditingForm = idCreditingForm;
+    public void setIdCreditingForm(long id) {
+        this.id = id;
     }
 
     public static Builder builder(CreditingFormEntity creditingFormEntity) {
         return new Builder(creditingFormEntity);
     }
 
-    public static Builder builder(long idCreditingForm, String name) {
-        return new Builder(idCreditingForm, name);
+    public static Builder builder(long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idCreditingForm;
+        private long id;
         private String name;
 
         Builder () {}
 
         Builder(CreditingFormEntity creditingFormEntity) {
-            idCreditingForm = creditingFormEntity.idCreditingForm;
+            id = creditingFormEntity.id;
             name = creditingFormEntity.name;
         }
 
-        Builder(long idCreditingForm, String name) {
-            this.idCreditingForm = idCreditingForm;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

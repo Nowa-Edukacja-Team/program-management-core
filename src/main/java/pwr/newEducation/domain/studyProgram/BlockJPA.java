@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class BlockJPA {
     @Id
     @GeneratedValue
-    private long idBlock;
+    private long id;
     private String name;
 
     public String getName() {
@@ -16,7 +16,7 @@ public class BlockJPA {
     }
 
     public long getIdBlock() {
-        return idBlock;
+        return id;
     }
 
     public BlockJPA() {}
@@ -30,7 +30,7 @@ public class BlockJPA {
     }
 
     public static class Builder {
-        private long idBlock;
+        private long id;
         private String name;
 
         Builder() { }
@@ -39,8 +39,8 @@ public class BlockJPA {
             this.name = name;
         }
 
-        public Builder withIdBlock(long idBlock) {
-            this.idBlock = idBlock;
+        public Builder withIdBlock(long id) {
+            this.id = id;
             return this;
         }
 

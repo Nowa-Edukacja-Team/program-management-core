@@ -10,12 +10,12 @@ import java.util.Set;
 public class LanguageJPA {
     @Id
     @GeneratedValue
-    private long idLanguageJPA;
+    private long id;
     private String name;
 
 
     private LanguageJPA(Builder builder){
-        idLanguageJPA = builder.idLanguageJPA;
+        id = builder.id;
         name = builder.name;
     }
 
@@ -24,27 +24,27 @@ public class LanguageJPA {
     }
 
     public long getIdLanguageJPA() {
-        return idLanguageJPA;
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public static Builder builder (long idLanguageJPA, String name) {
-        return new Builder(idLanguageJPA, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idLanguageJPA;
+        private long id;
         private String name;
 
         Builder() {
 
         }
 
-        Builder(long idLanguageJPA, String name) {
-            this.idLanguageJPA = idLanguageJPA;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

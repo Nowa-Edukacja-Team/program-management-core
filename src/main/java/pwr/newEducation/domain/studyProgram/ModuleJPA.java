@@ -7,7 +7,7 @@ import java.util.Set;
 public class ModuleJPA {
     @Id
     @GeneratedValue
-    private long idModule;
+    private long id;
     private String name;
 
     @OneToMany
@@ -18,7 +18,7 @@ public class ModuleJPA {
     ModuleJPA(Builder builder) {
         this.name = builder.name;
         this.blocks = builder.blocks;
-        this.idModule = builder.idModule;
+        this.id = builder.id;
     }
 
     public String getName() {
@@ -26,7 +26,7 @@ public class ModuleJPA {
     }
 
     public long getIdModule() {
-        return idModule;
+        return id;
     }
 
     public Set<BlockJPA> getBlocks() {
@@ -38,7 +38,7 @@ public class ModuleJPA {
     }
 
     public static class Builder {
-        private long idModule;
+        private long id;
         private String name;
         private Set<BlockJPA> blocks;
 
@@ -48,8 +48,8 @@ public class ModuleJPA {
             this.name = name;
         }
 
-        public Builder withIdModule(long idModule) {
-            this.idModule = idModule;
+        public Builder withIdModule(long id) {
+            this.id = id;
             return this;
         }
 

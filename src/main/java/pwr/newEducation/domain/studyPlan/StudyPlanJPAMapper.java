@@ -15,7 +15,7 @@ public class StudyPlanJPAMapper {
     StudyProgramJPAMapper studyProgramJPAMapper;
 
     public StudyPlanJPA toJPA(StudyPlanEntity studyPlanEntity) {
-        return StudyPlanJPA.builder(studyPlanEntity.getCreatedDate(), studyPlanEntity.getValidFromDate(),
+        return StudyPlanJPA.builder(studyPlanEntity.getCreatedDate(), studyPlanEntity.getValid(),
                 studyPlanEntity.getIsCurrent())
                 .withDeficits(studyPlanEntity.getDeficits().stream().map(deficitJPAMapper::toJPA).collect(Collectors.toSet()))
                 .withIdStudyPlan(studyPlanEntity.getIdStudyPlan())
@@ -26,7 +26,7 @@ public class StudyPlanJPAMapper {
     }
 
     public StudyPlanEntity toEntity(StudyPlanJPA studyPlanJPA) {
-        return StudyPlanEntity.builder(studyPlanJPA.getCreatedDate(), studyPlanJPA.getValidFromDate(),
+        return StudyPlanEntity.builder(studyPlanJPA.getCreatedDate(), studyPlanJPA.getValid(),
                 studyPlanJPA.getIsCurrent())
                 .withDeficits(studyPlanJPA.getDeficits().stream().map(deficitJPAMapper::toEntity).collect(Collectors.toSet()))
                 .withIdStudyPlan(studyPlanJPA.getIdStudyPlan())

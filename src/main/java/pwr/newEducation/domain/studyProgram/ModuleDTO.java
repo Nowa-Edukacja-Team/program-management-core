@@ -4,7 +4,7 @@ import javax.persistence.OneToMany;
 import java.util.Set;
 
 public class ModuleDTO {
-    private long idModule;
+    private long id;
     private String name;
 
     @OneToMany
@@ -15,7 +15,7 @@ public class ModuleDTO {
     ModuleDTO(Builder builder) {
         this.name = builder.name;
         this.blocks = builder.blocks;
-        this.idModule = builder.idModule;
+        this.id = builder.id;
     }
 
     public String getName() {
@@ -23,7 +23,7 @@ public class ModuleDTO {
     }
 
     public long getIdModule() {
-        return idModule;
+        return id;
     }
 
     public Set<BlockDTO> getBlocks() {
@@ -35,7 +35,7 @@ public class ModuleDTO {
     }
 
     public static class Builder {
-        private long idModule;
+        private long id;
         private String name;
         private Set<BlockDTO> blocks;
 
@@ -45,8 +45,8 @@ public class ModuleDTO {
             this.name = name;
         }
 
-        public Builder withIdModule(long idModule) {
-            this.idModule = idModule;
+        public Builder withIdModule(long id) {
+            this.id = id;
             return this;
         }
 

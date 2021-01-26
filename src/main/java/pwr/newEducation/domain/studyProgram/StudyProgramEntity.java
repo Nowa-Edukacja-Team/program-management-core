@@ -7,11 +7,11 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 public class StudyProgramEntity {
-    private long idStudyProgram;
+    private long id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private LocalDateTime validFromDate;
+    private LocalDateTime valid;
     private boolean isCurrent;
     private StudyPlanEntity studyPlan;
     private Set<ExamRangeEntity> examRange;
@@ -34,12 +34,12 @@ public class StudyProgramEntity {
         return updatedDate;
     }
 
-    public LocalDateTime getValidFromDate() {
-        return validFromDate;
+    public LocalDateTime getValid() {
+        return valid;
     }
 
     public long getIdStudyProgram() {
-        return idStudyProgram;
+        return id;
     }
 
     public StudyPlanEntity getStudyPlan() {
@@ -58,18 +58,18 @@ public class StudyProgramEntity {
         return modules;
     }
 
-    public static Builder builder(LocalDateTime createdDate, LocalDateTime validFromDate, boolean isCurrent) {
-        return new Builder(createdDate, validFromDate, isCurrent);
+    public static Builder builder(LocalDateTime createdDate, LocalDateTime valid, boolean isCurrent) {
+        return new Builder(createdDate, valid, isCurrent);
     }
 
     public StudyProgramEntity(){ }
 
     StudyProgramEntity(Builder builder) {
-        idStudyProgram = builder.idStudyProgram;;
+        id = builder.id;;
         version = builder.version;;
         createdDate = builder.createdDate;
         updatedDate = builder.updatedDate;
-        validFromDate = builder.validFromDate;
+        valid = builder.valid;
         isCurrent = builder.isCurrent;
         studyPlan = builder.studyPlan;
         examRange = builder.examRange;
@@ -78,11 +78,11 @@ public class StudyProgramEntity {
     }
 
     public static class Builder {
-        private long idStudyProgram;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
-        private LocalDateTime validFromDate;
+        private LocalDateTime valid;
         private boolean isCurrent;
         private StudyPlanEntity studyPlan;
         private Set<ExamRangeEntity> examRange;
@@ -91,15 +91,15 @@ public class StudyProgramEntity {
 
         Builder() {}
 
-        Builder(LocalDateTime createdDate, LocalDateTime validFromDate,
+        Builder(LocalDateTime createdDate, LocalDateTime valid,
                 boolean isCurrent) {
             this.createdDate = createdDate;
-            this.validFromDate = validFromDate;
+            this.valid = valid;
             this.isCurrent = isCurrent;
         }
 
-        public Builder withIdStudyProgram(long idStudyProgram) {
-            this.idStudyProgram = idStudyProgram;
+        public Builder withIdStudyProgram(long id) {
+            this.id = id;
             return this;
         }
 

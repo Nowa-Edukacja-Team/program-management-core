@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class CreditingFormJPA {
     @Id
     @GeneratedValue
-    private long idCreditingForm;
+    private long id;
     private String name;
 
     public CreditingFormJPA(){}
@@ -18,26 +18,26 @@ public class CreditingFormJPA {
     }
 
     public long getIdCreditingForm() {
-        return idCreditingForm;
+        return id;
     }
 
     public CreditingFormJPA(Builder builder) {
-        this.idCreditingForm = builder.idCreditingForm;
+        this.id = builder.id;
         this.name = builder.name;
     }
 
-    public static Builder builder (long idCreditingForm, String name) {
-        return new Builder(idCreditingForm, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idCreditingForm;
+        private long id;
         private String name;
 
         Builder(){}
 
-        Builder(long idCreditingForm, String name) {
-            this.idCreditingForm = idCreditingForm;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

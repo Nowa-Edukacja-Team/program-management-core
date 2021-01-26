@@ -1,14 +1,14 @@
 package pwr.newEducation.domain.subjectCard;
 
 public class LiteratureEntity {
-    private long idLiterature;
+    private long id;
     private String type;
     private String content;
 
     private LiteratureEntity() {}
 
     private LiteratureEntity(Builder builder) {
-        this.idLiterature = builder.idLiterature;
+        this.id = builder.id;
         this.type = builder.type;
     }
 
@@ -25,40 +25,40 @@ public class LiteratureEntity {
     }
 
     public long getIdLiterature() {
-        return idLiterature;
+        return id;
     }
 
     public void setType(String type) {
         this.type = type;
     }
 
-    public void setIdLiterature(long idLiterature) {
-        this.idLiterature = idLiterature;
+    public void setIdLiterature(long id) {
+        this.id = id;
     }
 
     public static Builder builder(LiteratureEntity literatureEntity) {
         return new Builder(literatureEntity);
     }
 
-    public static Builder builder(long idLiterature, String type, String content) {
-        return new Builder(idLiterature, type, content);
+    public static Builder builder(long id, String type, String content) {
+        return new Builder(id, type, content);
     }
 
     public static class Builder {
-        private long idLiterature;
+        private long id;
         private String type;
         private String content;
 
         Builder () {}
 
         Builder(LiteratureEntity literatureEntity) {
-            idLiterature = literatureEntity.idLiterature;
+            id = literatureEntity.id;
             type = literatureEntity.type;
             content = literatureEntity.content;
         }
 
-        Builder(long idLiterature, String name, String content) {
-            this.idLiterature = idLiterature;
+        Builder(long id, String name, String content) {
+            this.id = id;
             this.type = name;
             this.content = content;
         }

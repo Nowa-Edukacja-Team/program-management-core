@@ -1,7 +1,7 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
 public class LevelEntity {
-    private long idLevelEntity;
+    private long id;
     private String name;
 
     private LevelEntity() {
@@ -9,7 +9,7 @@ public class LevelEntity {
     }
 
     private LevelEntity(Builder builder) {
-        this.idLevelEntity = builder.idLevelEntity;
+        this.id = builder.id;
         this.name = builder.name;
     }
 
@@ -18,19 +18,19 @@ public class LevelEntity {
     }
 
     public long getIdLevelEntity() {
-        return idLevelEntity;
+        return id;
     }
 
     public static Builder builder(LevelEntity levelEntity) {
         return new Builder(levelEntity);
     }
 
-    public static Builder builder(long idLevelEntity, String name) {
-        return new Builder(idLevelEntity, name);
+    public static Builder builder(long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idLevelEntity;
+        private long id;
         private String name;
 
         Builder() {
@@ -38,12 +38,12 @@ public class LevelEntity {
         }
 
         Builder(LevelEntity levelEntity) {
-            idLevelEntity = levelEntity.idLevelEntity;
+            id = levelEntity.id;
             name = levelEntity.name;
         }
 
-        private Builder(long idLevelEntity, String name) {
-            this.idLevelEntity = idLevelEntity;
+        private Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

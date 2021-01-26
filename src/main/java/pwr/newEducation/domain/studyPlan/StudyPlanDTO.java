@@ -7,8 +7,8 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public class StudyPlanDTO {
-    @JsonProperty("idStudyPlan")
-    private long idStudyPlan;
+    @JsonProperty("id")
+    private long id;
 
     @JsonProperty("version")
     private int version;
@@ -19,8 +19,8 @@ public class StudyPlanDTO {
     @JsonProperty("updatedDate")
     private LocalDateTime updatedDate;
 
-    @JsonProperty("validFromDate")
-    private LocalDateTime validFromDate;
+    @JsonProperty("valid")
+    private LocalDateTime valid;
 
     @JsonProperty("deficitEntities")
     private List<DeficitDTO> deficits;
@@ -32,7 +32,7 @@ public class StudyPlanDTO {
     private boolean isCurrent;
     
     public long getIdStudyPlan() {
-        return idStudyPlan;
+        return id;
     }
 
     public int getVersion() {
@@ -47,8 +47,8 @@ public class StudyPlanDTO {
         return updatedDate;
     }
 
-    public LocalDateTime getValidFromDate() {
-        return validFromDate;
+    public LocalDateTime getValid() {
+        return valid;
     }
 
     public boolean getIsCurrent() {
@@ -66,40 +66,40 @@ public class StudyPlanDTO {
     public StudyPlanDTO() {}
 
     StudyPlanDTO(Builder builder) {
-        idStudyPlan = builder.idStudyPlan;;
+        id = builder.id;;
         version = builder.version;;
         createdDate = builder.createdDate;
         updatedDate = builder.updatedDate;
-        validFromDate = builder.validFormDate;
+        valid = builder.valid;
         isCurrent = builder.isCurrent;
         studyProgram = builder.studyProgram;
         deficits = builder.deficits;
     }
 
-    public static Builder builder(LocalDateTime createdDate, LocalDateTime validFormDate, boolean isCurrent) {
-        return new Builder(createdDate, validFormDate, isCurrent);
+    public static Builder builder(LocalDateTime createdDate, LocalDateTime valid, boolean isCurrent) {
+        return new Builder(createdDate, valid, isCurrent);
     }
 
     public static class Builder {
-        private long idStudyPlan;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
-        private LocalDateTime validFormDate;
+        private LocalDateTime valid;
         private boolean isCurrent;
         private StudyProgramDTO studyProgram;
         private List<DeficitDTO> deficits;
 
         Builder() {}
 
-        Builder(LocalDateTime createdDate, LocalDateTime validFormDate, boolean isCurrent) {
+        Builder(LocalDateTime createdDate, LocalDateTime valid, boolean isCurrent) {
             this.createdDate = createdDate;
-            this.validFormDate = validFormDate;
+            this.valid = valid;
             this.isCurrent = isCurrent;
         }
 
-        public Builder withIdStudyPlan(long idStudyPlan) {
-            this.idStudyPlan = idStudyPlan;
+        public Builder withIdStudyPlan(long id) {
+            this.id = id;
             return this;
         }
 

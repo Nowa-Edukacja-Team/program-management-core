@@ -1,7 +1,7 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
 public class LanguageDTO {
-    private long idLanguageDTO;
+    private long id;
     private String name;
 
     private LanguageDTO() {
@@ -9,7 +9,7 @@ public class LanguageDTO {
     }
 
     private LanguageDTO(Builder builder) {
-        this.idLanguageDTO = builder.idLanguageDTO;
+        this.id = builder.id;
         this.name = builder.name;
     }
 
@@ -18,19 +18,19 @@ public class LanguageDTO {
     }
 
     public long getIdLanguageDTO() {
-        return idLanguageDTO;
+        return id;
     }
 
     public static Builder builder(LanguageDTO languageDTO) {
         return new Builder(languageDTO);
     }
 
-    public static Builder builder(long idLanguageDTO, String name) {
-        return new Builder(idLanguageDTO, name);
+    public static Builder builder(long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idLanguageDTO;
+        private long id;
         private String name;
 
         Builder() {
@@ -38,12 +38,12 @@ public class LanguageDTO {
         }
 
         Builder(LanguageDTO languageDTO) {
-            idLanguageDTO = languageDTO.idLanguageDTO;
+            id = languageDTO.id;
             name = languageDTO.name;
         }
 
-        private Builder(long idLanguageDTO, String name) {
-            this.idLanguageDTO = idLanguageDTO;
+        private Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

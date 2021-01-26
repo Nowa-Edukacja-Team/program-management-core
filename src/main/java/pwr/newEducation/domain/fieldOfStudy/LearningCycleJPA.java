@@ -10,12 +10,12 @@ import java.util.Set;
 public class LearningCycleJPA {
     @Id
     @GeneratedValue
-    private long idLearningCycleJPA;
+    private long id;
     private String name;
 
 
     private LearningCycleJPA(Builder builder){
-        idLearningCycleJPA = builder.idLearningCycleJPA;
+        id = builder.id;
         name = builder.name;
     }
 
@@ -24,27 +24,27 @@ public class LearningCycleJPA {
     }
 
     public long getIdLearningCycleJPA() {
-        return idLearningCycleJPA;
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public static Builder builder (long idLearningCycleJPA, String name) {
-        return new Builder(idLearningCycleJPA, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idLearningCycleJPA;
+        private long id;
         private String name;
 
         Builder() {
 
         }
 
-        Builder(long idLearningCycleJPA, String name) {
-            this.idLearningCycleJPA = idLearningCycleJPA;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

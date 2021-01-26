@@ -11,14 +11,14 @@ import java.util.Set;
 public class SpecializationJPA {
     @Id
     @GeneratedValue
-    private long idSpecializationJPA;
+    private long id;
     private String name;
 
     @ManyToMany(mappedBy = "specializationJPAS")
     private Set<FieldOfStudyJPA> fieldOfStudyJPAS = new HashSet<>();
 
     private SpecializationJPA(Builder builder){
-        idSpecializationJPA = builder.idSpecializationJPA;
+        id = builder.id;
         name = builder.name;
     }
 
@@ -27,7 +27,7 @@ public class SpecializationJPA {
     }
 
     public long getIdSpecializationJPA() {
-        return idSpecializationJPA;
+        return id;
     }
 
     public String getName() {
@@ -38,20 +38,20 @@ public class SpecializationJPA {
         return fieldOfStudyJPAS;
     }
 
-    public static Builder builder (long idSpecializationJPA, String name) {
-        return new Builder(idSpecializationJPA, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idSpecializationJPA;
+        private long id;
         private String name;
 
         Builder() {
 
         }
 
-        Builder(long idSpecializationJPA, String name) {
-            this.idSpecializationJPA = idSpecializationJPA;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

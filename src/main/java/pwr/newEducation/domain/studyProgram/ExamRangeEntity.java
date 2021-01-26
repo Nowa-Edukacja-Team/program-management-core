@@ -1,7 +1,7 @@
 package pwr.newEducation.domain.studyProgram;
 
 public class ExamRangeEntity {
-    private long idExamRange;
+    private long id;
     private int number;
     private String text;
 
@@ -10,7 +10,7 @@ public class ExamRangeEntity {
     }
 
     public long getIdExamRange() {
-        return idExamRange;
+        return id;
     }
 
     public String getText() {
@@ -22,7 +22,7 @@ public class ExamRangeEntity {
     }
 
     ExamRangeEntity(Builder builder) {
-        this.idExamRange = builder.idExamRange;
+        this.id = builder.id;
         this.number = builder.number;
         this.text = builder.text;
     }
@@ -32,7 +32,7 @@ public class ExamRangeEntity {
     }
 
     public static class Builder {
-        private long idExamRange;
+        private long id;
         private int number;
         private String text;
 
@@ -43,8 +43,8 @@ public class ExamRangeEntity {
             this.text = text;
         }
 
-        public Builder withIdExamRange(long idExamRange) {
-            this.idExamRange = idExamRange;
+        public Builder withIdExamRange(long id) {
+            this.id = id;
             return this;
         }
 

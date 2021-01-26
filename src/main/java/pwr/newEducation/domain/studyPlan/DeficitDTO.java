@@ -3,8 +3,8 @@ package pwr.newEducation.domain.studyPlan;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DeficitDTO {
-    @JsonProperty("idDeficit")
-    private long idDeficit;
+    @JsonProperty("id")
+    private long id;
     
     @JsonProperty("semester")
     private int semester;
@@ -13,7 +13,7 @@ public class DeficitDTO {
     private int limitECTS;
 
     public long getIdDeficit() {
-        return idDeficit;
+        return id;
     }
 
     public int getSemester() {
@@ -25,7 +25,7 @@ public class DeficitDTO {
     }
 
     DeficitDTO(Builder builder) {
-        idDeficit = builder.idDeficit;
+        id = builder.id;
         semester = builder.semester;
         limitECTS = builder.limitECTS;
     }
@@ -35,7 +35,7 @@ public class DeficitDTO {
     }
 
     public static class Builder {
-        private long idDeficit;
+        private long id;
         private int semester;
         private int limitECTS;
 
@@ -46,8 +46,8 @@ public class DeficitDTO {
 
         Builder() {}
 
-        public DeficitDTO.Builder withIdDeficit(long idDeficit) {
-            this.idDeficit = idDeficit;
+        public DeficitDTO.Builder withIdDeficit(long id) {
+            this.id = id;
             return this;
         }
 

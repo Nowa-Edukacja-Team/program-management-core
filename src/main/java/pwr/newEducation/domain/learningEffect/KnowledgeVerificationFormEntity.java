@@ -1,14 +1,14 @@
 package pwr.newEducation.domain.learningEffect;
 
 public class KnowledgeVerificationFormEntity {
-    private long idKnowledgeVerificationForm;
+    private long id;
     private String name;
     private float weight;
 
     private KnowledgeVerificationFormEntity() {}
 
     private KnowledgeVerificationFormEntity(Builder builder) {
-        this.idKnowledgeVerificationForm = builder.idKnowledgeVerificationForm;
+        this.id = builder.id;
         this.name = builder.name;
         this.weight = builder.weight;
     }
@@ -18,15 +18,15 @@ public class KnowledgeVerificationFormEntity {
     }
 
     public long getIdKnowledgeVerificationForm() {
-        return idKnowledgeVerificationForm;
+        return id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setIdKnowledgeVerificationForm(long idKnowledgeVerificationForm) {
-        this.idKnowledgeVerificationForm = idKnowledgeVerificationForm;
+    public void setIdKnowledgeVerificationForm(long id) {
+        this.id = id;
     }
 
     public float getWeight() {
@@ -41,25 +41,25 @@ public class KnowledgeVerificationFormEntity {
         return new Builder(knowledgeVerificationFormEntity);
     }
 
-    public static Builder builder(long idKnowledgeVerificationForm, String name, float weight) {
-        return new Builder(idKnowledgeVerificationForm, name, weight);
+    public static Builder builder(long id, String name, float weight) {
+        return new Builder(id, name, weight);
     }
 
     public static class Builder {
-        private long idKnowledgeVerificationForm;
+        private long id;
         private String name;
         private float weight;
 
         Builder () {}
 
         Builder(KnowledgeVerificationFormEntity knowledgeVerificationFormEntity) {
-            idKnowledgeVerificationForm = knowledgeVerificationFormEntity.idKnowledgeVerificationForm;
+            id = knowledgeVerificationFormEntity.id;
             name = knowledgeVerificationFormEntity.name;
             weight = knowledgeVerificationFormEntity.weight;
         }
 
-        Builder(long idKnowledgeVerificationForm, String name, float weight) {
-            this.idKnowledgeVerificationForm = idKnowledgeVerificationForm;
+        Builder(long id, String name, float weight) {
+            this.id = id;
             this.name = name;
             this.weight = weight;
         }

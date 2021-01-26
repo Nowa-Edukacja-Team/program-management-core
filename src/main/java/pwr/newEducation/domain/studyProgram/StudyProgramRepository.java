@@ -18,8 +18,8 @@ public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA
     List<StudyProgramJPA> getAllLatestVersions(int pageIndex, int pageSize) {
         return find("SELECT s.* " +
                 "FROM StudyProgramJPA s " +
-                "WHERE (s.version, s.idStudyProgram) IN " +
-                    "(SELECT MAX(sp.version), sp.idStudyProgram " +
+                "WHERE (s.version, s.id) IN " +
+                    "(SELECT MAX(sp.version), sp.id " +
                     "FROM StudyProgramJPA sp " +
                     "GROUP BY sp.fieldOfStudy)").page(pageIndex, pageSize).list();
     }
@@ -27,8 +27,8 @@ public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA
    long getAllLatestVersionsSize() {
         return find("SELECT s.* " +
                 "FROM StudyProgramJPA s " +
-                "WHERE (s.version, s.idStudyProgram) IN " +
-                "(SELECT MAX(sp.version), sp.idStudyProgram " +
+                "WHERE (s.version, s.id) IN " +
+                "(SELECT MAX(sp.version), sp.id " +
                 "FROM StudyProgramJPA sp " +
                 "GROUP BY sp.fieldOfStudy)").count();
     }

@@ -1,47 +1,47 @@
 package pwr.newEducation.domain.subjectCard;
 
 public class SubjectObjectiveDTO {
-    private long idSubjectObjective;
+    private long id;
     private String content;
 
     private SubjectObjectiveDTO(Builder builder) {
-        this.idSubjectObjective = builder.idSubjectObjective;
+        this.id = builder.id;
         this.content = builder.content;
     }
 
     public long getIdSubjectObjective() {
-        return idSubjectObjective;
+        return id;
     }
 
     public String getContent() {
         return content;
     }
 
-    public void setIdSubjectObjective(long idSubjectObjective) {
-        this.idSubjectObjective = idSubjectObjective;
+    public void setIdSubjectObjective(long id) {
+        this.id = id;
     }
 
     public void setContent(String content) {
         this.content = content;
     }
 
-    public static Builder builder(long idSubjectObjective, String content) {
-        return new Builder(idSubjectObjective, content);
+    public static Builder builder(long id, String content) {
+        return new Builder(id, content);
     }
 
     public static class Builder {
-        private long idSubjectObjective;
+        private long id;
         private String content;
         
         Builder() {}
         
         Builder(SubjectObjectiveDTO subjectObjectiveDTO) {
-            idSubjectObjective = subjectObjectiveDTO.idSubjectObjective;
+            id = subjectObjectiveDTO.id;
             content = subjectObjectiveDTO.content;
         }
 
-        private Builder(long idSubjectObjective, String content){
-            this.idSubjectObjective = idSubjectObjective;
+        private Builder(long id, String content){
+            this.id = id;
             this.content = content;
         }
 

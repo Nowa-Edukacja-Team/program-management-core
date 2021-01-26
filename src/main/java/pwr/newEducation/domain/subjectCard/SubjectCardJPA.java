@@ -13,12 +13,12 @@ import java.util.Set;
 public class SubjectCardJPA implements Serializable {
     @Id
     @GeneratedValue
-    private long idSubjectCards;
+    private long id;
     @Id
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private LocalDateTime validFromDate;
+    private LocalDateTime valid;
     private boolean isCurrent;
     private String subjectCode;
     private String name;
@@ -113,11 +113,11 @@ public class SubjectCardJPA implements Serializable {
     }
 
     public long getIdSubjectCards() {
-        return idSubjectCards;
+        return id;
     }
 
-    public void setIdSubjectCards(long idSubjectCards) {
-        this.idSubjectCards = idSubjectCards;
+    public void setIdSubjectCards(long id) {
+        this.id = id;
     }
 
     public int getVersion() {
@@ -144,12 +144,12 @@ public class SubjectCardJPA implements Serializable {
         this.updatedDate = updatedDate;
     }
 
-    public LocalDateTime getValidFromDate() {
-        return validFromDate;
+    public LocalDateTime getValid() {
+        return valid;
     }
 
-    public void setValidFromDate(LocalDateTime validFromDate) {
-        this.validFromDate = validFromDate;
+    public void setValid(LocalDateTime valid) {
+        this.valid = valid;
     }
 
     public boolean isCurrent() {
@@ -243,11 +243,11 @@ public class SubjectCardJPA implements Serializable {
     public SubjectCardJPA() {}
 
     private SubjectCardJPA(Builder builder) {
-        this.idSubjectCards = builder.idSubjectCards;
+        this.id = builder.id;
         this.version = builder.version;
         this.createdDate = builder.createdDate;
         this.updatedDate = builder.updatedDate;
-        this.validFromDate = builder.validFromDate;
+        this.valid = builder.valid;
         this.isCurrent = builder.isCurrent;
         this.subjectCode = builder.subjectCode;
         this.name = builder.name;
@@ -258,7 +258,7 @@ public class SubjectCardJPA implements Serializable {
         this.semester = builder.semester;
         this.lastSemester = builder.lastSemester;
         this.module = builder.module;
-        this.idSupervisor = builder.idSupervisor;
+        this.id = builder.id;
         this.subjectKind = builder.subjectKind;
         this.creditingForm = builder.creditingForm;
         this.studyProgram = builder.studyProgram;
@@ -273,11 +273,11 @@ public class SubjectCardJPA implements Serializable {
         return new Builder(subjectCardJPA);
     }
 
-    public static Builder builder(long idSubjectCards,
+    public static Builder builder(long id,
                                   int version,
                                   LocalDateTime createdDate,
                                   LocalDateTime updatedDate,
-                                  LocalDateTime validFromDate,
+                                  LocalDateTime valid,
                                   boolean isCurrent,
                                   String subjectCode,
                                   String name,
@@ -298,7 +298,7 @@ public class SubjectCardJPA implements Serializable {
                                   Set<TeachingToolJPA> teachingTools,
                                   Set<SubjectLearningEffectJPA> subjectLearningEffects)
     {
-        return new Builder(idSubjectCards, version, createdDate, updatedDate, validFromDate,
+        return new Builder(id, version, createdDate, updatedDate, valid,
                 isCurrent, subjectCode, name, isGroup, zzuHours, cnpsHours, subjectECTS,
                 semester, lastSemester, module, idSupervisor, subjectKind, creditingForm,
                 studyProgram, subjectObjective, subjectPrerequisites, literature,
@@ -306,11 +306,11 @@ public class SubjectCardJPA implements Serializable {
     }
 
     public static class Builder {
-        private long idSubjectCards;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
-        private LocalDateTime validFromDate;
+        private LocalDateTime valid;
         private boolean isCurrent;
         private String subjectCode;
         private String name;
@@ -334,11 +334,11 @@ public class SubjectCardJPA implements Serializable {
         Builder() {}
 
         Builder(SubjectCardJPA subjectCardJPA) {
-            idSubjectCards = subjectCardJPA.idSubjectCards;
+            id = subjectCardJPA.id;
             version = subjectCardJPA.version;
             createdDate = subjectCardJPA.createdDate;
             updatedDate = subjectCardJPA.updatedDate;
-            validFromDate = subjectCardJPA.validFromDate;
+            valid = subjectCardJPA.valid;
             isCurrent = subjectCardJPA.isCurrent;
             subjectCode = subjectCardJPA.subjectCode;
             name = subjectCardJPA.name;
@@ -360,11 +360,11 @@ public class SubjectCardJPA implements Serializable {
             subjectLearningEffects = subjectCardJPA.subjectLearningEffects;
         }
 
-        private Builder( long idSubjectCards,
+        private Builder( long id,
                          int version,
                          LocalDateTime createdDate,
                          LocalDateTime updatedDate,
-                         LocalDateTime validFromDate,
+                         LocalDateTime valid,
                          boolean isCurrent,
                          String subjectCode,
                          String name,
@@ -385,11 +385,11 @@ public class SubjectCardJPA implements Serializable {
                          Set<TeachingToolJPA> teachingTools,
                          Set<SubjectLearningEffectJPA> subjectLearningEffects)
         {
-            this.idSubjectCards = idSubjectCards;
+            this.id = id;
             this.version = version;
             this.createdDate = createdDate;
             this.updatedDate = updatedDate;
-            this.validFromDate = validFromDate;
+            this.valid = valid;
             this.isCurrent = isCurrent;
             this.subjectCode = subjectCode;
             this.name = name;

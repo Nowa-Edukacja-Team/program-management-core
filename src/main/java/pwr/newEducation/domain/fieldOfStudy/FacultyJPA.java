@@ -9,12 +9,12 @@ import javax.persistence.Id;
 public class FacultyJPA {
     @Id
     @GeneratedValue
-    private long idFacultyJPA;
+    private long id;
     private String name;
 
 
     private FacultyJPA(Builder builder){
-        idFacultyJPA = builder.idFacultyJPA;
+        id = builder.id;
         name = builder.name;
     }
 
@@ -23,27 +23,27 @@ public class FacultyJPA {
     }
 
     public long getIdFacultyJPA() {
-        return idFacultyJPA;
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public static Builder builder (long idFacultyJPA, String name) {
-        return new Builder(idFacultyJPA, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idFacultyJPA;
+        private long id;
         private String name;
 
         Builder() {
 
         }
 
-        Builder(long idFacultyJPA, String name) {
-            this.idFacultyJPA = idFacultyJPA;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

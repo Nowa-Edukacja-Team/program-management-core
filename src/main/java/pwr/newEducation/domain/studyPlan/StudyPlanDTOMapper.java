@@ -15,7 +15,7 @@ public class StudyPlanDTOMapper {
     StudyProgramDTOMapper studyProgramDTOMapper;
 
     public StudyPlanDTO toDTO(StudyPlanEntity studyPlanEntity) {
-        return StudyPlanDTO.builder(studyPlanEntity.getCreatedDate(), studyPlanEntity.getValidFromDate(),
+        return StudyPlanDTO.builder(studyPlanEntity.getCreatedDate(), studyPlanEntity.getValid(),
                 studyPlanEntity.getIsCurrent())
                 .withDeficits(studyPlanEntity.getDeficits().stream().map(deficitDTOMapper::toDTO).collect(Collectors.toList()))
                 .withIdStudyPlan(studyPlanEntity.getIdStudyPlan())
@@ -26,7 +26,7 @@ public class StudyPlanDTOMapper {
     }
 
     public StudyPlanEntity toEntity(StudyPlanDTO studyPlanDTO) {
-        return StudyPlanEntity.builder(studyPlanDTO.getCreatedDate(), studyPlanDTO.getValidFromDate(),
+        return StudyPlanEntity.builder(studyPlanDTO.getCreatedDate(), studyPlanDTO.getValid(),
                 studyPlanDTO.getIsCurrent())
                 .withDeficits(studyPlanDTO.getDeficits().stream().map(deficitDTOMapper::toEntity).collect(Collectors.toSet()))
                 .withIdStudyPlan(studyPlanDTO.getIdStudyPlan())

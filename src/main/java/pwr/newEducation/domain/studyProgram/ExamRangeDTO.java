@@ -3,8 +3,8 @@ package pwr.newEducation.domain.studyProgram;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class ExamRangeDTO {
-    @JsonProperty("idExamRange")
-    private long idExamRange;
+    @JsonProperty("id")
+    private long id;
     @JsonProperty("number")
     private int number;
     @JsonProperty("text")
@@ -15,7 +15,7 @@ public class ExamRangeDTO {
     }
 
     public long getIdExamRange() {
-        return idExamRange;
+        return id;
     }
 
     public String getText() {
@@ -27,7 +27,7 @@ public class ExamRangeDTO {
     }
 
     ExamRangeDTO(Builder builder) {
-        this.idExamRange = builder.idExamRange;
+        this.id = builder.id;
         this.number = builder.number;
         this.text = builder.text;
     }
@@ -37,7 +37,7 @@ public class ExamRangeDTO {
     }
 
     public static class Builder {
-        private long idExamRange;
+        private long id;
         private int number;
         private String text;
 
@@ -48,8 +48,8 @@ public class ExamRangeDTO {
             this.text = text;
         }
 
-        public Builder withIdExamRange(long idExamRange) {
-            this.idExamRange = idExamRange;
+        public Builder withIdExamRange(long id) {
+            this.id = id;
             return this;
         }
 

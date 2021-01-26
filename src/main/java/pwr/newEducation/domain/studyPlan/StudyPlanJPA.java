@@ -11,11 +11,11 @@ import java.util.Set;
 public class StudyPlanJPA implements Serializable {
     @Id
     @GeneratedValue
-    private long idStudyPlan;
+    private long id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private LocalDateTime validFromDate;
+    private LocalDateTime valid;
     private boolean isCurrent;
 
     @OneToMany
@@ -25,7 +25,7 @@ public class StudyPlanJPA implements Serializable {
     private StudyProgramJPA studyProgram;
 
     public long getIdStudyPlan() {
-        return idStudyPlan;
+        return id;
     }
 
     public int getVersion() {
@@ -40,8 +40,8 @@ public class StudyPlanJPA implements Serializable {
         return updatedDate;
     }
 
-    public LocalDateTime getValidFromDate() {
-        return validFromDate;
+    public LocalDateTime getValid() {
+        return valid;
     }
 
     public boolean getIsCurrent() {
@@ -59,40 +59,40 @@ public class StudyPlanJPA implements Serializable {
     public StudyPlanJPA() {}
 
     StudyPlanJPA(Builder builder) {
-        idStudyPlan = builder.idStudyPlan;;
+        id = builder.id;;
         version = builder.version;;
         createdDate = builder.createdDate;
         updatedDate = builder.updatedDate;
-        validFromDate = builder.validFormDate;
+        valid = builder.valid;
         isCurrent = builder.isCurrent;
         studyProgram = builder.studyProgram;
         deficits = builder.deficits;
     }
 
-    public static Builder builder(LocalDateTime createdDate, LocalDateTime validFormDate, boolean isCurrent) {
-        return new Builder(createdDate, validFormDate, isCurrent);
+    public static Builder builder(LocalDateTime createdDate, LocalDateTime valid, boolean isCurrent) {
+        return new Builder(createdDate, valid, isCurrent);
     }
 
     public static class Builder {
-        private long idStudyPlan;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
-        private LocalDateTime validFormDate;
+        private LocalDateTime valid;
         private boolean isCurrent;
         private StudyProgramJPA studyProgram;
         private Set<DeficitJPA> deficits;
 
         Builder() {}
 
-        Builder(LocalDateTime createdDate, LocalDateTime validFormDate, boolean isCurrent) {
+        Builder(LocalDateTime createdDate, LocalDateTime valid, boolean isCurrent) {
             this.createdDate = createdDate;
-            this.validFormDate = validFormDate;
+            this.valid = valid;
             this.isCurrent = isCurrent;
         }
 
-        public Builder withIdStudyPlan(long idStudyPlan) {
-            this.idStudyPlan = idStudyPlan;
+        public Builder withIdStudyPlan(long id) {
+            this.id = id;
             return this;
         }
 

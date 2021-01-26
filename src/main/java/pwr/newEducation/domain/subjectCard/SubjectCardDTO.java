@@ -8,11 +8,11 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 public class SubjectCardDTO {
-    private long idSubjectCards;
+    private long id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private LocalDateTime validFromDate;
+    private LocalDateTime valid;
     private boolean isCurrent;
     private String subjectCode;
     private String name;
@@ -98,11 +98,11 @@ public class SubjectCardDTO {
     }
 
     public long getIdSubjectCards() {
-        return idSubjectCards;
+        return id;
     }
 
-    public void setIdSubjectCards(long idSubjectCards) {
-        this.idSubjectCards = idSubjectCards;
+    public void setIdSubjectCards(long id) {
+        this.id = id;
     }
 
     public int getVersion() {
@@ -129,12 +129,12 @@ public class SubjectCardDTO {
         this.updatedDate = updatedDate;
     }
 
-    public LocalDateTime getValidFromDate() {
-        return validFromDate;
+    public LocalDateTime getValid() {
+        return valid;
     }
 
-    public void setValidFromDate(LocalDateTime validFromDate) {
-        this.validFromDate = validFromDate;
+    public void setValid(LocalDateTime valid) {
+        this.valid = valid;
     }
 
     public boolean isCurrent() {
@@ -228,11 +228,11 @@ public class SubjectCardDTO {
     private SubjectCardDTO() {}
 
     private SubjectCardDTO(Builder builder) {
-        this.idSubjectCards = builder.idSubjectCards;
+        this.id = builder.id;
         this.version = builder.version;
         this.createdDate = builder.createdDate;
         this.updatedDate = builder.updatedDate;
-        this.validFromDate = builder.validFromDate;
+        this.valid = builder.valid;
         this.isCurrent = builder.isCurrent;
         this.subjectCode = builder.subjectCode;
         this.name = builder.name;
@@ -258,11 +258,11 @@ public class SubjectCardDTO {
         return new Builder(subjectCardDTO);
     }
 
-    public static Builder builder(long idSubjectCards,
+    public static Builder builder(long id,
                                   int version,
                                   LocalDateTime createdDate,
                                   LocalDateTime updatedDate,
-                                  LocalDateTime validFromDate,
+                                  LocalDateTime valid,
                                   boolean isCurrent,
                                   String subjectCode,
                                   String name,
@@ -283,7 +283,7 @@ public class SubjectCardDTO {
                                   Set<TeachingToolDTO> teachingTools,
                                   Set<SubjectLearningEffectDTO> subjectLearningEffects)
     {
-        return new Builder(idSubjectCards, version, createdDate, updatedDate, validFromDate,
+        return new Builder(id, version, createdDate, updatedDate, valid,
                 isCurrent, subjectCode, name, isGroup, zzuHours, cnpsHours, subjectECTS,
                 semester, lastSemester, module, idSupervisor, subjectKind, creditingForm,
                 studyProgram, subjectObjective, subjectPrerequisites, literature,
@@ -291,11 +291,11 @@ public class SubjectCardDTO {
     }
 
     public static class Builder {
-        private long idSubjectCards;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
-        private LocalDateTime validFromDate;
+        private LocalDateTime valid;
         private boolean isCurrent;
         private String subjectCode;
         private String name;
@@ -319,11 +319,11 @@ public class SubjectCardDTO {
         Builder() {}
 
         Builder(SubjectCardDTO subjectCardDTO) {
-            idSubjectCards = subjectCardDTO.idSubjectCards;
+            id = subjectCardDTO.id;
             version = subjectCardDTO.version;
             createdDate = subjectCardDTO.createdDate;
             updatedDate = subjectCardDTO.updatedDate;
-            validFromDate = subjectCardDTO.validFromDate;
+            valid = subjectCardDTO.valid;
             isCurrent = subjectCardDTO.isCurrent;
             subjectCode = subjectCardDTO.subjectCode;
             name = subjectCardDTO.name;
@@ -345,11 +345,11 @@ public class SubjectCardDTO {
             subjectLearningEffects = subjectCardDTO.subjectLearningEffects;
         }
 
-        private Builder( long idSubjectCards,
+        private Builder( long id,
                          int version,
                          LocalDateTime createdDate,
                          LocalDateTime updatedDate,
-                         LocalDateTime validFromDate,
+                         LocalDateTime valid,
                          boolean isCurrent,
                          String subjectCode,
                          String name,
@@ -370,11 +370,11 @@ public class SubjectCardDTO {
                          Set<TeachingToolDTO> teachingTools,
                          Set<SubjectLearningEffectDTO> subjectLearningEffects)
         {
-            this.idSubjectCards = idSubjectCards;
+            this.id = id;
             this.version = version;
             this.createdDate = createdDate;
             this.updatedDate = updatedDate;
-            this.validFromDate = validFromDate;
+            this.valid = valid;
             this.isCurrent = isCurrent;
             this.subjectCode = subjectCode;
             this.name = name;

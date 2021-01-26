@@ -6,18 +6,18 @@ import javax.persistence.*;
 public class SubjectObjectiveJPA {
     @Id
     @GeneratedValue
-    public long idSubjectObjective;
+    public long id;
     public String content;
 
     public SubjectObjectiveJPA() {}
 
     public SubjectObjectiveJPA(Builder builder) {
-        idSubjectObjective = builder.idSubjectObjective;
+        id = builder.id;
         content = builder.content;
     }
 
     public long getIdSubjectObjective() {
-        return idSubjectObjective;
+        return id;
     }
 
     public String getContent() {
@@ -25,8 +25,8 @@ public class SubjectObjectiveJPA {
     }
 
 
-    public void setIdSubjectObjective(long idSubjectObjective) {
-        this.idSubjectObjective = idSubjectObjective;
+    public void setIdSubjectObjective(long id) {
+        this.id = id;
     }
 
     public void setContent(String content) {
@@ -34,18 +34,18 @@ public class SubjectObjectiveJPA {
     }
 
 
-    public static Builder builder (long idSubjectObjective, String content) {
-        return new Builder(idSubjectObjective, content);
+    public static Builder builder (long id, String content) {
+        return new Builder(id, content);
     }
 
     public static class Builder {
-        public long idSubjectObjective;
+        public long id;
         public String content;
 
         Builder() {}
 
-        Builder(long idSubjectObjective, String content) {
-            this.idSubjectObjective = idSubjectObjective;
+        Builder(long id, String content) {
+            this.id = id;
             this.content = content;
         }
 

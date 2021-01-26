@@ -8,11 +8,11 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 public class SubjectCardEntity {
-    private long idSubjectCards;
+    private long id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
-    private LocalDateTime validFromDate;
+    private LocalDateTime valid;
     private boolean isCurrent;
     private String subjectCode;
     private String name;
@@ -98,11 +98,11 @@ public class SubjectCardEntity {
     }
 
     public long getIdSubjectCards() {
-        return idSubjectCards;
+        return id;
     }
 
-    public void setIdSubjectCards(long idSubjectCards) {
-        this.idSubjectCards = idSubjectCards;
+    public void setIdSubjectCards(long id) {
+        this.id = id;
     }
 
     public int getVersion() {
@@ -129,12 +129,12 @@ public class SubjectCardEntity {
         this.updatedDate = updatedDate;
     }
 
-    public LocalDateTime getValidFromDate() {
-        return validFromDate;
+    public LocalDateTime getValid() {
+        return valid;
     }
 
-    public void setValidFromDate(LocalDateTime validFromDate) {
-        this.validFromDate = validFromDate;
+    public void setValid(LocalDateTime valid) {
+        this.valid = valid;
     }
 
     public boolean isCurrent() {
@@ -228,11 +228,11 @@ public class SubjectCardEntity {
     private SubjectCardEntity() {}
 
     private SubjectCardEntity(Builder builder) {
-        this.idSubjectCards = builder.idSubjectCards;
+        this.id = builder.id;
         this.version = builder.version;
         this.createdDate = builder.createdDate;
         this.updatedDate = builder.updatedDate;
-        this.validFromDate = builder.validFromDate;
+        this.valid = builder.valid;
         this.isCurrent = builder.isCurrent;
         this.subjectCode = builder.subjectCode;
         this.name = builder.name;
@@ -243,7 +243,7 @@ public class SubjectCardEntity {
         this.semester = builder.semester;
         this.lastSemester = builder.lastSemester;
         this.module = builder.module;
-        this.idSupervisor = builder.idSupervisor;
+        this.id = builder.id;
         this.subjectKind = builder.subjectKind;
         this.creditingForm = builder.creditingForm;
         this.studyProgram = builder.studyProgram;
@@ -258,11 +258,11 @@ public class SubjectCardEntity {
         return new Builder(subjectCardEntity);
     }
 
-    public static Builder builder(long idSubjectCards,
+    public static Builder builder(long id,
                                   int version,
                                   LocalDateTime createdDate,
                                   LocalDateTime updatedDate,
-                                  LocalDateTime validFromDate,
+                                  LocalDateTime valid,
                                   boolean isCurrent,
                                   String subjectCode,
                                   String name,
@@ -283,7 +283,7 @@ public class SubjectCardEntity {
                                   Set<TeachingToolEntity> teachingTools,
                                   Set<SubjectLearningEffectEntity> subjectLearningEffects)
     {
-        return new Builder(idSubjectCards, version, createdDate, updatedDate, validFromDate,
+        return new Builder(id, version, createdDate, updatedDate, valid,
                 isCurrent, subjectCode, name, isGroup, zzuHours, cnpsHours, subjectECTS,
                 semester, lastSemester, module, idSupervisor, subjectKind, creditingForm,
                 studyProgram, subjectObjective, subjectPrerequisites, literature,
@@ -291,11 +291,11 @@ public class SubjectCardEntity {
     }
 
     public static class Builder {
-        private long idSubjectCards;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
-        private LocalDateTime validFromDate;
+        private LocalDateTime valid;
         private boolean isCurrent;
         private String subjectCode;
         private String name;
@@ -319,11 +319,11 @@ public class SubjectCardEntity {
         Builder() {}
 
         Builder(SubjectCardEntity subjectCardEntity) {
-            idSubjectCards = subjectCardEntity.idSubjectCards;
+            id = subjectCardEntity.id;
             version = subjectCardEntity.version;
             createdDate = subjectCardEntity.createdDate;
             updatedDate = subjectCardEntity.updatedDate;
-            validFromDate = subjectCardEntity.validFromDate;
+            valid = subjectCardEntity.valid;
             isCurrent = subjectCardEntity.isCurrent;
             subjectCode = subjectCardEntity.subjectCode;
             name = subjectCardEntity.name;
@@ -345,11 +345,11 @@ public class SubjectCardEntity {
             subjectLearningEffects = subjectCardEntity.subjectLearningEffects;
         }
 
-        private Builder( long idSubjectCards,
+        private Builder( long id,
                          int version,
                          LocalDateTime createdDate,
                          LocalDateTime updatedDate,
-                         LocalDateTime validFromDate,
+                         LocalDateTime valid,
                          boolean isCurrent,
                          String subjectCode,
                          String name,
@@ -370,11 +370,11 @@ public class SubjectCardEntity {
                          Set<TeachingToolEntity> teachingTools,
                          Set<SubjectLearningEffectEntity> subjectLearningEffects)
         {
-            this.idSubjectCards = idSubjectCards;
+            this.id = id;
             this.version = version;
             this.createdDate = createdDate;
             this.updatedDate = updatedDate;
-            this.validFromDate = validFromDate;
+            this.valid = valid;
             this.isCurrent = isCurrent;
             this.subjectCode = subjectCode;
             this.name = name;

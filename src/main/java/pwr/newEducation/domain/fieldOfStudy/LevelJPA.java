@@ -10,12 +10,12 @@ import java.util.Set;
 public class LevelJPA {
     @Id
     @GeneratedValue
-    private long idLevelJPA;
+    private long id;
     private String name;
 
 
     private LevelJPA(Builder builder){
-        idLevelJPA = builder.idLevelJPA;
+        id = builder.id;
         name = builder.name;
     }
 
@@ -24,27 +24,27 @@ public class LevelJPA {
     }
 
     public long getIdLevelJPA() {
-        return idLevelJPA;
+        return id;
     }
 
     public String getName() {
         return name;
     }
 
-    public static Builder builder (long idLevelJPA, String name) {
-        return new Builder(idLevelJPA, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idLevelJPA;
+        private long id;
         private String name;
 
         Builder() {
 
         }
 
-        Builder(long idLevelJPA, String name) {
-            this.idLevelJPA = idLevelJPA;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

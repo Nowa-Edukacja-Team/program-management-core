@@ -1,13 +1,13 @@
 package pwr.newEducation.domain.subjectCard;
 
 public class TeachingToolEntity {
-    private long idTeachingTool;
+    private long id;
     private String name;
 
     private TeachingToolEntity() {}
 
     private TeachingToolEntity(Builder builder) {
-        this.idTeachingTool = builder.idTeachingTool;
+        this.id = builder.id;
         this.name = builder.name;
     }
 
@@ -16,38 +16,38 @@ public class TeachingToolEntity {
     }
 
     public long getIdTeachingTool() {
-        return idTeachingTool;
+        return id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setIdTeachingTool(long idTeachingTool) {
-        this.idTeachingTool = idTeachingTool;
+    public void setIdTeachingTool(long id) {
+        this.id = id;
     }
 
     public static Builder builder(TeachingToolEntity TeachingToolEntity) {
         return new Builder(TeachingToolEntity);
     }
 
-    public static Builder builder(long idTeachingTool, String name) {
-        return new Builder(idTeachingTool, name);
+    public static Builder builder(long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idTeachingTool;
+        private long id;
         private String name;
 
         Builder () {}
 
         Builder(TeachingToolEntity TeachingToolEntity) {
-            idTeachingTool = TeachingToolEntity.idTeachingTool;
+            id = TeachingToolEntity.id;
             name = TeachingToolEntity.name;
         }
 
-        Builder(long idTeachingTool, String name) {
-            this.idTeachingTool = idTeachingTool;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

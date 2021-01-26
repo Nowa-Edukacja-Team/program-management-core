@@ -8,13 +8,13 @@ import javax.persistence.Id;
 public class TeachingToolJPA {
     @Id
     @GeneratedValue
-    private long idTeachingTool;
+    private long id;
     private String name;
 
     public TeachingToolJPA() {}
 
     private TeachingToolJPA(Builder builder) {
-        this.idTeachingTool = builder.idTeachingTool;
+        this.id = builder.id;
         this.name = builder.name;
     }
 
@@ -23,38 +23,38 @@ public class TeachingToolJPA {
     }
 
     public long getIdTeachingTool() {
-        return idTeachingTool;
+        return id;
     }
 
     public void setName(String name) {
         this.name = name;
     }
 
-    public void setIdTeachingTool(long idTeachingTool) {
-        this.idTeachingTool = idTeachingTool;
+    public void setIdTeachingTool(long id) {
+        this.id = id;
     }
 
     public static Builder builder(TeachingToolJPA TeachingToolJPA) {
         return new Builder(TeachingToolJPA);
     }
 
-    public static Builder builder(long idTeachingTool, String name) {
-        return new Builder(idTeachingTool, name);
+    public static Builder builder(long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idTeachingTool;
+        private long id;
         private String name;
 
         Builder () {}
 
         Builder(TeachingToolJPA TeachingToolJPA) {
-            idTeachingTool = TeachingToolJPA.idTeachingTool;
+            id = TeachingToolJPA.id;
             name = TeachingToolJPA.name;
         }
 
-        Builder(long idTeachingTool, String name) {
-            this.idTeachingTool = idTeachingTool;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 

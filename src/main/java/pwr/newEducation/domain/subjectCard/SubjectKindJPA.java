@@ -8,7 +8,7 @@ import javax.persistence.Id;
 public class SubjectKindJPA {
     @Id
     @GeneratedValue
-    private long idSubjectKind;
+    private long id;
     private String name;
 
     public SubjectKindJPA(){}
@@ -18,26 +18,26 @@ public class SubjectKindJPA {
     }
 
     public long getIdSubjectKind() {
-        return idSubjectKind;
+        return id;
     }
 
     public SubjectKindJPA(Builder builder) {
-        this.idSubjectKind = builder.idSubjectKind;
+        this.id = builder.id;
         this.name = builder.name;
     }
 
-    public static Builder builder (long idSubjectKind, String name) {
-        return new Builder(idSubjectKind, name);
+    public static Builder builder (long id, String name) {
+        return new Builder(id, name);
     }
 
     public static class Builder {
-        private long idSubjectKind;
+        private long id;
         private String name;
 
         Builder(){}
 
-        Builder(long idSubjectKind, String name) {
-            this.idSubjectKind = idSubjectKind;
+        Builder(long id, String name) {
+            this.id = id;
             this.name = name;
         }
 
