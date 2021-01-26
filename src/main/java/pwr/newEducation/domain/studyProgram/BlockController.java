@@ -1,4 +1,4 @@
-package pwr.newEducation.domain.studyPlan;
+package pwr.newEducation.domain.studyProgram;
 
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
@@ -11,22 +11,22 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("/studyPlans")
+@Path("/blocks")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @PermitAll
 @RequestScoped
-public class StudyPlanController {
+public class BlockController {
     @Inject
-    StudyPlanService studyPlanService;
+    BlockService blockService;
 
     @Inject
-    StudyPlanDTOMapper studyPlanDTOMapper;
+    BlockDTOMapper blockDTOMapper;
 
     @GET
-    public List<StudyPlanDTO> getAllStudyPlans(){
-        return studyPlanService.getAllStudyPlans().stream()
-                .map(studyPlanDTOMapper::toDTO)
+    public List<BlockDTO> getAllBlocks(){
+        return blockService.getAllBlocks().stream()
+                .map(blockDTOMapper::toDTO)
                 .collect(Collectors.toList());
     }
 }

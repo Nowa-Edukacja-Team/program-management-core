@@ -11,22 +11,22 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("/studyPlans")
+@Path("/deficits")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @PermitAll
 @RequestScoped
-public class StudyPlanController {
+public class DeficitController {
     @Inject
-    StudyPlanService studyPlanService;
+    DeficitService deficitService;
 
     @Inject
-    StudyPlanDTOMapper studyPlanDTOMapper;
+    DeficitDTOMapper deficitDTOMapper;
 
     @GET
-    public List<StudyPlanDTO> getAllStudyPlans(){
-        return studyPlanService.getAllStudyPlans().stream()
-                .map(studyPlanDTOMapper::toDTO)
+    public List<DeficitDTO> getAllDeficits(){
+        return deficitService.getAllDeficits().stream()
+                .map(deficitDTOMapper::toDTO)
                 .collect(Collectors.toList());
     }
 }

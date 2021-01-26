@@ -17,6 +17,10 @@ public class FieldOfStudyEntity {
     private ProfileEntity profileEntity;
     private Set<SpecializationEntity> specializationEntities = new HashSet<>();
 
+    public long getId() {
+        return id;
+    }
+
     public String getName() {
         return name;
     }
