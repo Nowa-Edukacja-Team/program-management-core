@@ -1,20 +1,19 @@
 package pwr.newEducation.domain.studyProgram;
 
 import javax.persistence.OneToMany;
-import java.util.Set;
 
 public class ModuleDTO {
     private long id;
     private String name;
 
     @OneToMany
-    private Set<BlockDTO> blocks;
+    private BlockDTO block;
 
     public ModuleDTO() {}
 
     ModuleDTO(Builder builder) {
         this.name = builder.name;
-        this.blocks = builder.blocks;
+        this.block = builder.block;
         this.id = builder.id;
     }
 
@@ -26,8 +25,8 @@ public class ModuleDTO {
         return id;
     }
 
-    public Set<BlockDTO> getBlocks() {
-        return blocks;
+    public BlockDTO getBlock() {
+        return block;
     }
 
     public static Builder builder(String name) {
@@ -37,7 +36,7 @@ public class ModuleDTO {
     public static class Builder {
         private long id;
         private String name;
-        private Set<BlockDTO> blocks;
+        private BlockDTO block;
 
         Builder() { }
 
@@ -50,8 +49,8 @@ public class ModuleDTO {
             return this;
         }
 
-        public Builder withBlocks(Set<BlockDTO> blocks) {
-            this.blocks = blocks;
+        public Builder withBlock(BlockDTO block) {
+            this.block = block;
             return this;
         }
 

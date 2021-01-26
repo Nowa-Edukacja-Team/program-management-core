@@ -28,15 +28,14 @@ public class SubjectCardJPA implements Serializable {
     private int subjectECTS;
     private int semester;
     private int lastSemester;
-    @OneToMany
-    private Set<ModuleJPA> module;
+    @ManyToOne
+    private ModuleJPA module;
     private String idSupervisor;
-    @OneToMany
-    private Set<SubjectKindJPA> subjectKind;
-    @OneToMany
-    private Set<CreditingFormJPA> creditingForm;
-    @OneToMany
-    private Set<StudyProgramJPA> studyProgram;
+    @ManyToOne
+    private SubjectKindJPA subjectKind;
+    @ManyToOne
+    private CreditingFormJPA creditingForm;
+    private long idStudyProgram;
     @OneToMany
     private Set<SubjectObjectiveJPA> subjectObjective;
     @OneToMany
@@ -48,28 +47,28 @@ public class SubjectCardJPA implements Serializable {
     @OneToMany
     private Set<SubjectLearningEffectJPA> subjectLearningEffects;
 
-    public Set<ModuleJPA> getModule() {
+    public ModuleJPA getModule() {
         return module;
     }
 
-    public void setModule(Set<ModuleJPA> module) {
+    public void setModule(ModuleJPA module) {
         this.module = module;
     }
 
-    public Set<CreditingFormJPA> getCreditingForm() {
+    public CreditingFormJPA getCreditingForm() {
         return creditingForm;
     }
 
-    public void setCreditingForm(Set<CreditingFormJPA> creditingForm) {
+    public void setCreditingForm(CreditingFormJPA creditingForm) {
         this.creditingForm = creditingForm;
     }
 
-    public Set<StudyProgramJPA> getStudyProgram() {
-        return studyProgram;
+    public long getIdStudyProgram() {
+        return idStudyProgram;
     }
 
-    public void setStudyProgram(Set<StudyProgramJPA> studyProgram) {
-        this.studyProgram = studyProgram;
+    public void setIdStudyProgram(long idStudyProgram) {
+        this.idStudyProgram = idStudyProgram;
     }
 
     public Set<SubjectObjectiveJPA> getSubjectObjective() {
@@ -228,11 +227,11 @@ public class SubjectCardJPA implements Serializable {
         return idSupervisor;
     }
 
-    public Set<SubjectKindJPA> getSubjectKind() {
+    public SubjectKindJPA getSubjectKind() {
         return subjectKind;
     }
 
-    public void setSubjectKind(Set<SubjectKindJPA> subjectKind) {
+    public void setSubjectKind(SubjectKindJPA subjectKind) {
         this.subjectKind = subjectKind;
     }
 
@@ -258,10 +257,9 @@ public class SubjectCardJPA implements Serializable {
         this.semester = builder.semester;
         this.lastSemester = builder.lastSemester;
         this.module = builder.module;
-        this.id = builder.id;
         this.subjectKind = builder.subjectKind;
         this.creditingForm = builder.creditingForm;
-        this.studyProgram = builder.studyProgram;
+        this.idStudyProgram = builder.idStudyProgram;
         this.subjectObjective = builder.subjectObjective;
         this.subjectPrerequisites = builder.subjectPrerequisites;
         this.literature = builder.literature;
@@ -287,11 +285,11 @@ public class SubjectCardJPA implements Serializable {
                                   int subjectECTS,
                                   int semester,
                                   int lastSemester,
-                                  Set<ModuleJPA> module,
+                                  ModuleJPA module,
                                   String idSupervisor,
-                                  Set<SubjectKindJPA> subjectKind,
-                                  Set<CreditingFormJPA> creditingForm,
-                                  Set<StudyProgramJPA> studyProgram,
+                                  SubjectKindJPA subjectKind,
+                                  CreditingFormJPA creditingForm,
+                                  long idStudyProgram,
                                   Set<SubjectObjectiveJPA> subjectObjective,
                                   Set<SubjectPrerequisiteJPA> subjectPrerequisites,
                                   Set<LiteratureJPA> literature,
@@ -301,7 +299,7 @@ public class SubjectCardJPA implements Serializable {
         return new Builder(id, version, createdDate, updatedDate, valid,
                 isCurrent, subjectCode, name, isGroup, zzuHours, cnpsHours, subjectECTS,
                 semester, lastSemester, module, idSupervisor, subjectKind, creditingForm,
-                studyProgram, subjectObjective, subjectPrerequisites, literature,
+                idStudyProgram, subjectObjective, subjectPrerequisites, literature,
                 teachingTools, subjectLearningEffects);
     }
 
@@ -320,11 +318,11 @@ public class SubjectCardJPA implements Serializable {
         private int subjectECTS;
         private int semester;
         private int lastSemester;
-        private Set<ModuleJPA> module;
+        private ModuleJPA module;
         private String idSupervisor;
-        private Set<SubjectKindJPA> subjectKind;
-        private Set<CreditingFormJPA> creditingForm;
-        private Set<StudyProgramJPA> studyProgram;
+        private SubjectKindJPA subjectKind;
+        private CreditingFormJPA creditingForm;
+        private long idStudyProgram;
         private Set<SubjectObjectiveJPA> subjectObjective;
         private Set<SubjectPrerequisiteJPA> subjectPrerequisites;
         private Set<LiteratureJPA> literature;
@@ -352,7 +350,7 @@ public class SubjectCardJPA implements Serializable {
             idSupervisor = subjectCardJPA.idSupervisor;
             subjectKind = subjectCardJPA.subjectKind;
             creditingForm = subjectCardJPA.creditingForm;
-            studyProgram = subjectCardJPA.studyProgram;
+            idStudyProgram = subjectCardJPA.idStudyProgram;
             subjectObjective = subjectCardJPA.subjectObjective;
             subjectPrerequisites = subjectCardJPA.subjectPrerequisites;
             literature = subjectCardJPA.literature;
@@ -374,11 +372,11 @@ public class SubjectCardJPA implements Serializable {
                          int subjectECTS,
                          int semester,
                          int lastSemester,
-                         Set<ModuleJPA> module,
+                         ModuleJPA module,
                          String idSupervisor,
-                         Set<SubjectKindJPA> subjectKind,
-                         Set<CreditingFormJPA> creditingForm,
-                         Set<StudyProgramJPA> studyProgram,
+                         SubjectKindJPA subjectKind,
+                         CreditingFormJPA creditingForm,
+                         long idStudyProgram,
                          Set<SubjectObjectiveJPA> subjectObjective,
                          Set<SubjectPrerequisiteJPA> subjectPrerequisites,
                          Set<LiteratureJPA> literature,
@@ -403,7 +401,7 @@ public class SubjectCardJPA implements Serializable {
             this.idSupervisor = idSupervisor;
             this.subjectKind = subjectKind;
             this.creditingForm = creditingForm;
-            this.studyProgram = studyProgram;
+            this.idStudyProgram = idStudyProgram;
             this.subjectObjective = subjectObjective;
             this.subjectPrerequisites = subjectPrerequisites;
             this.literature = literature;

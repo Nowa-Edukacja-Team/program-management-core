@@ -10,14 +10,14 @@ public class ModuleJPA {
     private long id;
     private String name;
 
-    @OneToMany
-    private Set<BlockJPA> blocks;
+    @ManyToOne
+    private BlockJPA block;
 
     public ModuleJPA() {}
 
     ModuleJPA(Builder builder) {
         this.name = builder.name;
-        this.blocks = builder.blocks;
+        this.block = builder.block;
         this.id = builder.id;
     }
 
@@ -29,8 +29,8 @@ public class ModuleJPA {
         return id;
     }
 
-    public Set<BlockJPA> getBlocks() {
-        return blocks;
+    public BlockJPA getBlock() {
+        return block;
     }
 
     public static Builder builder(String name) {
@@ -40,7 +40,7 @@ public class ModuleJPA {
     public static class Builder {
         private long id;
         private String name;
-        private Set<BlockJPA> blocks;
+        private BlockJPA block;
 
         Builder() { }
 
@@ -53,8 +53,8 @@ public class ModuleJPA {
             return this;
         }
 
-        public Builder withBlocks(Set<BlockJPA> blocks) {
-            this.blocks = blocks;
+        public Builder withBlock(BlockJPA block) {
+            this.block = block;
             return this;
         }
 

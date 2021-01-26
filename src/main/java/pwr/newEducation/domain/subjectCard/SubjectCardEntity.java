@@ -2,12 +2,13 @@ package pwr.newEducation.domain.subjectCard;
 
 import pwr.newEducation.domain.learningEffect.SubjectLearningEffectEntity;
 import pwr.newEducation.domain.studyProgram.ModuleEntity;
-import pwr.newEducation.domain.studyProgram.StudyProgramEntity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.Set;
 
-public class SubjectCardEntity {
+
+public class SubjectCardEntity implements Serializable {
     private long id;
     private int version;
     private LocalDateTime createdDate;
@@ -22,39 +23,39 @@ public class SubjectCardEntity {
     private int subjectECTS;
     private int semester;
     private int lastSemester;
-    private Set<ModuleEntity> module;
+    private ModuleEntity module;
     private String idSupervisor;
-    private Set<SubjectKindEntity> subjectKind;
-    private Set<CreditingFormEntity> creditingForm;
-    private Set<StudyProgramEntity> studyProgram;
+    private SubjectKindEntity subjectKind;
+    private CreditingFormEntity creditingForm;
+    private long idStudyProgram;
     private Set<SubjectObjectiveEntity> subjectObjective;
     private Set<SubjectPrerequisiteEntity> subjectPrerequisites;
     private Set<LiteratureEntity> literature;
     private Set<TeachingToolEntity> teachingTools;
     private Set<SubjectLearningEffectEntity> subjectLearningEffects;
 
-    public Set<ModuleEntity> getModule() {
+    public ModuleEntity getModule() {
         return module;
     }
 
-    public void setModule(Set<ModuleEntity> module) {
+    public void setModule(ModuleEntity module) {
         this.module = module;
     }
 
-    public Set<CreditingFormEntity> getCreditingForm() {
+    public CreditingFormEntity getCreditingForm() {
         return creditingForm;
     }
 
-    public void setCreditingForm(Set<CreditingFormEntity> creditingForm) {
+    public void setCreditingForm(CreditingFormEntity creditingForm) {
         this.creditingForm = creditingForm;
     }
 
-    public Set<StudyProgramEntity> getStudyProgram() {
-        return studyProgram;
+    public long getIdStudyProgram() {
+        return idStudyProgram;
     }
 
-    public void setStudyProgram(Set<StudyProgramEntity> studyProgram) {
-        this.studyProgram = studyProgram;
+    public void setIdStudyProgram(long idStudyProgram) {
+        this.idStudyProgram = idStudyProgram;
     }
 
     public Set<SubjectObjectiveEntity> getSubjectObjective() {
@@ -213,11 +214,11 @@ public class SubjectCardEntity {
         return idSupervisor;
     }
 
-    public Set<SubjectKindEntity> getSubjectKind() {
+    public SubjectKindEntity getSubjectKind() {
         return subjectKind;
     }
 
-    public void setSubjectKind(Set<SubjectKindEntity> subjectKind) {
+    public void setSubjectKind(SubjectKindEntity subjectKind) {
         this.subjectKind = subjectKind;
     }
 
@@ -225,7 +226,7 @@ public class SubjectCardEntity {
         this.idSupervisor = idSupervisor;
     }
 
-    private SubjectCardEntity() {}
+    public SubjectCardEntity() {}
 
     private SubjectCardEntity(Builder builder) {
         this.id = builder.id;
@@ -243,10 +244,9 @@ public class SubjectCardEntity {
         this.semester = builder.semester;
         this.lastSemester = builder.lastSemester;
         this.module = builder.module;
-        this.id = builder.id;
         this.subjectKind = builder.subjectKind;
         this.creditingForm = builder.creditingForm;
-        this.studyProgram = builder.studyProgram;
+        this.idStudyProgram = builder.idStudyProgram;
         this.subjectObjective = builder.subjectObjective;
         this.subjectPrerequisites = builder.subjectPrerequisites;
         this.literature = builder.literature;
@@ -272,11 +272,11 @@ public class SubjectCardEntity {
                                   int subjectECTS,
                                   int semester,
                                   int lastSemester,
-                                  Set<ModuleEntity> module,
+                                  ModuleEntity module,
                                   String idSupervisor,
-                                  Set<SubjectKindEntity> subjectKind,
-                                  Set<CreditingFormEntity> creditingForm,
-                                  Set<StudyProgramEntity> studyProgram,
+                                  SubjectKindEntity subjectKind,
+                                  CreditingFormEntity creditingForm,
+                                  long idStudyProgram,
                                   Set<SubjectObjectiveEntity> subjectObjective,
                                   Set<SubjectPrerequisiteEntity> subjectPrerequisites,
                                   Set<LiteratureEntity> literature,
@@ -286,7 +286,7 @@ public class SubjectCardEntity {
         return new Builder(id, version, createdDate, updatedDate, valid,
                 isCurrent, subjectCode, name, isGroup, zzuHours, cnpsHours, subjectECTS,
                 semester, lastSemester, module, idSupervisor, subjectKind, creditingForm,
-                studyProgram, subjectObjective, subjectPrerequisites, literature,
+                idStudyProgram, subjectObjective, subjectPrerequisites, literature,
                 teachingTools, subjectLearningEffects);
     }
 
@@ -305,11 +305,11 @@ public class SubjectCardEntity {
         private int subjectECTS;
         private int semester;
         private int lastSemester;
-        private Set<ModuleEntity> module;
+        private ModuleEntity module;
         private String idSupervisor;
-        private Set<SubjectKindEntity> subjectKind;
-        private Set<CreditingFormEntity> creditingForm;
-        private Set<StudyProgramEntity> studyProgram;
+        private SubjectKindEntity subjectKind;
+        private CreditingFormEntity creditingForm;
+        private long idStudyProgram;
         private Set<SubjectObjectiveEntity> subjectObjective;
         private Set<SubjectPrerequisiteEntity> subjectPrerequisites;
         private Set<LiteratureEntity> literature;
@@ -337,7 +337,7 @@ public class SubjectCardEntity {
             idSupervisor = subjectCardEntity.idSupervisor;
             subjectKind = subjectCardEntity.subjectKind;
             creditingForm = subjectCardEntity.creditingForm;
-            studyProgram = subjectCardEntity.studyProgram;
+            idStudyProgram = subjectCardEntity.idStudyProgram;
             subjectObjective = subjectCardEntity.subjectObjective;
             subjectPrerequisites = subjectCardEntity.subjectPrerequisites;
             literature = subjectCardEntity.literature;
@@ -359,11 +359,11 @@ public class SubjectCardEntity {
                          int subjectECTS,
                          int semester,
                          int lastSemester,
-                         Set<ModuleEntity> module,
+                         ModuleEntity module,
                          String idSupervisor,
-                         Set<SubjectKindEntity> subjectKind,
-                         Set<CreditingFormEntity> creditingForm,
-                         Set<StudyProgramEntity> studyProgram,
+                         SubjectKindEntity subjectKind,
+                         CreditingFormEntity creditingForm,
+                         long idStudyProgram,
                          Set<SubjectObjectiveEntity> subjectObjective,
                          Set<SubjectPrerequisiteEntity> subjectPrerequisites,
                          Set<LiteratureEntity> literature,
@@ -388,7 +388,7 @@ public class SubjectCardEntity {
             this.idSupervisor = idSupervisor;
             this.subjectKind = subjectKind;
             this.creditingForm = creditingForm;
-            this.studyProgram = studyProgram;
+            this.idStudyProgram = idStudyProgram;
             this.subjectObjective = subjectObjective;
             this.subjectPrerequisites = subjectPrerequisites;
             this.literature = literature;

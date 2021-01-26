@@ -7,14 +7,13 @@ public class ModuleEntity {
     private long id;
     private String name;
 
-    @OneToMany
-    private Set<BlockEntity> blocks;
+    private BlockEntity block;
 
     public ModuleEntity() {}
 
     ModuleEntity(Builder builder) {
         this.name = builder.name;
-        this.blocks = builder.blocks;
+        this.block = builder.block;
         this.id = builder.id;
     }
 
@@ -26,8 +25,8 @@ public class ModuleEntity {
         return id;
     }
 
-    public Set<BlockEntity> getBlocks() {
-        return blocks;
+    public BlockEntity getBlock() {
+        return block;
     }
 
     public static Builder builder(String name) {
@@ -37,7 +36,7 @@ public class ModuleEntity {
     public static class Builder {
         private long id;
         private String name;
-        private Set<BlockEntity> blocks;
+        private BlockEntity block;
 
         Builder() { }
 
@@ -50,8 +49,8 @@ public class ModuleEntity {
             return this;
         }
 
-        public Builder withBlocks(Set<BlockEntity> blocks) {
-            this.blocks = blocks;
+        public Builder withBlock(BlockEntity block) {
+            this.block = block;
             return this;
         }
 

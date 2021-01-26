@@ -2,7 +2,6 @@ package pwr.newEducation.domain.subjectCard;
 
 import pwr.newEducation.domain.learningEffect.SubjectLearningEffectDTOMapper;
 import pwr.newEducation.domain.studyProgram.ModuleDTOMapper;
-import pwr.newEducation.domain.studyProgram.StudyProgramDTOMapper;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -19,8 +18,6 @@ public class SubjectCardDTOMapper {
     @Inject
     CreditingFormDTOMapper creditingFormDTOMapper;
 
-    @Inject
-    StudyProgramDTOMapper studyProgramDTOMapper;
 
     @Inject
     SubjectObjectiveDTOMapper subjectObjectiveDTOMapper;
@@ -52,11 +49,11 @@ public class SubjectCardDTOMapper {
                 subjectCardDTO.getSubjectECTS(),
                 subjectCardDTO.getSemester(),
                 subjectCardDTO.getLastSemester(),
-                subjectCardDTO.getModule().stream().map(moduleDTOMapper::toEntity).collect(Collectors.toSet()),
+                moduleDTOMapper.toEntity(subjectCardDTO.getModule()),
                 subjectCardDTO.getIdSupervisor(),
-                subjectCardDTO.getSubjectKind().stream().map(subjectKindDTOMapper::toEntity).collect(Collectors.toSet()),
-                subjectCardDTO.getCreditingForm().stream().map(creditingFormDTOMapper::toEntity).collect(Collectors.toSet()),
-                subjectCardDTO.getStudyProgram().stream().map(studyProgramDTOMapper::toEntity).collect(Collectors.toSet()),
+                subjectKindDTOMapper.toEntity(subjectCardDTO.getSubjectKind()),
+                creditingFormDTOMapper.toEntity(subjectCardDTO.getCreditingForm()),
+                subjectCardDTO.getIdStudyProgram(),
                 subjectCardDTO.getSubjectObjective().stream().map(subjectObjectiveDTOMapper::toEntity).collect(Collectors.toSet()),
                 subjectCardDTO.getSubjectPrerequisites().stream().map(subjectPrerequisiteDTOMapper::toEntity).collect(Collectors.toSet()),
                 subjectCardDTO.getLiterature().stream().map(literatureDTOMapper::toEntity).collect(Collectors.toSet()),
@@ -80,11 +77,11 @@ public class SubjectCardDTOMapper {
                 subjectCardEntity.getSubjectECTS(),
                 subjectCardEntity.getSemester(),
                 subjectCardEntity.getLastSemester(),
-                subjectCardEntity.getModule().stream().map(moduleDTOMapper::toDTO).collect(Collectors.toSet()),
+                moduleDTOMapper.toDTO(subjectCardEntity.getModule()),
                 subjectCardEntity.getIdSupervisor(),
-                subjectCardEntity.getSubjectKind().stream().map(subjectKindDTOMapper::toDTO).collect(Collectors.toSet()),
-                subjectCardEntity.getCreditingForm().stream().map(creditingFormDTOMapper::toDTO).collect(Collectors.toSet()),
-                subjectCardEntity.getStudyProgram().stream().map(studyProgramDTOMapper::toDTO).collect(Collectors.toSet()),
+                subjectKindDTOMapper.toDTO(subjectCardEntity.getSubjectKind()),
+                creditingFormDTOMapper.toDTO(subjectCardEntity.getCreditingForm()),
+                subjectCardEntity.getIdStudyProgram(),
                 subjectCardEntity.getSubjectObjective().stream().map(subjectObjectiveDTOMapper::toDTO).collect(Collectors.toSet()),
                 subjectCardEntity.getSubjectPrerequisites().stream().map(subjectPrerequisiteDTOMapper::toDTO).collect(Collectors.toSet()),
                 subjectCardEntity.getLiterature().stream().map(literatureDTOMapper::toDTO).collect(Collectors.toSet()),

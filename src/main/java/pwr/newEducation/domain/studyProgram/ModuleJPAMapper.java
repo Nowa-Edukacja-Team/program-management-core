@@ -12,14 +12,14 @@ public class ModuleJPAMapper {
     public ModuleEntity toEntity(ModuleJPA moduleJPA) {
         return ModuleEntity.builder(moduleJPA.getName())
                 .withIdModule(moduleJPA.getIdModule())
-                .withBlocks(moduleJPA.getBlocks().stream().map(blockJPAMapper::toEntity).collect(Collectors.toSet()))
+                .withBlock(blockJPAMapper.toEntity(moduleJPA.getBlock()))
                 .build();
     }
 
     public ModuleJPA toJPA(ModuleEntity moduleEntity) {
         return ModuleJPA.builder(moduleEntity.getName())
                 .withIdModule(moduleEntity.getIdModule())
-                .withBlocks(moduleEntity.getBlocks().stream().map(blockJPAMapper::toJPA).collect(Collectors.toSet()))
+                .withBlock(blockJPAMapper.toJPA(moduleEntity.getBlock()))
                 .build();
     }
 }

@@ -1,9 +1,7 @@
 package pwr.newEducation.domain.subjectCard;
 
-import pwr.newEducation.domain.learningEffect.SubjectLearningEffectJPA;
 import pwr.newEducation.domain.learningEffect.SubjectLearningEffectJPAMapper;
 import pwr.newEducation.domain.studyProgram.ModuleJPAMapper;
-import pwr.newEducation.domain.studyProgram.StudyProgramJPAMapper;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
@@ -20,8 +18,6 @@ public class SubjectCardJPAMapper {
     @Inject
     CreditingFormJPAMapper creditingFormJPAMapper;
 
-    @Inject
-    StudyProgramJPAMapper studyProgramJPAMapper;
 
     @Inject
     SubjectObjectiveJPAMapper subjectObjectiveJPAMapper;
@@ -53,11 +49,11 @@ public class SubjectCardJPAMapper {
                 subjectCardJPA.getSubjectECTS(),
                 subjectCardJPA.getSemester(),
                 subjectCardJPA.getLastSemester(),
-                subjectCardJPA.getModule().stream().map(moduleJPAMapper::toEntity).collect(Collectors.toSet()),
+                moduleJPAMapper.toEntity(subjectCardJPA.getModule()),
                 subjectCardJPA.getIdSupervisor(),
-                subjectCardJPA.getSubjectKind().stream().map(subjectKindJPAMapper::toEntity).collect(Collectors.toSet()),
-                subjectCardJPA.getCreditingForm().stream().map(creditingFormJPAMapper::toEntity).collect(Collectors.toSet()),
-                subjectCardJPA.getStudyProgram().stream().map(studyProgramJPAMapper::toEntity).collect(Collectors.toSet()),
+                subjectKindJPAMapper.toEntity(subjectCardJPA.getSubjectKind()),
+                creditingFormJPAMapper.toEntity(subjectCardJPA.getCreditingForm()),
+                subjectCardJPA.getIdStudyProgram(),
                 subjectCardJPA.getSubjectObjective().stream().map(subjectObjectiveJPAMapper::toEntity).collect(Collectors.toSet()),
                 subjectCardJPA.getSubjectPrerequisites().stream().map(subjectPrerequisiteJPAMapper::toEntity).collect(Collectors.toSet()),
                 subjectCardJPA.getLiterature().stream().map(literatureJPAMapper::toEntity).collect(Collectors.toSet()),
@@ -81,11 +77,11 @@ public class SubjectCardJPAMapper {
                 subjectCardEntity.getSubjectECTS(),
                 subjectCardEntity.getSemester(),
                 subjectCardEntity.getLastSemester(),
-                subjectCardEntity.getModule().stream().map(moduleJPAMapper::toJPA).collect(Collectors.toSet()),
+                moduleJPAMapper.toJPA(subjectCardEntity.getModule()),
                 subjectCardEntity.getIdSupervisor(),
-                subjectCardEntity.getSubjectKind().stream().map(subjectKindJPAMapper::toJPA).collect(Collectors.toSet()),
-                subjectCardEntity.getCreditingForm().stream().map(creditingFormJPAMapper::toJPA).collect(Collectors.toSet()),
-                subjectCardEntity.getStudyProgram().stream().map(studyProgramJPAMapper::toJPA).collect(Collectors.toSet()),
+                subjectKindJPAMapper.toJPA(subjectCardEntity.getSubjectKind()),
+                creditingFormJPAMapper.toJPA(subjectCardEntity.getCreditingForm()),
+                subjectCardEntity.getIdStudyProgram(),
                 subjectCardEntity.getSubjectObjective().stream().map(subjectObjectiveJPAMapper::toJPA).collect(Collectors.toSet()),
                 subjectCardEntity.getSubjectPrerequisites().stream().map(subjectPrerequisiteJPAMapper::toJPA).collect(Collectors.toSet()),
                 subjectCardEntity.getLiterature().stream().map(literatureJPAMapper::toJPA).collect(Collectors.toSet()),
