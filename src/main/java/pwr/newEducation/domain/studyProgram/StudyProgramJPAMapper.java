@@ -1,17 +1,14 @@
 package pwr.newEducation.domain.studyProgram;
 
-import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyDTO;
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyEntity;
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPAMapper;
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyRepository;
-import pwr.newEducation.domain.studyPlan.StudyPlanDTO;
 import pwr.newEducation.domain.studyPlan.StudyPlanEntity;
 import pwr.newEducation.domain.studyPlan.StudyPlanJPAMapper;
 import pwr.newEducation.domain.studyPlan.StudyPlanRepository;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
-import java.util.HashSet;
 import java.util.stream.Collectors;
 
 @ApplicationScoped

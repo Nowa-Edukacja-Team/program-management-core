@@ -11,15 +11,11 @@ public class StudyPlanJPAMapper {
     @Inject
     DeficitJPAMapper deficitJPAMapper;
 
-    @Inject
-    StudyProgramJPAMapper studyProgramJPAMapper;
-
     public StudyPlanJPA toJPA(StudyPlanEntity studyPlanEntity) {
         return StudyPlanJPA.builder(studyPlanEntity.getCreatedDate(), studyPlanEntity.getValid(),
                 studyPlanEntity.getIsCurrent())
                 .withDeficits(studyPlanEntity.getDeficits().stream().map(deficitJPAMapper::toJPA).collect(Collectors.toSet()))
                 .withIdStudyPlan(studyPlanEntity.getIdStudyPlan())
-                .withStudyProgram(studyProgramJPAMapper.toJPA(studyPlanEntity.getStudyProgram()))
                 .withUpdatedDate(studyPlanEntity.getUpdatedDate())
                 .withVersion(studyPlanEntity.getVersion())
                 .build();
@@ -30,7 +26,6 @@ public class StudyPlanJPAMapper {
                 studyPlanJPA.getIsCurrent())
                 .withDeficits(studyPlanJPA.getDeficits().stream().map(deficitJPAMapper::toEntity).collect(Collectors.toSet()))
                 .withIdStudyPlan(studyPlanJPA.getIdStudyPlan())
-                .withStudyProgram(studyProgramJPAMapper.toEntity(studyPlanJPA.getStudyProgram()))
                 .withUpdatedDate(studyPlanJPA.getUpdatedDate())
                 .withVersion(studyPlanJPA.getVersion())
                 .build();

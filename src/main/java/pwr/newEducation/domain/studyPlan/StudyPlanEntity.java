@@ -1,8 +1,6 @@
 package pwr.newEducation.domain.studyPlan;
 
-import pwr.newEducation.domain.studyProgram.StudyProgramEntity;
-
-import java.time.LocalDateTime;;
+import java.time.LocalDateTime;
 import java.util.Set;
 
 public class StudyPlanEntity {
@@ -13,7 +11,7 @@ public class StudyPlanEntity {
     private LocalDateTime valid;
     private boolean isCurrent;
     private Set<DeficitEntity> deficits;
-    private StudyProgramEntity studyProgram;
+    private long idStudyProgram;
 
     public long getIdStudyPlan() {
         return id;
@@ -43,20 +41,20 @@ public class StudyPlanEntity {
         return deficits;
     }
 
-    public StudyProgramEntity getStudyProgram() {
-        return studyProgram;
+    public long getIdStudyProgram() {
+        return idStudyProgram;
     }
 
     public StudyPlanEntity() {}
 
     StudyPlanEntity(Builder builder) {
-        id = builder.id;;
-        version = builder.version;;
+        id = builder.id;
+        version = builder.version;
         createdDate = builder.createdDate;
         updatedDate = builder.updatedDate;
         valid = builder.valid;
         isCurrent = builder.isCurrent;
-        studyProgram = builder.studyProgram;
+        idStudyProgram = builder.idStudyProgram;
         deficits = builder.deficits;
     }
 
@@ -71,7 +69,7 @@ public class StudyPlanEntity {
         private LocalDateTime updatedDate;
         private LocalDateTime valid;
         private boolean isCurrent;
-        private StudyProgramEntity studyProgram;
+        private long idStudyProgram;
         private Set<DeficitEntity> deficits;
 
         Builder() {}
@@ -97,8 +95,8 @@ public class StudyPlanEntity {
             return this;
         }
 
-        public Builder withStudyProgram(StudyProgramEntity studyProgram) {
-            this.studyProgram = studyProgram;
+        public Builder withIdStudyProgram(long idStudyProgram) {
+            this.idStudyProgram = idStudyProgram;
             return this;
         }
 

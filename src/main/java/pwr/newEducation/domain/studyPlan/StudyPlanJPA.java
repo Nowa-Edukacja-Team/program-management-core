@@ -1,7 +1,5 @@
 package pwr.newEducation.domain.studyPlan;
 
-import pwr.newEducation.domain.studyProgram.StudyProgramJPA;
-
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -20,9 +18,6 @@ public class StudyPlanJPA implements Serializable {
 
     @OneToMany
     private Set<DeficitJPA> deficits;
-
-    @OneToOne
-    private StudyProgramJPA studyProgram;
 
     public long getIdStudyPlan() {
         return id;
@@ -52,20 +47,15 @@ public class StudyPlanJPA implements Serializable {
         return deficits;
     }
 
-    public StudyProgramJPA getStudyProgram() {
-        return studyProgram;
-    }
-
     public StudyPlanJPA() {}
 
     StudyPlanJPA(Builder builder) {
-        id = builder.id;;
-        version = builder.version;;
+        id = builder.id;
+        version = builder.version;
         createdDate = builder.createdDate;
         updatedDate = builder.updatedDate;
         valid = builder.valid;
         isCurrent = builder.isCurrent;
-        studyProgram = builder.studyProgram;
         deficits = builder.deficits;
     }
 
@@ -80,7 +70,6 @@ public class StudyPlanJPA implements Serializable {
         private LocalDateTime updatedDate;
         private LocalDateTime valid;
         private boolean isCurrent;
-        private StudyProgramJPA studyProgram;
         private Set<DeficitJPA> deficits;
 
         Builder() {}
@@ -103,11 +92,6 @@ public class StudyPlanJPA implements Serializable {
 
         public Builder withUpdatedDate(LocalDateTime updatedDate) {
             this.updatedDate = updatedDate;
-            return this;
-        }
-
-        public Builder withStudyProgram(StudyProgramJPA studyProgram) {
-            this.studyProgram = studyProgram;
             return this;
         }
 

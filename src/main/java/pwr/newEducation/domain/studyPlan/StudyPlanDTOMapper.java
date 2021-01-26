@@ -1,7 +1,5 @@
 package pwr.newEducation.domain.studyPlan;
 
-import pwr.newEducation.domain.studyProgram.StudyProgramDTOMapper;
-
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
 import java.util.stream.Collectors;
@@ -11,15 +9,12 @@ public class StudyPlanDTOMapper {
     @Inject
     DeficitDTOMapper deficitDTOMapper;
 
-    @Inject
-    StudyProgramDTOMapper studyProgramDTOMapper;
-
     public StudyPlanDTO toDTO(StudyPlanEntity studyPlanEntity) {
         return StudyPlanDTO.builder(studyPlanEntity.getCreatedDate(), studyPlanEntity.getValid(),
                 studyPlanEntity.getIsCurrent())
                 .withDeficits(studyPlanEntity.getDeficits().stream().map(deficitDTOMapper::toDTO).collect(Collectors.toList()))
                 .withIdStudyPlan(studyPlanEntity.getIdStudyPlan())
-                .withStudyProgram(studyProgramDTOMapper.toDTO(studyPlanEntity.getStudyProgram()))
+                .withIdStudyProgram(studyPlanEntity.getIdStudyProgram())
                 .withUpdatedDate(studyPlanEntity.getUpdatedDate())
                 .withVersion(studyPlanEntity.getVersion())
                 .build();
@@ -30,7 +25,7 @@ public class StudyPlanDTOMapper {
                 studyPlanDTO.getIsCurrent())
                 .withDeficits(studyPlanDTO.getDeficits().stream().map(deficitDTOMapper::toEntity).collect(Collectors.toSet()))
                 .withIdStudyPlan(studyPlanDTO.getIdStudyPlan())
-                .withStudyProgram(studyProgramDTOMapper.toEntity(studyPlanDTO.getStudyProgram()))
+                .withIdStudyProgram(studyPlanDTO.getIdStudyProgram())
                 .withUpdatedDate(studyPlanDTO.getUpdatedDate())
                 .withVersion(studyPlanDTO.getVersion())
                 .build();

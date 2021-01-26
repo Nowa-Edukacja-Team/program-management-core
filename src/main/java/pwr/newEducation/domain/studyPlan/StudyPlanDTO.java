@@ -1,7 +1,6 @@
 package pwr.newEducation.domain.studyPlan;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import pwr.newEducation.domain.studyProgram.StudyProgramDTO;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -26,7 +25,7 @@ public class StudyPlanDTO {
     private List<DeficitDTO> deficits;
 
     @JsonProperty("studyProgram")
-    private StudyProgramDTO studyProgram;
+    private long idStudyProgram;
     
     @JsonProperty("isCurrent")
     private boolean isCurrent;
@@ -59,20 +58,20 @@ public class StudyPlanDTO {
         return deficits;
     }
 
-    public StudyProgramDTO getStudyProgram() {
-        return studyProgram;
+    public long getIdStudyProgram() {
+        return idStudyProgram;
     }
 
     public StudyPlanDTO() {}
 
     StudyPlanDTO(Builder builder) {
-        id = builder.id;;
-        version = builder.version;;
+        id = builder.id;
+        version = builder.version;
         createdDate = builder.createdDate;
         updatedDate = builder.updatedDate;
         valid = builder.valid;
         isCurrent = builder.isCurrent;
-        studyProgram = builder.studyProgram;
+        idStudyProgram = builder.idStudyProgram;
         deficits = builder.deficits;
     }
 
@@ -87,7 +86,7 @@ public class StudyPlanDTO {
         private LocalDateTime updatedDate;
         private LocalDateTime valid;
         private boolean isCurrent;
-        private StudyProgramDTO studyProgram;
+        private long idStudyProgram;
         private List<DeficitDTO> deficits;
 
         Builder() {}
@@ -113,8 +112,8 @@ public class StudyPlanDTO {
             return this;
         }
 
-        public Builder withStudyProgram(StudyProgramDTO studyProgram) {
-            this.studyProgram = studyProgram;
+        public Builder withIdStudyProgram(long idStudyProgram) {
+            this.idStudyProgram = idStudyProgram;
             return this;
         }
 

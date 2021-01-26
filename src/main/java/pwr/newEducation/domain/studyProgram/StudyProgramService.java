@@ -1,11 +1,6 @@
 package pwr.newEducation.domain.studyProgram;
 
-import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyDTO;
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPA;
-import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyRepository;
-import pwr.newEducation.domain.studyPlan.StudyPlanDTO;
-import pwr.newEducation.domain.studyPlan.StudyPlanJPA;
-import pwr.newEducation.domain.studyPlan.StudyPlanRepository;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
