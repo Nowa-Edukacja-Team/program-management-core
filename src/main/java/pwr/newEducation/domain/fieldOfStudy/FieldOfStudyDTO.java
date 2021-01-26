@@ -1,6 +1,7 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 public class FieldOfStudyDTO {
@@ -19,8 +20,8 @@ public class FieldOfStudyDTO {
         return name;
     }
 
-    public DisciplineDTO getDisciplineDTO() {
-        return disciplineDTO;
+    public Optional<DisciplineDTO> getDisciplineDTO() {
+        return Optional.ofNullable(disciplineDTO);
     }
 
     public FacultyDTO getFacultyDTO() {

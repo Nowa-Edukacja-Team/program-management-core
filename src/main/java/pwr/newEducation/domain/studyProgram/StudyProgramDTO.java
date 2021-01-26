@@ -7,6 +7,7 @@ import pwr.newEducation.domain.studyPlan.StudyPlanDTO;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class StudyProgramDTO {
@@ -67,8 +68,8 @@ public class StudyProgramDTO {
         return idStudyProgram;
     }
 
-    public StudyPlanDTO getStudyPlan() {
-        return studyPlan;
+    public Optional<StudyPlanDTO> getStudyPlan() {
+        return Optional.ofNullable(studyPlan);
     }
 
     public List<ExamRangeDTO> getExamRange() {
@@ -100,6 +101,7 @@ public class StudyProgramDTO {
         examRanges = builder.examRange;
         fieldOfStudy = builder.fieldOfStudy;
         modules = builder.modules;
+        learningEffect = builder.learningEffect;
     }
 
     public static class Builder {
@@ -113,6 +115,7 @@ public class StudyProgramDTO {
         private List<ExamRangeDTO> examRange;
         private FieldOfStudyDTO fieldOfStudy;
         private Set<ModuleDTO> modules;
+        private List<LearningEffectDTO> learningEffect;
 
         Builder() {}
 

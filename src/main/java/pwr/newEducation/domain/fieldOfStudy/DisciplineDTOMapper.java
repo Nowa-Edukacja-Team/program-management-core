@@ -1,6 +1,7 @@
 package pwr.newEducation.domain.fieldOfStudy;
 
 import javax.enterprise.context.ApplicationScoped;
+import java.util.Optional;
 
 @ApplicationScoped
 public class DisciplineDTOMapper {

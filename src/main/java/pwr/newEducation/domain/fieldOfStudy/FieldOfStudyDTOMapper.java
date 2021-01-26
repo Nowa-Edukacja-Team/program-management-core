@@ -27,7 +27,7 @@ public class FieldOfStudyDTOMapper {
         return FieldOfStudyEntity.builder(fieldOfStudyDTO.getIdFieldOFStudy(), fieldOfStudyDTO.getName(),
                 facultyDTOMapper.toEntity(fieldOfStudyDTO.getFacultyDTO()),
                 languageDTOMapper.toEntity(fieldOfStudyDTO.getLanguageDTO()),
-                disciplineDTOMapper.toEntity(fieldOfStudyDTO.getDisciplineDTO()),
+                disciplineDTOMapper.toEntity(fieldOfStudyDTO.getDisciplineDTO().orElse(null)),
                 learningCycleDTOMapper.toEntity(fieldOfStudyDTO.getLearningCycleDTO()),
                 levelDTOMapper.toEntity(fieldOfStudyDTO.getLevelDTO()),
                 modeDTOMapper.toEntity(fieldOfStudyDTO.getModeDTO()),

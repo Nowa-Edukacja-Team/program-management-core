@@ -43,7 +43,7 @@ public class StudyProgramDTOMapper {
                 .withVersion(studyProgramDTO.getVersion())
                 .withModules(studyProgramDTO.getModules().stream().map(moduleDTOMapper::toEntity).collect(Collectors.toSet()))
                 .withUpdatedDate(studyProgramDTO.getUpdatedDate())
-                .withStudyPlan(studyPlanDTOMapper.toEntity(studyProgramDTO.getStudyPlan()))
+                .withStudyPlan(studyPlanDTOMapper.toEntity(studyProgramDTO.getStudyPlan().orElse(null)))
                 .build();
     }
 }

@@ -4,8 +4,8 @@ import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Path("/studyProgram")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -13,21 +13,21 @@ import java.util.List;
 @RequestScoped
 public class StudyProgramController {
 
-    //@Inject
+    @Inject
     StudyProgramService studyProgramService;
 
-    //@Inject
+    @Inject
     StudyProgramDTOMapper studyProgramDTOMapper;
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
-    public List<StudyProgramDTO> getAllStudyProgram() {
-        return new ArrayList<StudyProgramDTO>();
+    public List<StudyProgramDTO> getAllStudyProgram(@BeanParam int pageIndex, @BeanParam int pageSize) {
+        return studyProgramService.getAllStudyPrograms(pageIndex, pageSize).stream().map(studyProgramDTOMapper::toDTO).collect(Collectors.toList());
     }
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void insertStudyProgram(StudyProgramDTO studyProgramDTO) {
-        
+        studyProgramService.insertStudyProgram(studyProgramDTOMapper.toEntity(studyProgramDTO));
     }
 }
