@@ -19,13 +19,13 @@ public class StudyProgramController {
     @Inject
     StudyProgramDTOMapper studyProgramDTOMapper;
 
-    /*
+
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
-    public List<StudyProgramDTO> getAllStudyProgram(@BeanParam int pageIndex, @BeanParam int pageSize) {
+    public List<StudyProgramDTO> getAllStudyProgram(int pageIndex, int pageSize) {
         return studyProgramService.getAllStudyPrograms(pageIndex, pageSize).stream().map(studyProgramDTOMapper::toDTO).collect(Collectors.toList());
     }
-    */
+
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
