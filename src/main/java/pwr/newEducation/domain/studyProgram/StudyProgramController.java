@@ -30,6 +30,6 @@ public class StudyProgramController {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public void insertStudyProgram(StudyProgramDTO studyProgramDTO) {
-        studyProgramService.insertStudyProgram(studyProgramDTOMapper.toEntity(studyProgramDTO));
+        studyProgramService.insertStudyProgram(studyProgramDTO);
     }
 }

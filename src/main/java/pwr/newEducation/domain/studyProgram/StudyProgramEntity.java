@@ -1,9 +1,14 @@
 package pwr.newEducation.domain.studyProgram;
 
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyEntity;
+import pwr.newEducation.domain.learningEffect.LearningEffectEntity;
 import pwr.newEducation.domain.studyPlan.StudyPlanEntity;
 
+
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class StudyProgramEntity {
@@ -17,6 +22,7 @@ public class StudyProgramEntity {
     private Set<ExamRangeEntity> examRange;
     private FieldOfStudyEntity fieldOfStudy;
     private Set<ModuleEntity> modules;
+    private Set<LearningEffectEntity> learningEffects;
 
     public int getVersion() {
         return version;
@@ -42,22 +48,25 @@ public class StudyProgramEntity {
         return id;
     }
 
-    public StudyPlanEntity getStudyPlan() {
-        return studyPlan;
+    public Optional<StudyPlanEntity> getStudyPlan() {
+        return Optional.ofNullable(studyPlan);
     }
 
     public Set<ExamRangeEntity> getExamRange() {
-        return examRange;
+        return Optional.of(examRange).orElseGet(Collections::emptySet);
     }
 
-    public FieldOfStudyEntity getFieldOfStudy() {
-        return fieldOfStudy;
+    public Optional<FieldOfStudyEntity> getFieldOfStudy() {
+        return Optional.of(fieldOfStudy);
     }
 
     public Set<ModuleEntity> getModules() {
-        return modules;
+        return Optional.ofNullable(modules).orElseGet(Collections::emptySet);
     }
 
+    public Set<LearningEffectEntity> getLearningEffect() {
+        return Optional.of(learningEffects).orElseGet(Collections::emptySet);
+    }
     public static Builder builder(LocalDateTime createdDate, LocalDateTime valid, boolean isCurrent) {
         return new Builder(createdDate, valid, isCurrent);
     }
@@ -65,8 +74,8 @@ public class StudyProgramEntity {
     public StudyProgramEntity(){ }
 
     StudyProgramEntity(Builder builder) {
-        id = builder.id;;
-        version = builder.version;;
+        id = builder.id;
+        version = builder.version;
         createdDate = builder.createdDate;
         updatedDate = builder.updatedDate;
         valid = builder.valid;

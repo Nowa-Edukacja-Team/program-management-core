@@ -7,6 +7,9 @@ import pwr.newEducation.domain.studyPlan.StudyPlanJPA;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.Collections;
+import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 @Entity
@@ -35,6 +38,14 @@ public class StudyProgramJPA implements Serializable {
     @ManyToMany
     private Set<LearningEffectJPA> learningEffects;
 
+    public Set<LearningEffectJPA> getLearningEffects() {
+        return learningEffects;
+    }
+
+    public long getId() {
+        return id;
+    }
+
     public int getVersion() {
         return version;
     }
@@ -55,28 +66,24 @@ public class StudyProgramJPA implements Serializable {
         return valid;
     }
 
-    public long getIdStudyProgram() {
-        return id;
-    }
-
-    public StudyPlanJPA getStudyPlan() {
-        return studyPlan;
+    public Optional<StudyPlanJPA> getStudyPlan() {
+        return Optional.ofNullable(studyPlan);
     }
 
     public Set<ExamRangeJPA> getExamRange() {
-        return examRange;
+        return Optional.of(examRange).orElseGet(Collections::emptySet);
     }
 
-    public FieldOfStudyJPA getFieldOfStudy() {
-        return fieldOfStudy;
+    public Optional<FieldOfStudyJPA> getFieldOfStudy() {
+        return Optional.of(fieldOfStudy);
     }
 
     public Set<ModuleJPA> getModules() {
-        return modules;
+        return Optional.ofNullable(modules).orElseGet(Collections::emptySet);
     }
 
-    public Set<LearningEffectJPA> getLearningEffects() {
-        return learningEffects;
+    public Set<LearningEffectJPA> getLearningEffect() {
+        return Optional.of(learningEffects).orElseGet(Collections::emptySet);
     }
 
     public static Builder builder(LocalDateTime createdDate, LocalDateTime valid, boolean isCurrent) {
@@ -86,8 +93,8 @@ public class StudyProgramJPA implements Serializable {
     public StudyProgramJPA(){ }
 
     StudyProgramJPA(Builder builder) {
-        id = builder.id;;
-        version = builder.version;;
+        id = builder.id;
+        version = builder.version;
         createdDate = builder.createdDate;
         updatedDate = builder.updatedDate;
         valid = builder.valid;
