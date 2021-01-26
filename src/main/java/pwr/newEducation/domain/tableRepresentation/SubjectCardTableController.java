@@ -1,4 +1,4 @@
-package pwr.newEducation.domain.learningEffect;
+package pwr.newEducation.domain.tableRepresentation;
 
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
@@ -11,22 +11,22 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("/learningEffects")
+@Path("/subjectCards/table")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @PermitAll
 @RequestScoped
-public class LearningEffectController {
+public class SubjectCardTableController {
     @Inject
-    LearningEffectService learningEffectService;
+    SubjectCardTableService subjectCardTableService;
 
     @Inject
-    LearningEffectDTOMapper learningEffectDTOMapper;
+    SubjectCardTableDTOMapper subjectCardTableDTOMapper;
 
     @GET
-    List<LearningEffectDTO> getAllLearningEffects(){
-        return learningEffectService.getAllLearningEffects().stream()
-                .map(learningEffectDTOMapper::toDTO)
+    public List<SubjectCardTableDTO> getAllSubjectCardTables(){
+        return subjectCardTableService.getAllSubjectCardTables().stream()
+                .map(subjectCardTableDTOMapper::toDTO)
                 .collect(Collectors.toList());
     }
 }

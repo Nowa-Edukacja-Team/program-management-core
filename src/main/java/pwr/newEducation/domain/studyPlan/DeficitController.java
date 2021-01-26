@@ -1,4 +1,4 @@
-package pwr.newEducation.domain.learningEffect;
+package pwr.newEducation.domain.studyPlan;
 
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
@@ -11,22 +11,22 @@ import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Path("/learningEffects")
+@Path("/deficits")
 @Consumes(MediaType.APPLICATION_JSON)
 @Produces(MediaType.APPLICATION_JSON)
 @PermitAll
 @RequestScoped
-public class LearningEffectController {
+public class DeficitController {
     @Inject
-    LearningEffectService learningEffectService;
+    DeficitService deficitService;
 
     @Inject
-    LearningEffectDTOMapper learningEffectDTOMapper;
+    DeficitDTOMapper deficitDTOMapper;
 
     @GET
-    List<LearningEffectDTO> getAllLearningEffects(){
-        return learningEffectService.getAllLearningEffects().stream()
-                .map(learningEffectDTOMapper::toDTO)
+    public List<DeficitDTO> getAllDeficits(){
+        return deficitService.getAllDeficits().stream()
+                .map(deficitDTOMapper::toDTO)
                 .collect(Collectors.toList());
     }
 }
