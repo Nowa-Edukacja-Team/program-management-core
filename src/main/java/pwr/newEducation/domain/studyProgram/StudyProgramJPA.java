@@ -32,9 +32,6 @@ public class StudyProgramJPA implements Serializable {
     private FieldOfStudyJPA fieldOfStudy;
 
     @ManyToMany
-    private Set<ModuleJPA> modules;
-
-    @ManyToMany
     private Set<LearningEffectJPA> learningEffects;
 
     public Set<LearningEffectJPA> getLearningEffects() {
@@ -77,10 +74,6 @@ public class StudyProgramJPA implements Serializable {
         return Optional.of(fieldOfStudy);
     }
 
-    public Set<ModuleJPA> getModules() {
-        return Optional.ofNullable(modules).orElseGet(Collections::emptySet);
-    }
-
     public Set<LearningEffectJPA> getLearningEffect() {
         return Optional.of(learningEffects).orElseGet(Collections::emptySet);
     }
@@ -101,7 +94,6 @@ public class StudyProgramJPA implements Serializable {
         studyPlan = builder.studyPlan;
         examRange = builder.examRange;
         fieldOfStudy = builder.fieldOfStudy;
-        modules = builder.modules;
         learningEffects = builder.learningEffects;
     }
 
@@ -115,7 +107,6 @@ public class StudyProgramJPA implements Serializable {
         private StudyPlanJPA studyPlan;
         private Set<ExamRangeJPA> examRange;
         private FieldOfStudyJPA fieldOfStudy;
-        private Set<ModuleJPA> modules;
         private Set<LearningEffectJPA> learningEffects;
 
         Builder() {}
@@ -139,11 +130,6 @@ public class StudyProgramJPA implements Serializable {
 
         public Builder withFieldOfStudy(FieldOfStudyJPA fieldOfStudy) {
             this.fieldOfStudy = fieldOfStudy;
-            return this;
-        }
-
-        public Builder withModules(Set<ModuleJPA> modules) {
-            this.modules = modules;
             return this;
         }
 

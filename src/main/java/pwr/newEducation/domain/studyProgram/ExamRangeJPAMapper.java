@@ -4,13 +4,12 @@ import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class ExamRangeJPAMapper {
-    public ExamRangeEntity toEntity(ExamRangeJPA examRangeJPA) {
-        return ExamRangeEntity.builder(examRangeJPA.getText())
-                .build();
+    public String toEntity(ExamRangeJPA examRangeJPA) {
+        return examRangeJPA.getText();
     }
 
-    public ExamRangeJPA toJPA(ExamRangeEntity examRangeEntity) {
-        return ExamRangeJPA.builder(examRangeEntity.getText())
+    public ExamRangeJPA toJPA(String text) {
+        return ExamRangeJPA.builder(text)
                 .build();
     }
 }

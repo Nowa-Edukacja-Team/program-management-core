@@ -18,9 +18,9 @@ public class StudyProgramEntity {
     private LocalDateTime valid;
     private boolean isCurrent;
     private StudyPlanEntity studyPlan;
-    private Set<ExamRangeEntity> examRange;
+    private Set<String> examRange;
     private FieldOfStudyEntity fieldOfStudy;
-    private Set<ModuleEntity> modules;
+    private Set<StudyProgramToModuleEntity> modules;
     private Set<LearningEffectEntity> learningEffects;
 
     public int getVersion() {
@@ -51,7 +51,7 @@ public class StudyProgramEntity {
         return Optional.ofNullable(studyPlan);
     }
 
-    public Set<ExamRangeEntity> getExamRange() {
+    public Set<String> getExamRange() {
         return Optional.of(examRange).orElseGet(Collections::emptySet);
     }
 
@@ -59,7 +59,7 @@ public class StudyProgramEntity {
         return Optional.of(fieldOfStudy);
     }
 
-    public Set<ModuleEntity> getModules() {
+    public Set<StudyProgramToModuleEntity> getModules() {
         return Optional.ofNullable(modules).orElseGet(Collections::emptySet);
     }
 
@@ -94,9 +94,9 @@ public class StudyProgramEntity {
         private LocalDateTime valid;
         private boolean isCurrent;
         private StudyPlanEntity studyPlan;
-        private Set<ExamRangeEntity> examRange;
+        private Set<String> examRange;
         private FieldOfStudyEntity fieldOfStudy;
-        private Set<ModuleEntity> modules;
+        private Set<StudyProgramToModuleEntity> modules;
         private Set<LearningEffectEntity> learningEffects;
 
         Builder() {}
@@ -123,7 +123,7 @@ public class StudyProgramEntity {
             return this;
         }
 
-        public Builder withModules(Set<ModuleEntity> modules) {
+        public Builder withModules(Set<StudyProgramToModuleEntity> modules) {
             this.modules = modules;
             return this;
         }
@@ -138,7 +138,7 @@ public class StudyProgramEntity {
             return this;
         }
 
-        public Builder withExamRange(Set<ExamRangeEntity> examRange) {
+        public Builder withExamRange(Set<String> examRange) {
             this.examRange = examRange;
             return this;
         }

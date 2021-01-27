@@ -25,7 +25,7 @@ public class StudyProgramDTO {
     private LocalDateTime valid;
 
     @JsonProperty("examRanges")
-    private List<ExamRangeDTO> examRanges;
+    private List<String> examRanges;
 
     @JsonProperty("studyPlan")
     private StudyPlanDTO studyPlan;
@@ -37,7 +37,7 @@ public class StudyProgramDTO {
     private FieldOfStudyDTO fieldOfStudy;
 
     @JsonProperty("modules")
-    private List<ModuleDTO> modules;
+    private List<StudyProgramToModuleDTO> modules;
 
     @JsonProperty("isCurrent")
     private boolean isCurrent;
@@ -70,7 +70,7 @@ public class StudyProgramDTO {
         return Optional.ofNullable(studyPlan);
     }
 
-    public List<ExamRangeDTO> getExamRange() {
+    public List<String> getExamRange() {
         return Optional.of(examRanges).orElseGet(Collections::emptyList);
     }
 
@@ -78,7 +78,7 @@ public class StudyProgramDTO {
         return Optional.of(fieldOfStudy);
     }
 
-    public List<ModuleDTO> getModules() {
+    public List<StudyProgramToModuleDTO> getModules() {
         return Optional.ofNullable(modules).orElseGet(Collections::emptyList);
     }
 
@@ -114,9 +114,9 @@ public class StudyProgramDTO {
         private LocalDateTime valid;
         private boolean isCurrent;
         private StudyPlanDTO studyPlan;
-        private List<ExamRangeDTO> examRange;
+        private List<String> examRange;
         private FieldOfStudyDTO fieldOfStudy;
-        private List<ModuleDTO> modules;
+        private List<StudyProgramToModuleDTO> modules;
         private List<LearningEffectDTO> learningEffect;
 
         Builder() {}
@@ -143,7 +143,7 @@ public class StudyProgramDTO {
             return this;
         }
 
-        public Builder withModules(List<ModuleDTO> modules) {
+        public Builder withModules(List<StudyProgramToModuleDTO> modules) {
             this.modules = modules;
             return this;
         }
@@ -158,7 +158,7 @@ public class StudyProgramDTO {
             return this;
         }
 
-        public Builder withExamRange(List<ExamRangeDTO> examRange) {
+        public Builder withExamRange(List<String> examRange) {
             this.examRange = examRange;
             return this;
         }
