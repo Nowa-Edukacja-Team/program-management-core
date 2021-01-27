@@ -19,4 +19,15 @@ public class SubjectCardRepository implements PanacheRepository<SubjectCardJPA> 
     public List<SubjectCardEntity> getAllSubjectCards() {
         return streamAll().map(subjectCardJPAMapper::toEntity).collect(Collectors.toList());
     }
+
+    public List<SubjectCardEntity> getSubjectCardsForStudyPrograms(int pageIndex, int pageSize, long studyProgramId) {
+        return find("idStudyProgram", studyProgramId).page(pageIndex, pageSize).stream()
+                .map(subjectCardJPAMapper::toEntity)
+                .collect(Collectors.toList());
+        /*return find(
+                "SELECT sc.* FROM SubjectCardJPA sc \n" +
+                        "WHERE sc.idStudyProgram = " + studyProgramId
+        ).page(pageIndex, pageSize).stream()
+                .map(subjectCardJPAMapper::toEntity).collect(Collectors.toList());*/
+    }
 }

@@ -1,12 +1,11 @@
 package pwr.newEducation.domain.subjectCard;
 
+import org.jboss.resteasy.annotations.jaxrs.QueryParam;
+
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +25,16 @@ public class SubjectCardController {
     @GET
     public List<SubjectCardDTO> getAllSubjectCards() {
         return subjectCardService.getAllSubjectCards().stream()
+                .map(subjectCardDTOMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    @GET
+    @Path("/{studyProgramId}")
+    public List<SubjectCardDTO> getSubjectCardsForStudyPrograms(@PathParam("studyProgramId") long studyProgramId,
+                                                                @QueryParam("page") @DefaultValue("0") int pageIndex,
+                                                                @QueryParam("size") @DefaultValue("20") int pageSize) {
+        return subjectCardService.getSubjectCardsForStudyPrograms(pageIndex, pageSize, studyProgramId).stream()
                 .map(subjectCardDTOMapper::toDTO)
                 .collect(Collectors.toList());
     }
