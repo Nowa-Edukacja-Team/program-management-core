@@ -16,4 +16,8 @@ public class SubjectCardService {
     List<SubjectCardEntity> getAllSubjectCards() {
         return subjectCardRepository.getAllSubjectCards();
     }
+
+    List<SubjectCardEntity> getSubjectCardsForStudyPrograms(int pageIndex, int pageSize, long studyProgramId){
+        return subjectCardRepository.getSubjectCardsForStudyPrograms(pageIndex, pageSize, studyProgramId);
+    }
 }
