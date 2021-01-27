@@ -268,16 +268,6 @@ INSERT INTO public.studyprogramjpa_learningeffectjpa (studyprogramjpa_id, learni
 
 
 --
--- TOC entry 3362 (class 0 OID 33982)
--- Dependencies: 233
--- Data for Name: studyprogramjpa_modulejpa; Type: TABLE DATA; Schema: public; Owner: hibernate
---
-
-INSERT INTO public.studyprogramjpa_modulejpa (studyprogramjpa_id, modules_id) VALUES (1, 1);
-INSERT INTO public.studyprogramjpa_modulejpa (studyprogramjpa_id, modules_id) VALUES (2, 2);
-
-
---
 -- TOC entry 3369 (class 0 OID 34020)
 -- Dependencies: 240
 -- Data for Name: subjectkindjpa; Type: TABLE DATA; Schema: public; Owner: hibernate
