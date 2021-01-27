@@ -5,14 +5,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class ExamRangeDTO {
     @JsonProperty("id")
     private long id;
-    @JsonProperty("number")
-    private int number;
     @JsonProperty("text")
     private String text;
-
-    public int getNumber() {
-        return number;
-    }
 
     public long getIdExamRange() {
         return id;
@@ -28,23 +22,20 @@ public class ExamRangeDTO {
 
     ExamRangeDTO(Builder builder) {
         this.id = builder.id;
-        this.number = builder.number;
         this.text = builder.text;
     }
 
-    public static Builder builder(int number, String text) {
-        return new Builder(number, text);
+    public static Builder builder(String text) {
+        return new Builder(text);
     }
 
     public static class Builder {
         private long id;
-        private int number;
         private String text;
 
         Builder() {}
 
-        Builder(int number, String text) {
-            this.number = number;
+        Builder(String text) {
             this.text = text;
         }
 

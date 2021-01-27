@@ -2,7 +2,6 @@ package pwr.newEducation.domain.subjectCard;
 
 import pwr.newEducation.domain.learningEffect.SubjectLearningEffectJPA;
 import pwr.newEducation.domain.studyProgram.ModuleJPA;
-import pwr.newEducation.domain.studyProgram.StudyProgramJPA;
 
 import javax.persistence.*;
 import java.io.Serializable;

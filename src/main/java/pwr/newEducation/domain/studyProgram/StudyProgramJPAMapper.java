@@ -41,8 +41,7 @@ public class StudyProgramJPAMapper {
         return StudyProgramJPA.builder(studyProgramEntity.getCreatedDate(), studyProgramEntity.getValid(),
                 studyProgramEntity.getIsCurrent())
                 .withExamRange(studyProgramEntity.getExamRange().stream()
-                        .map(ExamRangeEntity::getIdExamRange)
-                        .map(examRangeRepository::findById).collect(Collectors.toSet()))
+                        .map(examRangeRepository::getOrInsert).collect(Collectors.toSet()))
                 .withFieldOfStudy(studyProgramEntity.getFieldOfStudy()
                         .map(FieldOfStudyEntity::getIdFieldOFStudy)
                         .map(fieldOfStudyRepository::findById)

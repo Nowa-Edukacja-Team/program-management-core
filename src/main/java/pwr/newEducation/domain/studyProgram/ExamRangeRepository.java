@@ -20,4 +20,15 @@ public class ExamRangeRepository implements PanacheRepository<ExamRangeJPA> {
         return streamAll().map(examRangeJPAMapper::toEntity)
                 .collect(Collectors.toList());
     }
+
+    public ExamRangeJPA getOrInsert(ExamRangeEntity examRangeEntity) {
+        ExamRangeJPA examRangeJPA;
+        if(examRangeEntity.getIdExamRange() < 1) {
+            examRangeJPA = examRangeJPAMapper.toJPA(examRangeEntity);
+            persist(examRangeJPA);
+        } else
+            examRangeJPA = getEntityManager().getReference(ExamRangeJPA.class, examRangeEntity.getIdExamRange());
+
+        return examRangeJPA;
+    }
 }
