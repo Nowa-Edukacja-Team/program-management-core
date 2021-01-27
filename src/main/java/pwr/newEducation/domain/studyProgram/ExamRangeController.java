@@ -8,6 +8,7 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,13 +21,8 @@ public class ExamRangeController {
     @Inject
     ExamRangeService examRangeService;
 
-    @Inject
-    ExamRangeDTOMapper examRangeDTOMapper;
-
     @GET
-    public List<ExamRangeDTO> getAllExamRanges(){
-        return examRangeService.getAllExamRanges().stream()
-                .map(examRangeDTOMapper::toDTO)
-                .collect(Collectors.toList());
+    public List<String> getAllExamRanges(){
+        return new ArrayList<>(examRangeService.getAllExamRanges());
     }
 }

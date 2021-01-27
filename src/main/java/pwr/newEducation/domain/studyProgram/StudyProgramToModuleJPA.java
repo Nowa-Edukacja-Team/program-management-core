@@ -5,9 +5,10 @@ import org.bouncycastle.math.raw.Mod;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import java.io.Serializable;
 
 @Entity
-public class StudyProgramToModuleJPA {
+public class StudyProgramToModuleJPA implements Serializable {
     @Id
     @ManyToOne
     private ModuleJPA module;

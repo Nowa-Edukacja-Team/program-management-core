@@ -13,7 +13,7 @@ public class ExamRangeService {
         this.examRangeRepository = examRangeRepository;
     }
 
-    List<ExamRangeEntity> getAllExamRanges(){
+    List<String> getAllExamRanges(){
         return examRangeRepository.getAllExamRanges();
     }
 }

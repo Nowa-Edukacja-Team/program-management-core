@@ -5,15 +5,12 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class TeachingToolDTOMapper {
 
-    public TeachingToolEntity toEntity(TeachingToolDTO teachingToolDTO) {
-        return TeachingToolEntity.builder(teachingToolDTO.getIdTeachingTool(),
-                teachingToolDTO.getName())
+    public TeachingToolEntity toEntity(String content) {
+        return TeachingToolEntity.builder(content)
                 .build();
     }
 
-    public TeachingToolDTO toDTO(TeachingToolEntity teachingToolEntity) {
-        return TeachingToolDTO.builder(teachingToolEntity.getIdTeachingTool(),
-                teachingToolEntity.getName())
-                .build();
+    public String toDTO(TeachingToolEntity teachingToolEntity) {
+        return teachingToolEntity.getName();
     }
 }

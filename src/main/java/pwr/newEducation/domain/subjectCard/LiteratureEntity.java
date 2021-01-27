@@ -10,6 +10,7 @@ public class LiteratureEntity {
     private LiteratureEntity(Builder builder) {
         this.id = builder.id;
         this.type = builder.type;
+        this.content = builder.content;
     }
 
     public String getContent() {
@@ -40,8 +41,8 @@ public class LiteratureEntity {
         return new Builder(literatureEntity);
     }
 
-    public static Builder builder(long id, String type, String content) {
-        return new Builder(id, type, content);
+    public static Builder builder(String type, String content) {
+        return new Builder(type, content);
     }
 
     public static class Builder {
@@ -57,8 +58,7 @@ public class LiteratureEntity {
             content = literatureEntity.content;
         }
 
-        Builder(long id, String name, String content) {
-            this.id = id;
+        Builder(String name, String content) {
             this.type = name;
             this.content = content;
         }

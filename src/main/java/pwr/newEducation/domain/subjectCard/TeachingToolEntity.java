@@ -7,7 +7,6 @@ public class TeachingToolEntity {
     private TeachingToolEntity() {}
 
     private TeachingToolEntity(Builder builder) {
-        this.id = builder.id;
         this.name = builder.name;
     }
 
@@ -23,31 +22,25 @@ public class TeachingToolEntity {
         this.name = name;
     }
 
-    public void setIdTeachingTool(long id) {
-        this.id = id;
-    }
 
     public static Builder builder(TeachingToolEntity TeachingToolEntity) {
         return new Builder(TeachingToolEntity);
     }
 
-    public static Builder builder(long id, String name) {
-        return new Builder(id, name);
+    public static Builder builder(String name) {
+        return new Builder(name);
     }
 
     public static class Builder {
-        private long id;
         private String name;
 
         Builder () {}
 
         Builder(TeachingToolEntity TeachingToolEntity) {
-            id = TeachingToolEntity.id;
             name = TeachingToolEntity.name;
         }
 
-        Builder(long id, String name) {
-            this.id = id;
+        Builder(String name) {
             this.name = name;
         }
 

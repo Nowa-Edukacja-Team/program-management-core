@@ -7,7 +7,6 @@ public class SubjectPrerequisiteEntity {
     private SubjectPrerequisiteEntity() {}
 
     private SubjectPrerequisiteEntity(Builder builder) {
-        this.id = builder.id;
         this.content = builder.content;
     }
 
@@ -31,23 +30,20 @@ public class SubjectPrerequisiteEntity {
         return new Builder(SubjectPrerequisiteEntity);
     }
 
-    public static Builder builder(long id, String content) {
-        return new Builder(id, content);
+    public static Builder builder(String content) {
+        return new Builder(content);
     }
 
     public static class Builder {
-        private long id;
         private String content;
 
         Builder () {}
 
         Builder(SubjectPrerequisiteEntity SubjectPrerequisiteEntity) {
-            id = SubjectPrerequisiteEntity.id;
             content = SubjectPrerequisiteEntity.content;
         }
 
-        Builder(long id, String content) {
-            this.id = id;
+        Builder(String content) {
             this.content = content;
         }
 

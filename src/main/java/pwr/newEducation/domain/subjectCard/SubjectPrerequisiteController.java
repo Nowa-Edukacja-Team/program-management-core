@@ -24,7 +24,7 @@ public class SubjectPrerequisiteController {
     SubjectPrerequisiteDTOMapper subjectPrerequisiteDTOMapper;
 
     @GET
-    public List<SubjectPrerequisiteDTO> getAllSubjectPrerequisites() {
+    public List<String> getAllSubjectPrerequisites() {
         return subjectPrerequisiteService.getAllSubjectPrerequisites().stream()
                 .map(subjectPrerequisiteDTOMapper::toDTO)
                 .collect(Collectors.toList());
