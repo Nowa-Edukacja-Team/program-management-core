@@ -13,7 +13,7 @@ public class StudyPlanItemDataService {
         this.studyPlanItemDataRepository = studyPlanItemDataRepository;
     }
 
-    public List<ItemDataEntity> getListOfIds() {
-        return studyPlanItemDataRepository.getListOfIds();
+    public List<ItemDataEntity> getListOfIds(int pageIndex, int pageSize) {
+        return studyPlanItemDataRepository.getListOfIds(pageIndex, pageSize);
     }
 }

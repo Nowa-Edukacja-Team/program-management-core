@@ -1,7 +1,10 @@
 package pwr.newEducation.domain.searchRepresentation;
 
+import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import io.quarkus.panache.common.Page;
 import pwr.newEducation.domain.studyProgram.StudyProgramJPA;
+import pwr.newEducation.domain.subjectCard.SubjectCardJPA;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
@@ -17,7 +20,10 @@ public class StudyProgramItemDataRepository implements PanacheRepository<StudyPr
         this.studyProgramToItemDataMapper = studyProgramToItemDataMapper;
     }
 
-    public List<ItemDataEntity> getListOfIds() {
-        return streamAll().map(studyProgramToItemDataMapper::toEntity).collect(Collectors.toList());
+    public List<ItemDataEntity> getListOfIds(int pageIndex, int pageSize) {
+        PanacheQuery<StudyProgramJPA> query = findAll();
+        query.page(Page.ofSize(pageSize));
+        return query.page(pageIndex, pageSize).stream()
+                .map(studyProgramToItemDataMapper::toEntity).collect(Collectors.toList());
     }
 }

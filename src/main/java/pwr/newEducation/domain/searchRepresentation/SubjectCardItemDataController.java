@@ -1,12 +1,11 @@
 package pwr.newEducation.domain.searchRepresentation;
 
+import org.jboss.resteasy.annotations.jaxrs.QueryParam;
+
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.stream.Collectors;
 
@@ -23,9 +22,10 @@ public class SubjectCardItemDataController {
     ItemDataDTOMapper itemDataDTOMapper;
 
     @GET
-    public ListRepresentationDTO getListOfIds() {
+    public ListRepresentationDTO getListOfIds(@QueryParam("page") @DefaultValue("0") int pageIndex,
+                                              @QueryParam("size") @DefaultValue("20") int pageSize) {
         return new ListRepresentationDTO(
-                itemDataService.getListOfIds().stream()
+                itemDataService.getListOfIds(pageIndex, pageSize).stream()
                 .map(itemDataDTOMapper::toDTO)
                 .collect(Collectors.toList())
         );
