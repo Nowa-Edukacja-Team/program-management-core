@@ -5,16 +5,14 @@ import pwr.newEducation.domain.studyPlan.StudyPlanDTOMapper;
 
 import javax.enterprise.context.ApplicationScoped;
 import javax.inject.Inject;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.stream.Collectors;
 
 @ApplicationScoped
 public class StudyProgramDTOMapper {
     @Inject
-    ExamRangeDTOMapper examRangeDTOMapper;
-
-    @Inject
-    ModuleDTOMapper moduleDTOMapper;
+    StudyProgramToModuleDTOMapper studyProgramToModuleDTOMapper;
 
     @Inject
     FieldOfStudyDTOMapper fieldOfStudyDTOMapper;
@@ -25,10 +23,10 @@ public class StudyProgramDTOMapper {
     public StudyProgramDTO toDTO(StudyProgramEntity studyProgramEntity) {
         return StudyProgramDTO.builder(studyProgramEntity.getCreatedDate(), studyProgramEntity.getValid(),
                 studyProgramEntity.getIsCurrent())
-                .withExamRange(studyProgramEntity.getExamRange().stream().map(examRangeDTOMapper::toDTO).collect(Collectors.toList()))
+                .withExamRange(new ArrayList<>(studyProgramEntity.getExamRange()))
                 .withFieldOfStudy(studyProgramEntity.getFieldOfStudy().map(fieldOfStudyDTOMapper::toDTO).orElse(null))
                 .withIdStudyProgram(studyProgramEntity.getIdStudyProgram())
-                .withModules(studyProgramEntity.getModules().stream().map(moduleDTOMapper::toDTO).collect(Collectors.toList()))
+                .withModules(studyProgramEntity.getModules().stream().map(studyProgramToModuleDTOMapper::toDTO).collect(Collectors.toList()))
                 .withStudyPlan(studyProgramEntity.getStudyPlan().map(studyPlanDTOMapper::toDTO).orElse(null))
                 .withUpdatedDate(studyProgramEntity.getUpdatedDate())
                 .withVersion(studyProgramEntity.getVersion())
@@ -42,9 +40,9 @@ public class StudyProgramDTOMapper {
                 .withVersion(studyProgramDTO.getVersion())
                 .withUpdatedDate(studyProgramDTO.getUpdatedDate())
                 .withStudyPlan(studyProgramDTO.getStudyPlan().map(studyPlanDTOMapper::toEntity).orElse(null))
-                .withModules(studyProgramDTO.getModules().stream().map(moduleDTOMapper::toEntity).collect(Collectors.toSet()))
+                .withModules(studyProgramDTO.getModules().stream().map(studyProgramToModuleDTOMapper::toEntity).collect(Collectors.toSet()))
                 .withFieldOfStudy(studyProgramDTO.getFieldOfStudy().map(fieldOfStudyDTOMapper::toEntity).orElse(null))
-                .withExamRange(studyProgramDTO.getExamRange().stream().map(examRangeDTOMapper::toEntity).collect(Collectors.toSet()))
+                .withExamRange(new HashSet<>(studyProgramDTO.getExamRange()))
                 .build();
     }
 }

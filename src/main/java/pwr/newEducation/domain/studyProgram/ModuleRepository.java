@@ -19,9 +19,4 @@ public class ModuleRepository implements PanacheRepository<ModuleJPA> {
         return streamAll().map(moduleJPAMapper::toEntity)
                 .collect(Collectors.toList());
     }
-
-    ModuleJPA getById(long id) {
-        return findById(id);
-    }
-
 }

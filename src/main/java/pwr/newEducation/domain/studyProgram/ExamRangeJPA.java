@@ -23,7 +23,6 @@ public class ExamRangeJPA {
     }
 
     ExamRangeJPA(Builder builder) {
-        this.id = builder.id;
         this.text = builder.text;
     }
 
@@ -32,18 +31,12 @@ public class ExamRangeJPA {
     }
 
     public static class Builder {
-        private long id;
         private String text;
 
         Builder() {}
 
         Builder(String text) {
             this.text = text;
-        }
-
-        public Builder withIdExamRange(long id) {
-            this.id = id;
-            return this;
         }
 
         public ExamRangeJPA build() {

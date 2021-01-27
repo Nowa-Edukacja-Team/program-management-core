@@ -18,12 +18,27 @@ public class StudyProgramService {
     @Inject
     StudyProgramDTOMapper studyProgramDTOMapper;
 
+    @Inject
+    StudyProgramToModuleRepository studyProgramToModuleRepository;
+
+    @Inject
+    StudyProgramToModuleJPAMapper studyProgramToModuleJPAMapper;
+
+    @Inject
+    StudyProgramToModuleDTOMapper studyProgramToModuleDTOMapper;
+
     void insertStudyProgram(StudyProgramDTO studyProgram) {
-        studyProgramRepository.persist(studyProgramJPAMapper.toJPA(studyProgramDTOMapper.toEntity(studyProgram)));
+        StudyProgramJPA studyProgramJPA = studyProgramJPAMapper.toJPA(studyProgramDTOMapper.toEntity(studyProgram));
+        studyProgramRepository.persist(studyProgramJPA);
+        for(StudyProgramToModuleDTO studyProgramToModule : studyProgram.getModules()) {
+            studyProgramToModuleRepository.persist(studyProgramToModuleJPAMapper.toJPA(studyProgramToModuleDTOMapper.toEntity(studyProgramToModule), studyProgramJPA));
+        }
     }
 
     List<StudyProgramEntity> getAllStudyPrograms(int pageIndex, int pageSize) {
-        return studyProgramRepository.getAll(pageIndex, pageSize).stream().map(studyProgramJPAMapper::toEntity).collect(Collectors.toList());
+        return studyProgramRepository.getAll(pageIndex, pageSize)
+                .stream().map(x -> studyProgramJPAMapper.toEntity(x, studyProgramToModuleRepository.getModules(x).map(studyProgramToModuleJPAMapper::toEntity).collect(Collectors.toSet())))
+                .collect(Collectors.toList());
     }
 
     long getAllSize() { return studyProgramRepository.getAllSize(); }
