@@ -3,12 +3,21 @@ package pwr.newEducation.domain.studyProgram;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
 import io.quarkus.panache.common.Sort;
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPA;
+import pwr.newEducation.domain.studyPlan.StudyPlanEntity;
+import pwr.newEducation.domain.studyPlan.StudyPlanJPAMapper;
 
 import javax.enterprise.context.Dependent;
+import javax.inject.Inject;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Dependent
 public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA> {
+
+    @Inject
+    StudyPlanJPAMapper studyPlanJPAMapper;
+
     List<StudyProgramJPA> getAll(int pageIndex, int pageSize) {
         return findAll().page(pageIndex, pageSize).list();
     }
@@ -51,5 +60,13 @@ public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA
 
     void insertStudyProgram(StudyProgramJPA studyProgramJPA) {
         persist(studyProgramJPA);
+    }
+
+    public List<StudyPlanEntity> getAllStudyPlansForStudyProgramId(long id, int pageIndex, int pageSize) {
+        return find("id", id).page(pageIndex, pageSize).stream()
+                .map(StudyProgramJPA::getStudyPlan)
+                .map(Optional::get)
+                .map(studyPlanJPAMapper::toEntity)
+                .collect(Collectors.toList());
     }
 }

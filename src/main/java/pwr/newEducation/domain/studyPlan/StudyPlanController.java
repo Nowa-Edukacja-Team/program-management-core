@@ -3,10 +3,7 @@ package pwr.newEducation.domain.studyPlan;
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -26,6 +23,16 @@ public class StudyPlanController {
     @GET
     public List<StudyPlanDTO> getAllStudyPlans(){
         return studyPlanService.getAllStudyPlans().stream()
+                .map(studyPlanDTOMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+
+    @GET
+    @Path("/{id}")
+    public List<StudyPlanDTO> getAllStudyPlansForStudyProgramId(@PathParam("id") long id,
+                                                                @QueryParam("page") @DefaultValue("0") int pageIndex,
+                                                                @QueryParam("size") @DefaultValue("20") int pageSize){
+        return studyPlanService.getAllStudyPlansForStudyProgramId(id, pageIndex, pageSize).stream()
                 .map(studyPlanDTOMapper::toDTO)
                 .collect(Collectors.toList());
     }
