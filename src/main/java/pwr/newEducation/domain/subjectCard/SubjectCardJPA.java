@@ -12,8 +12,8 @@ import java.util.Set;
 public class SubjectCardJPA implements Serializable {
     @Id
     @GeneratedValue
-    private long id;
-    @Id
+    private long idDocument;
+    private String id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -110,11 +110,11 @@ public class SubjectCardJPA implements Serializable {
         this.subjectLearningEffects = subjectLearningEffects;
     }
 
-    public long getIdSubjectCards() {
+    public String getIdSubjectCards() {
         return id;
     }
 
-    public void setIdSubjectCards(long id) {
+    public void setIdSubjectCards(String id) {
         this.id = id;
     }
 
@@ -270,7 +270,7 @@ public class SubjectCardJPA implements Serializable {
         return new Builder(subjectCardJPA);
     }
 
-    public static Builder builder(long id,
+    public static Builder builder(String id,
                                   int version,
                                   LocalDateTime createdDate,
                                   LocalDateTime updatedDate,
@@ -303,7 +303,7 @@ public class SubjectCardJPA implements Serializable {
     }
 
     public static class Builder {
-        private long id;
+        private String id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -357,30 +357,30 @@ public class SubjectCardJPA implements Serializable {
             subjectLearningEffects = subjectCardJPA.subjectLearningEffects;
         }
 
-        private Builder( long id,
-                         int version,
-                         LocalDateTime createdDate,
-                         LocalDateTime updatedDate,
-                         LocalDateTime valid,
-                         boolean isCurrent,
-                         String subjectCode,
-                         String name,
-                         boolean isGroup,
-                         int zzuHours,
-                         int cnpsHours,
-                         int subjectECTS,
-                         int semester,
-                         int lastSemester,
-                         ModuleJPA module,
-                         String idSupervisor,
-                         SubjectKindJPA subjectKind,
-                         CreditingFormJPA creditingForm,
-                         long idStudyProgram,
-                         Set<SubjectObjectiveJPA> subjectObjective,
-                         Set<SubjectPrerequisiteJPA> subjectPrerequisites,
-                         Set<LiteratureJPA> literature,
-                         Set<TeachingToolJPA> teachingTools,
-                         Set<SubjectLearningEffectJPA> subjectLearningEffects)
+        private Builder(String id,
+                        int version,
+                        LocalDateTime createdDate,
+                        LocalDateTime updatedDate,
+                        LocalDateTime valid,
+                        boolean isCurrent,
+                        String subjectCode,
+                        String name,
+                        boolean isGroup,
+                        int zzuHours,
+                        int cnpsHours,
+                        int subjectECTS,
+                        int semester,
+                        int lastSemester,
+                        ModuleJPA module,
+                        String idSupervisor,
+                        SubjectKindJPA subjectKind,
+                        CreditingFormJPA creditingForm,
+                        long idStudyProgram,
+                        Set<SubjectObjectiveJPA> subjectObjective,
+                        Set<SubjectPrerequisiteJPA> subjectPrerequisites,
+                        Set<LiteratureJPA> literature,
+                        Set<TeachingToolJPA> teachingTools,
+                        Set<SubjectLearningEffectJPA> subjectLearningEffects)
         {
             this.id = id;
             this.version = version;

@@ -10,7 +10,7 @@ import java.util.*;
 
 public class StudyProgramDTO {
     @JsonProperty("id")
-    private long id;
+    private String id;
 
     @JsonProperty("version")
     private int version;
@@ -62,7 +62,7 @@ public class StudyProgramDTO {
         return valid;
     }
 
-    public long getIdStudyProgram() {
+    public String getIdStudyProgram() {
         return id;
     }
 
@@ -107,7 +107,7 @@ public class StudyProgramDTO {
     }
 
     public static class Builder {
-        private long id;
+        private String id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -128,7 +128,7 @@ public class StudyProgramDTO {
             this.isCurrent = isCurrent;
         }
 
-        public Builder withIdStudyProgram(long id) {
+        public Builder withIdStudyProgram(String id) {
             this.id = id;
             return this;
         }

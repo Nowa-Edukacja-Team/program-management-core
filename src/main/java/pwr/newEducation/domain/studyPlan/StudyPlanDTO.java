@@ -7,7 +7,7 @@ import java.util.List;
 
 public class StudyPlanDTO {
     @JsonProperty("id")
-    private long id;
+    private String id;
 
     @JsonProperty("version")
     private int version;
@@ -30,7 +30,7 @@ public class StudyPlanDTO {
     @JsonProperty("isCurrent")
     private boolean isCurrent;
     
-    public long getIdStudyPlan() {
+    public String getIdStudyPlan() {
         return id;
     }
 
@@ -80,7 +80,7 @@ public class StudyPlanDTO {
     }
 
     public static class Builder {
-        private long id;
+        private String id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -97,7 +97,7 @@ public class StudyPlanDTO {
             this.isCurrent = isCurrent;
         }
 
-        public Builder withIdStudyPlan(long id) {
+        public Builder withIdStudyPlan(String id) {
             this.id = id;
             return this;
         }

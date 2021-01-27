@@ -3,7 +3,7 @@ package pwr.newEducation.domain.tableRepresentation;
 import java.time.LocalDateTime;
 
 public class StudyPlanTableEntity {
-    private long id;
+    private String id;
     private String fieldOfStudy;
     private String faculty;
     private String language;
@@ -30,7 +30,7 @@ public class StudyPlanTableEntity {
         updatedDate = builder.updatedDate;
     }
 
-    public long getId() {
+    public String getId() {
         return id;
     }
 
@@ -74,7 +74,7 @@ public class StudyPlanTableEntity {
         return new StudyPlanTableEntity.Builder(creditingFormEntity);
     }
 
-    public static StudyPlanTableEntity.Builder builder(long id, String fieldOfStudy, String faculty, String language,
+    public static StudyPlanTableEntity.Builder builder(String id, String fieldOfStudy, String faculty, String language,
                                                        boolean isActive, String mode, String level, String learningCycle,
                                                        LocalDateTime createDate, LocalDateTime updatedDate) {
         return new StudyPlanTableEntity.Builder(id, fieldOfStudy, faculty, language, isActive, mode, level,
@@ -82,7 +82,7 @@ public class StudyPlanTableEntity {
     }
 
     public static class Builder {
-        private long id;
+        private String id;
         private String fieldOfStudy;
         private String faculty;
         private String language;
@@ -108,7 +108,7 @@ public class StudyPlanTableEntity {
             updatedDate = creditingFormEntity.updatedDate;
         }
 
-        public Builder(long id, String fieldOfStudy, String faculty, String language, boolean isActive, String mode,
+        public Builder(String id, String fieldOfStudy, String faculty, String language, boolean isActive, String mode,
                        String level, String learningCycle, LocalDateTime createDate, LocalDateTime updatedDate) {
             this.id = id;
             this.fieldOfStudy = fieldOfStudy;

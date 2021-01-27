@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.util.Set;
 
 public class StudyPlanEntity {
-    private long id;
+    private String id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -13,7 +13,7 @@ public class StudyPlanEntity {
     private Set<DeficitEntity> deficits;
     private long idStudyProgram;
 
-    public long getIdStudyPlan() {
+    public String getIdStudyPlan() {
         return id;
     }
 
@@ -63,7 +63,7 @@ public class StudyPlanEntity {
     }
 
     public static class Builder {
-        private long id;
+        private String id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -80,7 +80,7 @@ public class StudyPlanEntity {
             this.isCurrent = isCurrent;
         }
 
-        public Builder withIdStudyPlan(long id) {
+        public Builder withIdStudyPlan(String id) {
             this.id = id;
             return this;
         }

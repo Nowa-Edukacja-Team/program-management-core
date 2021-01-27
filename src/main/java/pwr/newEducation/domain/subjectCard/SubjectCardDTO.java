@@ -9,7 +9,7 @@ import java.util.Set;
 
 
 public class SubjectCardDTO implements Serializable {
-    private long id;
+    private String id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -98,11 +98,11 @@ public class SubjectCardDTO implements Serializable {
         this.subjectLearningEffects = subjectLearningEffects;
     }
 
-    public long getIdSubjectCards() {
+    public String getIdSubjectCards() {
         return id;
     }
 
-    public void setIdSubjectCards(long id) {
+    public void setIdSubjectCards(String id) {
         this.id = id;
     }
 
@@ -258,7 +258,7 @@ public class SubjectCardDTO implements Serializable {
         return new Builder(subjectCardDTO);
     }
 
-    public static Builder builder(long id,
+    public static Builder builder(String id,
                                   int version,
                                   LocalDateTime createdDate,
                                   LocalDateTime updatedDate,
@@ -291,7 +291,7 @@ public class SubjectCardDTO implements Serializable {
     }
 
     public static class Builder {
-        private long id;
+        private String id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -345,30 +345,30 @@ public class SubjectCardDTO implements Serializable {
             subjectLearningEffects = subjectCardDTO.subjectLearningEffects;
         }
 
-        private Builder( long id,
-                         int version,
-                         LocalDateTime createdDate,
-                         LocalDateTime updatedDate,
-                         LocalDateTime valid,
-                         boolean isCurrent,
-                         String subjectCode,
-                         String name,
-                         boolean isGroup,
-                         int zzuHours,
-                         int cnpsHours,
-                         int subjectECTS,
-                         int semester,
-                         int lastSemester,
-                         ModuleDTO module,
-                         String idSupervisor,
-                         SubjectKindDTO subjectKind,
-                         CreditingFormDTO creditingForm,
-                         long idStudyProgram,
-                         Set<String> subjectObjective,
-                         Set<String> subjectPrerequisites,
-                         Set<LiteratureDTO> literature,
-                         Set<String> teachingTools,
-                         Set<SubjectLearningEffectDTO> subjectLearningEffects)
+        private Builder(String id,
+                        int version,
+                        LocalDateTime createdDate,
+                        LocalDateTime updatedDate,
+                        LocalDateTime valid,
+                        boolean isCurrent,
+                        String subjectCode,
+                        String name,
+                        boolean isGroup,
+                        int zzuHours,
+                        int cnpsHours,
+                        int subjectECTS,
+                        int semester,
+                        int lastSemester,
+                        ModuleDTO module,
+                        String idSupervisor,
+                        SubjectKindDTO subjectKind,
+                        CreditingFormDTO creditingForm,
+                        long idStudyProgram,
+                        Set<String> subjectObjective,
+                        Set<String> subjectPrerequisites,
+                        Set<LiteratureDTO> literature,
+                        Set<String> teachingTools,
+                        Set<SubjectLearningEffectDTO> subjectLearningEffects)
         {
             this.id = id;
             this.version = version;
