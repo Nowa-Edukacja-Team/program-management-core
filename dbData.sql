@@ -71,8 +71,8 @@ INSERT INTO public.disciplinejpa (id, name) VALUES (3, 'Informatyka techniczna i
 -- Data for Name: examrangejpa; Type: TABLE DATA; Schema: public; Owner: hibernate
 --
 
-INSERT INTO public.examrangejpa (id, number, text) VALUES (1, 10, 'zakres');
-INSERT INTO public.examrangejpa (id, number, text) VALUES (2, 20, 'zakres');
+INSERT INTO public.examrangejpa (id, text) VALUES (1, 'zakres');
+INSERT INTO public.examrangejpa (id, text) VALUES (2, 'zakres');
 
 
 --
