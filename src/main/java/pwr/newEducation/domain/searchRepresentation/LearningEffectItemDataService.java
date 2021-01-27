@@ -13,7 +13,7 @@ public class LearningEffectItemDataService {
         this.learningEffectItemDataRepository = learningEffectItemDataRepository;
     }
 
-    List<ItemDataEntity> getListOfIds() {
-        return learningEffectItemDataRepository.getListOfIds();
+    List<ItemDataEntity> getListOfIds(int pageIndex, int pageSize) {
+        return learningEffectItemDataRepository.getListOfIds(pageIndex, pageSize);
     }
 }

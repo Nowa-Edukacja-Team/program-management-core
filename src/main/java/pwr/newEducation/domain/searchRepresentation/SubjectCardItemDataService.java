@@ -13,7 +13,7 @@ public class SubjectCardItemDataService {
         this.itemDataRepository = itemDataRepository;
     }
 
-    List<ItemDataEntity> getListOfIds() {
-        return itemDataRepository.getListOfIds();
+    List<ItemDataEntity> getListOfIds(int pageIndex, int pageSize) {
+        return itemDataRepository.getListOfIds(pageIndex, pageSize);
     }
 }
