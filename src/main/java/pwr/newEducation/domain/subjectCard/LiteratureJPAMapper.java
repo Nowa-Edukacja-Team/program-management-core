@@ -5,8 +5,7 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class LiteratureJPAMapper {
     public LiteratureEntity toEntity(LiteratureJPA literatureJPA) {
-        return LiteratureEntity.builder(literatureJPA.getIdLiterature(), literatureJPA.getType(),
-                literatureJPA.getContent())
+        return LiteratureEntity.builder(literatureJPA.getType(), literatureJPA.getContent())
                 .build();
     }
 

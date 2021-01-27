@@ -5,15 +5,12 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class SubjectObjectiveDTOMapper {
 
-    public SubjectObjectiveEntity toEntity(SubjectObjectiveDTO subjectObjectiveDTO) {
-        return SubjectObjectiveEntity.builder(subjectObjectiveDTO.getIdSubjectObjective(),
-                subjectObjectiveDTO.getContent())
+    public SubjectObjectiveEntity toEntity(String content) {
+        return SubjectObjectiveEntity.builder(content)
                 .build();
     }
 
-    public SubjectObjectiveDTO toDTO(SubjectObjectiveEntity subjectObjectiveEntity) {
-        return SubjectObjectiveDTO.builder(subjectObjectiveEntity.getIdSubjectObjective(),
-                subjectObjectiveEntity.getContent())
-                .build();
+    public String toDTO(SubjectObjectiveEntity subjectObjectiveEntity) {
+        return subjectObjectiveEntity.getContent();
     }
 }

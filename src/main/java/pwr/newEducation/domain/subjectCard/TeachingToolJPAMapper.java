@@ -5,8 +5,7 @@ import javax.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class TeachingToolJPAMapper {
     public TeachingToolEntity toEntity(TeachingToolJPA teachingToolJPA) {
-        return TeachingToolEntity.builder(teachingToolJPA.getIdTeachingTool(),
-                teachingToolJPA.getName())
+        return TeachingToolEntity.builder(teachingToolJPA.getName())
                 .build();
     }
 

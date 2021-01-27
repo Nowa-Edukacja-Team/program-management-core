@@ -24,7 +24,7 @@ public class TeachingToolController {
     TeachingToolDTOMapper teachingToolDTOMapper;
 
     @GET
-    public List<TeachingToolDTO> getAllTeachingTools() {
+    public List<String> getAllTeachingTools() {
         return teachingToolService.getAllTeachingTools().stream()
                 .map(teachingToolDTOMapper::toDTO)
                 .collect(Collectors.toList());

@@ -6,8 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 public class SubjectPrerequisiteJPAMapper {
 
     public SubjectPrerequisiteEntity toEntity(SubjectPrerequisiteJPA subjectPrerequisiteJPA) {
-        return SubjectPrerequisiteEntity.builder(subjectPrerequisiteJPA.getIdSubjectPrerequisite(),
-                subjectPrerequisiteJPA.getContent())
+        return SubjectPrerequisiteEntity.builder(subjectPrerequisiteJPA.getContent())
                 .build();
     }
 

@@ -6,8 +6,7 @@ import javax.enterprise.context.ApplicationScoped;
 public class SubjectObjectiveJPAMapper {
 
     public SubjectObjectiveEntity toEntity(SubjectObjectiveJPA subjectObjectiveJPA) {
-        return SubjectObjectiveEntity.builder(subjectObjectiveJPA.getIdSubjectObjective(),
-                subjectObjectiveJPA.getContent())
+        return SubjectObjectiveEntity.builder(subjectObjectiveJPA.getContent())
                 .build();
     }
 

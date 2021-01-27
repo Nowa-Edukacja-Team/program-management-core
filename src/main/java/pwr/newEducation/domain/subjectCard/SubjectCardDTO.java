@@ -28,10 +28,10 @@ public class SubjectCardDTO implements Serializable {
     private SubjectKindDTO subjectKind;
     private CreditingFormDTO creditingForm;
     private long idStudyProgram;
-    private Set<SubjectObjectiveDTO> subjectObjective;
-    private Set<SubjectPrerequisiteDTO> subjectPrerequisites;
+    private Set<String> subjectObjective;
+    private Set<String> subjectPrerequisites;
     private Set<LiteratureDTO> literature;
-    private Set<TeachingToolDTO> teachingTools;
+    private Set<String> teachingTools;
     private Set<SubjectLearningEffectDTO> subjectLearningEffects;
 
     public ModuleDTO getModule() {
@@ -58,19 +58,19 @@ public class SubjectCardDTO implements Serializable {
         this.idStudyProgram = idStudyProgram;
     }
 
-    public Set<SubjectObjectiveDTO> getSubjectObjective() {
+    public Set<String> getSubjectObjective() {
         return subjectObjective;
     }
 
-    public void setSubjectObjective(Set<SubjectObjectiveDTO> subjectObjective) {
+    public void setSubjectObjective(Set<String> subjectObjective) {
         this.subjectObjective = subjectObjective;
     }
 
-    public Set<SubjectPrerequisiteDTO> getSubjectPrerequisites() {
+    public Set<String> getSubjectPrerequisites() {
         return subjectPrerequisites;
     }
 
-    public void setSubjectPrerequisites(Set<SubjectPrerequisiteDTO> subjectPrerequisites) {
+    public void setSubjectPrerequisites(Set<String> subjectPrerequisites) {
         this.subjectPrerequisites = subjectPrerequisites;
     }
 
@@ -82,11 +82,11 @@ public class SubjectCardDTO implements Serializable {
         this.literature = literature;
     }
 
-    public Set<TeachingToolDTO> getTeachingTools() {
+    public Set<String> getTeachingTools() {
         return teachingTools;
     }
 
-    public void setTeachingTools(Set<TeachingToolDTO> teachingTools) {
+    public void setTeachingTools(Set<String> teachingTools) {
         this.teachingTools = teachingTools;
     }
 
@@ -272,15 +272,15 @@ public class SubjectCardDTO implements Serializable {
                                   int subjectECTS,
                                   int semester,
                                   int lastSemester,
-                                  ModuleDTO module,
+                                  ModuleDTO  module,
                                   String idSupervisor,
                                   SubjectKindDTO subjectKind,
                                   CreditingFormDTO creditingForm,
                                   long idStudyProgram,
-                                  Set<SubjectObjectiveDTO> subjectObjective,
-                                  Set<SubjectPrerequisiteDTO> subjectPrerequisites,
+                                  Set<String> subjectObjective,
+                                  Set<String> subjectPrerequisites,
                                   Set<LiteratureDTO> literature,
-                                  Set<TeachingToolDTO> teachingTools,
+                                  Set<String> teachingTools,
                                   Set<SubjectLearningEffectDTO> subjectLearningEffects)
     {
         return new Builder(id, version, createdDate, updatedDate, valid,
@@ -310,10 +310,10 @@ public class SubjectCardDTO implements Serializable {
         private SubjectKindDTO subjectKind;
         private CreditingFormDTO creditingForm;
         private long idStudyProgram;
-        private Set<SubjectObjectiveDTO> subjectObjective;
-        private Set<SubjectPrerequisiteDTO> subjectPrerequisites;
+        private Set<String> subjectObjective;
+        private Set<String> subjectPrerequisites;
         private Set<LiteratureDTO> literature;
-        private Set<TeachingToolDTO> teachingTools;
+        private Set<String> teachingTools;
         private Set<SubjectLearningEffectDTO> subjectLearningEffects;
 
         Builder() {}
@@ -364,10 +364,10 @@ public class SubjectCardDTO implements Serializable {
                          SubjectKindDTO subjectKind,
                          CreditingFormDTO creditingForm,
                          long idStudyProgram,
-                         Set<SubjectObjectiveDTO> subjectObjective,
-                         Set<SubjectPrerequisiteDTO> subjectPrerequisites,
+                         Set<String> subjectObjective,
+                         Set<String> subjectPrerequisites,
                          Set<LiteratureDTO> literature,
-                         Set<TeachingToolDTO> teachingTools,
+                         Set<String> teachingTools,
                          Set<SubjectLearningEffectDTO> subjectLearningEffects)
         {
             this.id = id;

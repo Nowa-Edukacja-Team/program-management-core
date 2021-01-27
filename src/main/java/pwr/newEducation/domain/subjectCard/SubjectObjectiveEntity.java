@@ -31,8 +31,8 @@ public class SubjectObjectiveEntity {
         return new Builder(SubjectObjectiveEntity);
     }
 
-    public static Builder builder(long id, String content) {
-        return new Builder(id, content);
+    public static Builder builder(String content) {
+        return new Builder(content);
     }
 
     public static class Builder {
@@ -46,8 +46,7 @@ public class SubjectObjectiveEntity {
             content = SubjectObjectiveEntity.content;
         }
 
-        Builder(long id, String content) {
-            this.id = id;
+        Builder(String content) {
             this.content = content;
         }
 

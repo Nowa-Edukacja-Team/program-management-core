@@ -4,15 +4,12 @@ import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped
 public class SubjectPrerequisiteDTOMapper {
-    public SubjectPrerequisiteEntity toEntity(SubjectPrerequisiteDTO subjectPrerequisiteDTO) {
-        return SubjectPrerequisiteEntity.builder(subjectPrerequisiteDTO.getIdSubjectPrerequisite(),
-                subjectPrerequisiteDTO.getContent())
+    public SubjectPrerequisiteEntity toEntity(String content) {
+        return SubjectPrerequisiteEntity.builder(content)
                 .build();
     }
 
-    public SubjectPrerequisiteDTO toDTO(SubjectPrerequisiteEntity subjectPrerequisiteEntity) {
-        return SubjectPrerequisiteDTO.builder(subjectPrerequisiteEntity.getIdSubjectPrerequisite(),
-                subjectPrerequisiteEntity.getContent())
-                .build();
+    public String toDTO(SubjectPrerequisiteEntity subjectPrerequisiteEntity) {
+        return subjectPrerequisiteEntity.getContent();
     }
 }

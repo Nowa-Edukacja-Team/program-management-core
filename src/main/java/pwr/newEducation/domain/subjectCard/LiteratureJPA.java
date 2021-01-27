@@ -17,6 +17,7 @@ public class LiteratureJPA {
     private LiteratureJPA(Builder builder) {
         this.id = builder.id;
         this.type = builder.type;
+        this.content = builder.content;
     }
 
     public String getContent() {

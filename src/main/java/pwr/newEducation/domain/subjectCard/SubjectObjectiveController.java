@@ -24,7 +24,7 @@ public class SubjectObjectiveController {
     SubjectObjectiveDTOMapper subjectObjectiveDTOMapper;
 
     @GET
-    public List<SubjectObjectiveDTO> getAllSubjectObjectives() {
+    public List<String> getAllSubjectObjectives() {
         return subjectObjectiveService.getAllSubjectObjectives().stream()
                 .map(subjectObjectiveDTOMapper::toDTO)
                 .collect(Collectors.toList());

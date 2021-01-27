@@ -5,7 +5,7 @@ import io.quarkus.panache.common.Sort;
 import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyJPA;
 
 import javax.enterprise.context.Dependent;
-import java.util.List;;
+import java.util.List;
 
 @Dependent
 public class StudyProgramRepository implements PanacheRepository<StudyProgramJPA> {
