@@ -3,10 +3,7 @@ package pwr.newEducation.domain.studyPlan;
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -28,5 +25,10 @@ public class StudyPlanController {
         return studyPlanService.getAllStudyPlans().stream()
                 .map(studyPlanDTOMapper::toDTO)
                 .collect(Collectors.toList());
+    }
+
+    @POST
+    public void insertStudyPlan(StudyPlanDTO studyPlanDTO){
+        studyPlanService.insertStudyPlan(studyPlanDTOMapper.toEntity(studyPlanDTO));
     }
 }

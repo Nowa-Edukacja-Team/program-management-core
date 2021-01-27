@@ -1,7 +1,5 @@
 package pwr.newEducation.domain.studyProgram;
 
-import org.bouncycastle.math.raw.Mod;
-
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
