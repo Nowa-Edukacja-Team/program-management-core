@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - name: management-core
-          image: neweducation/program-management-core:latest
+          image: {{PACKAGE_NAME}}:{{PACKAGE_VERSION}}
           imagePullPolicy: Always
           ports:
             - name: http
