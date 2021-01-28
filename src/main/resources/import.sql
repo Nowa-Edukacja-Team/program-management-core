@@ -4,21 +4,6 @@
 
 -- Dumped from database version 13.1
 -- Dumped by pg_dump version 13.1
-
--- Started on 2021-01-27 11:46:41
-
-SET statement_timeout = 0;
-SET lock_timeout = 0;
-SET idle_in_transaction_session_timeout = 0;
-SET client_encoding = 'UTF8';
-SET standard_conforming_strings = on;
-SELECT pg_catalog.set_config('search_path', '', false);
-SET check_function_bodies = false;
-SET xmloption = content;
-SET client_min_messages = warning;
-SET row_security = off;
-
---
 -- TOC entry 3336 (class 0 OID 33846)
 -- Dependencies: 207
 -- Data for Name: blockjpa; Type: TABLE DATA; Schema: public; Owner: hibernate
@@ -177,9 +162,9 @@ INSERT INTO public.fieldofstudyjpa_specializationjpa (fieldofstudyjpas_id, speci
 -- Data for Name: studyplanjpa; Type: TABLE DATA; Schema: public; Owner: hibernate
 --
 
-INSERT INTO public.studyplanjpa (id, createddate, iscurrent, updateddate, valid, version) VALUES (1, '2021-01-27 00:00:00', true, '2021-01-27 00:00:00', '2021-04-27 00:00:00', 1);
-INSERT INTO public.studyplanjpa (id, createddate, iscurrent, updateddate, valid, version) VALUES (2, '2021-01-22 00:00:00', false, '2021-01-22 00:00:00', '2021-01-27 00:00:00', 1);
-INSERT INTO public.studyplanjpa (id, createddate, iscurrent, updateddate, valid, version) VALUES (3, '2021-01-27 00:00:00', true, '2021-01-27 00:00:00', '2021-08-08 00:00:00', 2);
+INSERT INTO public.studyplanjpa (iddocument, id, createddate, iscurrent, updateddate, valid, version) VALUES (1, 1, '2021-01-27 00:00:00', true, '2021-01-27 00:00:00', '2021-04-27 00:00:00', 1);
+INSERT INTO public.studyplanjpa (iddocument, id, createddate, iscurrent, updateddate, valid, version) VALUES (2, 2, '2021-01-22 00:00:00', false, '2021-01-22 00:00:00', '2021-01-27 00:00:00', 1);
+INSERT INTO public.studyplanjpa (iddocument, id, createddate, iscurrent, updateddate, valid, version) VALUES (3, 3, '2021-01-27 00:00:00', true, '2021-01-27 00:00:00', '2021-08-08 00:00:00', 2);
 
 
 --
@@ -188,9 +173,9 @@ INSERT INTO public.studyplanjpa (id, createddate, iscurrent, updateddate, valid,
 -- Data for Name: studyprogramjpa; Type: TABLE DATA; Schema: public; Owner: hibernate
 --
 
-INSERT INTO public.studyprogramjpa (id, createddate, iscurrent, updateddate, valid, version, fieldofstudy_id, studyplan_id) VALUES (1, '2021-01-27 00:00:00', true, '2021-01-27 00:00:00', '2021-09-09 00:00:00', 1, 1, 1);
-INSERT INTO public.studyprogramjpa (id, createddate, iscurrent, updateddate, valid, version, fieldofstudy_id, studyplan_id) VALUES (2, '2020-08-09 00:00:00', false, '2020-10-27 00:00:00', '2021-01-27 00:00:00', 1, 2, 2);
-INSERT INTO public.studyprogramjpa (id, createddate, iscurrent, updateddate, valid, version, fieldofstudy_id, studyplan_id) VALUES (3, '2021-01-27 00:00:00', true, '2021-01-27 00:00:00', '2021-09-20 00:00:00', 2, 2, 2);
+INSERT INTO public.studyprogramjpa (iddocument, id, createddate, iscurrent, updateddate, valid, version, fieldofstudy_id, studyplan_iddocument) VALUES (1, 1, '2021-01-27 00:00:00', true, '2021-01-27 00:00:00', '2021-09-09 00:00:00', 1, 1, 1);
+INSERT INTO public.studyprogramjpa (iddocument, id, createddate, iscurrent, updateddate, valid, version, fieldofstudy_id, studyplan_iddocument) VALUES (2, 2, '2020-08-09 00:00:00', false, '2020-10-27 00:00:00', '2021-01-27 00:00:00', 1, 2, 2);
+INSERT INTO public.studyprogramjpa (iddocument, id, createddate, iscurrent, updateddate, valid, version, fieldofstudy_id, studyplan_iddocument) VALUES (3, 3, '2021-01-27 00:00:00', true, '2021-01-27 00:00:00', '2021-09-20 00:00:00', 2, 2, 3);
 
 
 --
@@ -263,8 +248,8 @@ INSERT INTO public.modulejpa (id, name, block_id) VALUES (6, 'Języki Obce', 2);
 -- Data for Name: studyprogramjpa_learningeffectjpa; Type: TABLE DATA; Schema: public; Owner: hibernate
 --
 
-INSERT INTO public.studyprogramjpa_learningeffectjpa (studyprogramjpa_id, learningeffects_id) VALUES (1, 1);
-INSERT INTO public.studyprogramjpa_learningeffectjpa (studyprogramjpa_id, learningeffects_id) VALUES (2, 2);
+INSERT INTO public.studyprogramjpa_learningeffectjpa (studyprogramjpa_iddocument, learningeffects_id) VALUES (1, 1);
+INSERT INTO public.studyprogramjpa_learningeffectjpa (studyprogramjpa_iddocument, learningeffects_id) VALUES (2, 2);
 
 
 --
@@ -284,8 +269,8 @@ INSERT INTO public.subjectkindjpa (id, name) VALUES (3, 'seminarium');
 -- Data for Name: subjectcardjpa; Type: TABLE DATA; Schema: public; Owner: hibernate
 --
 
-INSERT INTO public.subjectcardjpa (version, id, cnpshours, createddate, idstudyprogram, idsupervisor, iscurrent, isgroup, lastsemester, name, semester, subjectcode, subjectects, updateddate, valid, zzuhours, creditingform_id, module_id, subjectkind_id) VALUES (1, 1, 30, '2021-01-27 00:00:00', 1, '1', true, true, 6, 'Teoria sterowania', 4, 'AREU00005', 6, '2021-01-27 00:00:00', '2021-09-27 00:00:00', 30, 1, 2, 1);
-INSERT INTO public.subjectcardjpa (version, id, cnpshours, createddate, idstudyprogram, idsupervisor, iscurrent, isgroup, lastsemester, name, semester, subjectcode, subjectects, updateddate, valid, zzuhours, creditingform_id, module_id, subjectkind_id) VALUES (1, 2, 60, '2020-04-07 00:00:00', 2, '2', false, false, 4, 'Modelowanie i identyfikacja', 3, 'AREU17002', 6, '2021-01-27 00:00:00', '2021-01-27 00:00:00', 60, 2, 1, 2);
+INSERT INTO public.subjectcardjpa (iddocument, version, id, cnpshours, createddate, idstudyprogram, idsupervisor, iscurrent, isgroup, lastsemester, name, semester, subjectcode, subjectects, updateddate, valid, zzuhours, creditingform_id, module_id, subjectkind_id) VALUES (1, 1, 1, 30, '2021-01-27 00:00:00', 1, '1', true, true, 6, 'Teoria sterowania', 4, 'AREU00005', 6, '2021-01-27 00:00:00', '2021-09-27 00:00:00', 30, 1, 2, 1);
+INSERT INTO public.subjectcardjpa (iddocument, version, id, cnpshours, createddate, idstudyprogram, idsupervisor, iscurrent, isgroup, lastsemester, name, semester, subjectcode, subjectects, updateddate, valid, zzuhours, creditingform_id, module_id, subjectkind_id) VALUES (2, 1, 2, 60, '2020-04-07 00:00:00', 2, '2', false, false, 4, 'Modelowanie i identyfikacja', 3, 'AREU17002', 6, '2021-01-27 00:00:00', '2021-01-27 00:00:00', 60, 2, 1, 2);
 
 --
 -- TOC entry 3370 (class 0 OID 34025)
@@ -353,11 +338,6 @@ INSERT INTO public.subjectlearningeffectjpa_learningeffectjpa (subjectlearningef
 -- Dependencies: 206
 -- Name: hibernate_sequence; Type: SEQUENCE SET; Schema: public; Owner: hibernate
 --
-
-SELECT pg_catalog.setval('public.hibernate_sequence', 1, false);
-
-
--- Completed on 2021-01-27 11:46:41
 
 --
 -- PostgreSQL database dump complete
