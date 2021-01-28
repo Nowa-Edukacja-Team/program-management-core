@@ -1,12 +1,13 @@
 package pwr.newEducation.domain.learningEffect;
 
+import org.jboss.resteasy.annotations.jaxrs.QueryParam;
+import pwr.newEducation.domain.pagination.PaginationDTO;
+import pwr.newEducation.domain.pagination.PaginationDTOMapper;
+
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -23,10 +24,12 @@ public class LearningEffectController {
     @Inject
     LearningEffectDTOMapper learningEffectDTOMapper;
 
+    @Inject
+    PaginationDTOMapper paginationDTOMapper;
+
     @GET
-    public List<LearningEffectDTO> getAllLearningEffects(){
-        return learningEffectService.getAllLearningEffects().stream()
-                .map(learningEffectDTOMapper::toDTO)
-                .collect(Collectors.toList());
+    public PaginationDTO<LearningEffectDTO> getAllLearningEffects(@QueryParam("page") @DefaultValue("0") int pageIndex,
+                                                                  @QueryParam("size") @DefaultValue("20") int pageSize){
+        return paginationDTOMapper.toDTO(learningEffectService.getAllLearningEffects(pageIndex, pageSize));
     }
 }

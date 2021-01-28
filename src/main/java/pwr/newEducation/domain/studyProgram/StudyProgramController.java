@@ -1,6 +1,7 @@
 package pwr.newEducation.domain.studyProgram;
 
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
+import pwr.newEducation.domain.pagination.PaginationDTO;
 
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -24,9 +25,10 @@ public class StudyProgramController {
 
     @GET
     @Consumes(MediaType.APPLICATION_JSON)
-    public List<StudyProgramDTO> getAllStudyProgram(@QueryParam("page") @DefaultValue("0") int pageIndex,
+    public PaginationDTO<StudyProgramDTO> getAllStudyProgram(@QueryParam("page") @DefaultValue("0") int pageIndex,
                                                     @QueryParam("size") @DefaultValue("20") int pageSize) {
-        return studyProgramService.getAllStudyPrograms(pageIndex, pageSize).stream().map(studyProgramDTOMapper::toDTO).collect(Collectors.toList());
+        List<StudyProgramDTO> query = studyProgramService.getAllStudyPrograms(pageIndex, pageSize).stream().map(studyProgramDTOMapper::toDTO).collect(Collectors.toList());
+        return new PaginationDTO<>(pageIndex, pageSize, query.size(), query);
     }
 
 

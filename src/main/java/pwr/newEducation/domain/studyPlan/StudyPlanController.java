@@ -1,5 +1,9 @@
 package pwr.newEducation.domain.studyPlan;
 
+import org.jboss.resteasy.annotations.jaxrs.QueryParam;
+import pwr.newEducation.domain.pagination.PaginationDTO;
+import pwr.newEducation.domain.pagination.PaginationDTOMapper;
+
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
 import javax.inject.Inject;
@@ -20,11 +24,13 @@ public class StudyPlanController {
     @Inject
     StudyPlanDTOMapper studyPlanDTOMapper;
 
+    @Inject
+    PaginationDTOMapper paginationDTOMapper;
+
     @GET
-    public List<StudyPlanDTO> getAllStudyPlans(){
-        return studyPlanService.getAllStudyPlans().stream()
-                .map(studyPlanDTOMapper::toDTO)
-                .collect(Collectors.toList());
+    public PaginationDTO<StudyPlanDTO> getAllStudyPlans(@QueryParam("page") @DefaultValue("0") int pageIndex,
+                                                        @QueryParam("size") @DefaultValue("20") int pageSize){
+        return paginationDTOMapper.toDTO(studyPlanService.getAllStudyPlans(pageIndex, pageSize));
     }
 
     @POST

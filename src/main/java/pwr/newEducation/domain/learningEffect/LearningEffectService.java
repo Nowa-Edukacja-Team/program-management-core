@@ -1,5 +1,7 @@
 package pwr.newEducation.domain.learningEffect;
 
+import pwr.newEducation.domain.pagination.PaginationEntity;
+
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import java.util.List;
@@ -13,7 +15,7 @@ public class LearningEffectService {
         this.learningEffectRepository = learningEffectRepository;
     }
 
-    List<LearningEffectEntity> getAllLearningEffects(){
-        return learningEffectRepository.getAllLearningEffect();
+    PaginationEntity<LearningEffectEntity> getAllLearningEffects(int pageIndex, int pageSize){
+        return learningEffectRepository.getAllLearningEffect(pageIndex, pageSize);
     }
 }

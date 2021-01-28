@@ -5,10 +5,11 @@ import pwr.newEducation.domain.fieldOfStudy.FieldOfStudyDTO;
 import pwr.newEducation.domain.learningEffect.LearningEffectDTO;
 import pwr.newEducation.domain.studyPlan.StudyPlanDTO;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.*;
 
-public class StudyProgramDTO {
+public class StudyProgramDTO implements Serializable {
     @JsonProperty("id")
     private long id;
 

@@ -1,5 +1,7 @@
 package pwr.newEducation.domain.studyPlan;
 
+import pwr.newEducation.domain.pagination.PaginationEntity;
+
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import java.util.List;
@@ -16,8 +18,8 @@ public class StudyPlanService {
         this.studyPlanRepository = studyPlanRepository;
     }
 
-    List<StudyPlanEntity> getAllStudyPlans(){
-        return studyPlanRepository.getAllStudyPlans();
+    PaginationEntity<StudyPlanEntity> getAllStudyPlans(int pageIndex, int pageSize){
+        return studyPlanRepository.getAllStudyPlans(pageIndex, pageSize);
     }
 
     void insertStudyPlan(StudyPlanEntity studyPlan) {

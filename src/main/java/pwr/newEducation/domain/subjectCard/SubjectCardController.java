@@ -1,6 +1,8 @@
 package pwr.newEducation.domain.subjectCard;
 
 import org.jboss.resteasy.annotations.jaxrs.QueryParam;
+import pwr.newEducation.domain.pagination.PaginationDTO;
+import pwr.newEducation.domain.pagination.PaginationDTOMapper;
 
 import javax.annotation.security.PermitAll;
 import javax.enterprise.context.RequestScoped;
@@ -22,11 +24,13 @@ public class SubjectCardController {
     @Inject
     SubjectCardDTOMapper subjectCardDTOMapper;
 
+    @Inject
+    PaginationDTOMapper paginationDTOMapper;
+
     @GET
-    public List<SubjectCardDTO> getAllSubjectCards() {
-        return subjectCardService.getAllSubjectCards().stream()
-                .map(subjectCardDTOMapper::toDTO)
-                .collect(Collectors.toList());
+    public PaginationDTO<SubjectCardDTO> getAllSubjectCards(@QueryParam("page") @DefaultValue("0") int pageIndex,
+                                            @QueryParam("size") @DefaultValue("20") int pageSize) {
+        return paginationDTOMapper.toDTO(subjectCardService.getAllSubjectCards(pageIndex, pageSize));
     }
 
     @GET

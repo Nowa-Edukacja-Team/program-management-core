@@ -1,5 +1,7 @@
 package pwr.newEducation.domain.subjectCard;
 
+import pwr.newEducation.domain.pagination.PaginationEntity;
+
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
 import java.util.List;
@@ -13,8 +15,8 @@ public class SubjectCardService {
         this.subjectCardRepository = subjectCardRepository;
     }
 
-    List<SubjectCardEntity> getAllSubjectCards() {
-        return subjectCardRepository.getAllSubjectCards();
+    PaginationEntity<SubjectCardEntity> getAllSubjectCards(int pageIndex, int pageSize) {
+        return subjectCardRepository.getAllSubjectCards(pageIndex, pageSize);
     }
 
     List<SubjectCardEntity> getSubjectCardsForStudyPrograms(int pageIndex, int pageSize, long studyProgramId){

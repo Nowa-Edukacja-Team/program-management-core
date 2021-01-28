@@ -1,6 +1,9 @@
 package pwr.newEducation.domain.learningEffect;
 
+import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import pwr.newEducation.domain.pagination.PaginationEntity;
+import pwr.newEducation.domain.subjectCard.SubjectCardJPA;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
@@ -16,8 +19,12 @@ public class LearningEffectRepository implements PanacheRepository<LearningEffec
         this.learningEffectJPAMapper = learningEffectJPAMapper;
     }
 
-    public List<LearningEffectEntity> getAllLearningEffect(){
-        return streamAll().map(learningEffectJPAMapper::toEntity)
-                .collect(Collectors.toList());
+    public PaginationEntity<LearningEffectEntity> getAllLearningEffect(int pageIndex, int pageSize){
+        PanacheQuery<LearningEffectJPA> query = findAll().page(pageIndex, pageSize);
+        int querySize = (int) streamAll().count();
+        return new PaginationEntity<>(pageIndex,
+                query.pageCount(),
+                querySize,
+                query.stream().map(learningEffectJPAMapper::toEntity).collect(Collectors.toList()));
     }
 }

@@ -1,6 +1,8 @@
 package pwr.newEducation.domain.subjectCard;
 
+import io.quarkus.hibernate.orm.panache.PanacheQuery;
 import io.quarkus.hibernate.orm.panache.PanacheRepository;
+import pwr.newEducation.domain.pagination.PaginationEntity;
 
 import javax.enterprise.context.Dependent;
 import javax.inject.Inject;
@@ -16,18 +18,18 @@ public class SubjectCardRepository implements PanacheRepository<SubjectCardJPA> 
         this.subjectCardJPAMapper = subjectCardJPAMapper;
     }
 
-    public List<SubjectCardEntity> getAllSubjectCards() {
-        return streamAll().map(subjectCardJPAMapper::toEntity).collect(Collectors.toList());
+    public PaginationEntity<SubjectCardEntity> getAllSubjectCards(int pageIndex, int pageSize) {
+        PanacheQuery<SubjectCardJPA> query = findAll().page(pageIndex, pageSize);
+        int querySize = (int) streamAll().count();
+        return new PaginationEntity<>(pageIndex,
+                                    query.pageCount(),
+                                    querySize,
+                                    query.stream().map(subjectCardJPAMapper::toEntity).collect(Collectors.toList()));
     }
 
     public List<SubjectCardEntity> getSubjectCardsForStudyPrograms(int pageIndex, int pageSize, long studyProgramId) {
         return find("idStudyProgram", studyProgramId).page(pageIndex, pageSize).stream()
                 .map(subjectCardJPAMapper::toEntity)
                 .collect(Collectors.toList());
-        /*return find(
-                "SELECT sc.* FROM SubjectCardJPA sc \n" +
-                        "WHERE sc.idStudyProgram = " + studyProgramId
-        ).page(pageIndex, pageSize).stream()
-                .map(subjectCardJPAMapper::toEntity).collect(Collectors.toList());*/
     }
 }
