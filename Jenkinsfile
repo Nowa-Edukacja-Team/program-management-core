@@ -15,7 +15,7 @@ pipeline {
   stages {
     stage('Maven package fast-jar') {
         steps {
-            sh './mvnw package -Dquarkus.package.type=fast-jar'
+            sh './mvnw package -Dquarkus.package.type=fast-jar -DskipTests'
         }
     }
     stage('Create Image') {
