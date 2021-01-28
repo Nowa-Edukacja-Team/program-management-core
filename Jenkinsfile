@@ -1,6 +1,10 @@
 pipeline {
   agent any
 
+  tools {
+      jdk 'java11-openjdk'
+  }
+
   environment {
       PACKAGE = "neweducation/new-education-core"
       TAG = "v0.0.$BUILD_NUMBER"
@@ -9,6 +13,11 @@ pipeline {
   }
 
   stages {
+    stage('Maven package fast-jar') {
+        steps {
+            sh './mvnw package -Dquarkus.package.type=fast-jar'
+        }
+    }
     stage('Create Image') {
       steps {
         script {
