@@ -13,7 +13,7 @@ public class SubjectCardJPA implements Serializable {
     @Id
     @GeneratedValue
     private long idDocument;
-    private String id;
+    private long id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -110,11 +110,11 @@ public class SubjectCardJPA implements Serializable {
         this.subjectLearningEffects = subjectLearningEffects;
     }
 
-    public String getIdSubjectCards() {
+    public long getIdSubjectCards() {
         return id;
     }
 
-    public void setIdSubjectCards(String id) {
+    public void setIdSubjectCards(long id) {
         this.id = id;
     }
 
@@ -270,7 +270,7 @@ public class SubjectCardJPA implements Serializable {
         return new Builder(subjectCardJPA);
     }
 
-    public static Builder builder(String id,
+    public static Builder builder(long id,
                                   int version,
                                   LocalDateTime createdDate,
                                   LocalDateTime updatedDate,
@@ -303,7 +303,7 @@ public class SubjectCardJPA implements Serializable {
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -357,7 +357,7 @@ public class SubjectCardJPA implements Serializable {
             subjectLearningEffects = subjectCardJPA.subjectLearningEffects;
         }
 
-        private Builder(String id,
+        private Builder(long id,
                         int version,
                         LocalDateTime createdDate,
                         LocalDateTime updatedDate,

@@ -3,7 +3,7 @@ package pwr.newEducation.domain.tableRepresentation;
 import java.time.LocalDateTime;
 
 public class SubjectCardTableDTO {
-    private String id;
+    private long id;
     private String subjectCode;
     private String name;
     private String supervisor;
@@ -24,7 +24,7 @@ public class SubjectCardTableDTO {
         updatedDate = builder.updatedDate;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -56,14 +56,14 @@ public class SubjectCardTableDTO {
         return new SubjectCardTableDTO.Builder(creditingFormDTO);
     }
 
-    public static SubjectCardTableDTO.Builder builder(String id, String subjectCode, String name, String supervisor,
+    public static SubjectCardTableDTO.Builder builder(long id, String subjectCode, String name, String supervisor,
                                                       boolean isActive, LocalDateTime createDate,
                                                       LocalDateTime updatedDate) {
         return new SubjectCardTableDTO.Builder(id, subjectCode, name, supervisor, isActive, createDate, updatedDate);
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private String subjectCode;
         private String name;
         private String supervisor;
@@ -77,7 +77,7 @@ public class SubjectCardTableDTO {
 
         }
 
-        public Builder(String id, String subjectCode, String name, String supervisor, boolean isActive,
+        public Builder(long id, String subjectCode, String name, String supervisor, boolean isActive,
                        LocalDateTime createDate, LocalDateTime updatedDate) {
             this.id = id;
             this.subjectCode = subjectCode;

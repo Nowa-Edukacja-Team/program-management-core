@@ -9,7 +9,7 @@ import java.util.Set;
 
 
 public class SubjectCardEntity implements Serializable {
-    private String id;
+    private long id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -98,11 +98,11 @@ public class SubjectCardEntity implements Serializable {
         this.subjectLearningEffects = subjectLearningEffects;
     }
 
-    public String getIdSubjectCards() {
+    public long getIdSubjectCards() {
         return id;
     }
 
-    public void setIdSubjectCards(String id) {
+    public void setIdSubjectCards(long id) {
         this.id = id;
     }
 
@@ -258,7 +258,7 @@ public class SubjectCardEntity implements Serializable {
         return new Builder(subjectCardEntity);
     }
 
-    public static Builder builder(String id,
+    public static Builder builder(long id,
                                   int version,
                                   LocalDateTime createdDate,
                                   LocalDateTime updatedDate,
@@ -291,7 +291,7 @@ public class SubjectCardEntity implements Serializable {
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -345,7 +345,7 @@ public class SubjectCardEntity implements Serializable {
             subjectLearningEffects = subjectCardEntity.subjectLearningEffects;
         }
 
-        private Builder(String id,
+        private Builder(long id,
                         int version,
                         LocalDateTime createdDate,
                         LocalDateTime updatedDate,

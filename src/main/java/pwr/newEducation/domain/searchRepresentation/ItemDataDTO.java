@@ -1,7 +1,7 @@
 package pwr.newEducation.domain.searchRepresentation;
 
 public class ItemDataDTO {
-    private String id;
+    private long id;
     private String name;
 
     private ItemDataDTO() {}
@@ -11,7 +11,7 @@ public class ItemDataDTO {
         name = builder.name;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -23,12 +23,12 @@ public class ItemDataDTO {
         return new ItemDataDTO.Builder(creditingFormDTO);
     }
 
-    public static ItemDataDTO.Builder builder(String id, String name) {
+    public static ItemDataDTO.Builder builder(long id, String name) {
         return new ItemDataDTO.Builder(id, name);
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private String name;
 
         Builder () {}
@@ -38,7 +38,7 @@ public class ItemDataDTO {
             name = creditingFormDTO.name;
         }
 
-        Builder(String id, String name) {
+        Builder(long id, String name) {
             this.id = id;
             this.name = name;
         }

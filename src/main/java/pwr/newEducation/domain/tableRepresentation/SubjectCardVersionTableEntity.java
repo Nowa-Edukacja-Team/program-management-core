@@ -3,7 +3,7 @@ package pwr.newEducation.domain.tableRepresentation;
 import java.time.LocalDateTime;
 
 public class SubjectCardVersionTableEntity {
-    private String id;
+    private long id;
     private long version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -19,7 +19,7 @@ public class SubjectCardVersionTableEntity {
         isActive = builder.isActive;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -43,13 +43,13 @@ public class SubjectCardVersionTableEntity {
         return new SubjectCardVersionTableEntity.Builder(creditingFormEntity);
     }
 
-    public static SubjectCardVersionTableEntity.Builder builder(String id, long version, LocalDateTime createdDate,
+    public static SubjectCardVersionTableEntity.Builder builder(long id, long version, LocalDateTime createdDate,
                                                                 LocalDateTime updatedDate, boolean isActive) {
         return new SubjectCardVersionTableEntity.Builder(id, version, createdDate, updatedDate, isActive);
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private long version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -65,7 +65,7 @@ public class SubjectCardVersionTableEntity {
             isActive = creditingFormEntity.isActive;
         }
 
-        public Builder(String id, long version, LocalDateTime createdDate, LocalDateTime updatedDate, boolean isActive) {
+        public Builder(long id, long version, LocalDateTime createdDate, LocalDateTime updatedDate, boolean isActive) {
             this.id = id;
             this.version = version;
             this.createdDate = createdDate;

@@ -10,7 +10,7 @@ public class StudyPlanJPA implements Serializable {
     @Id
     @GeneratedValue
     private long idDocument;
-    private String id;
+    private long id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -20,7 +20,7 @@ public class StudyPlanJPA implements Serializable {
     @OneToMany
     private Set<DeficitJPA> deficits;
 
-    public String getIdStudyPlan() {
+    public long getIdStudyPlan() {
         return id;
     }
 
@@ -65,7 +65,7 @@ public class StudyPlanJPA implements Serializable {
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -81,7 +81,7 @@ public class StudyPlanJPA implements Serializable {
             this.isCurrent = isCurrent;
         }
 
-        public Builder withIdStudyPlan(String id) {
+        public Builder withIdStudyPlan(long id) {
             this.id = id;
             return this;
         }

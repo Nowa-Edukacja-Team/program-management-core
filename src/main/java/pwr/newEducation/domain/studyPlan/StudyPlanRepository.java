@@ -21,7 +21,7 @@ public class StudyPlanRepository implements PanacheRepository<StudyPlanJPA> {
                 .collect(Collectors.toList());
     }
 
-    public StudyPlanJPA getById(String id) {
+    public StudyPlanJPA getById(long id) {
         return find("id", id).firstResult();
     }
 }

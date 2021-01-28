@@ -3,7 +3,7 @@ package pwr.newEducation.domain.tableRepresentation;
 import java.time.LocalDateTime;
 
 public class StudyPlanTableDTO {
-    private String id;
+    private long id;
     private String fieldOfStudy;
     private String faculty;
     private String language;
@@ -30,7 +30,7 @@ public class StudyPlanTableDTO {
         updatedDate = builder.updatedDate;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -74,7 +74,7 @@ public class StudyPlanTableDTO {
         return new StudyPlanTableDTO.Builder(creditingFormDTO);
     }
 
-    public static StudyPlanTableDTO.Builder builder(String id, String fieldOfStudy, String faculty, String language,
+    public static StudyPlanTableDTO.Builder builder(long id, String fieldOfStudy, String faculty, String language,
                                                     boolean isActive, String mode, String level, String learningCycle,
                                                     LocalDateTime createDate, LocalDateTime updatedDate) {
         return new StudyPlanTableDTO.Builder(id, fieldOfStudy, faculty, language, isActive, mode, level,
@@ -82,7 +82,7 @@ public class StudyPlanTableDTO {
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private String fieldOfStudy;
         private String faculty;
         private String language;
@@ -108,7 +108,7 @@ public class StudyPlanTableDTO {
             updatedDate = creditingFormDTO.updatedDate;
         }
 
-        public Builder(String id, String fieldOfStudy, String faculty, String language, boolean isActive, String mode,
+        public Builder(long id, String fieldOfStudy, String faculty, String language, boolean isActive, String mode,
                        String level, String learningCycle, LocalDateTime createDate, LocalDateTime updatedDate) {
             this.id = id;
             this.fieldOfStudy = fieldOfStudy;

@@ -16,7 +16,7 @@ public class StudyProgramJPA implements Serializable {
     @Id
     @GeneratedValue
     private long idDocument;
-    private String id;
+    private long id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -39,7 +39,7 @@ public class StudyProgramJPA implements Serializable {
         return learningEffects;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -99,7 +99,7 @@ public class StudyProgramJPA implements Serializable {
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -119,7 +119,7 @@ public class StudyProgramJPA implements Serializable {
             this.isCurrent = isCurrent;
         }
 
-        public Builder withIdStudyProgram(String id) {
+        public Builder withIdStudyProgram(long id) {
             this.id = id;
             return this;
         }

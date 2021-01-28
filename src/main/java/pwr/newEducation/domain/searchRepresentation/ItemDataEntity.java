@@ -1,7 +1,7 @@
 package pwr.newEducation.domain.searchRepresentation;
 
 public class ItemDataEntity {
-    private String id;
+    private long id;
     private String name;
 
     private ItemDataEntity() {}
@@ -11,7 +11,7 @@ public class ItemDataEntity {
         name = builder.name;
     }
 
-    public String getId() {
+    public long getId() {
         return id;
     }
 
@@ -23,12 +23,12 @@ public class ItemDataEntity {
         return new ItemDataEntity.Builder(creditingFormEntity);
     }
 
-    public static ItemDataEntity.Builder builder(String id, String name) {
+    public static ItemDataEntity.Builder builder(long id, String name) {
         return new ItemDataEntity.Builder(id, name);
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private String name;
 
         Builder () {}
@@ -38,7 +38,7 @@ public class ItemDataEntity {
             name = creditingFormEntity.name;
         }
 
-        Builder(String id, String name) {
+        Builder(long id, String name) {
             this.id = id;
             this.name = name;
         }

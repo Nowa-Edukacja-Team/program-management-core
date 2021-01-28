@@ -11,7 +11,7 @@ import java.util.Optional;
 import java.util.Set;
 
 public class StudyProgramEntity {
-    private String id;
+    private long id;
     private int version;
     private LocalDateTime createdDate;
     private LocalDateTime updatedDate;
@@ -43,7 +43,7 @@ public class StudyProgramEntity {
         return valid;
     }
 
-    public String getIdStudyProgram() {
+    public long getIdStudyProgram() {
         return id;
     }
 
@@ -87,7 +87,7 @@ public class StudyProgramEntity {
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private int version;
         private LocalDateTime createdDate;
         private LocalDateTime updatedDate;
@@ -108,7 +108,7 @@ public class StudyProgramEntity {
             this.isCurrent = isCurrent;
         }
 
-        public Builder withIdStudyProgram(String id) {
+        public Builder withIdStudyProgram(long id) {
             this.id = id;
             return this;
         }

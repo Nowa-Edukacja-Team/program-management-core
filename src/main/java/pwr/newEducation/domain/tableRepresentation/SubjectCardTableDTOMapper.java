@@ -1,7 +1,5 @@
 package pwr.newEducation.domain.tableRepresentation;
 
-import pwr.newEducation.domain.subjectCard.SubjectCardEntity;
-
 import javax.enterprise.context.ApplicationScoped;
 
 @ApplicationScoped

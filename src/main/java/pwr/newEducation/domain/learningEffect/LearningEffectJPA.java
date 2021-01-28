@@ -7,7 +7,7 @@ import java.util.Set;
 public class LearningEffectJPA {
     @Id
     @GeneratedValue
-    private String id;
+    private long id;
     private String content;
     private String universalCharacteristics;
     private String qualificationCharacteristics;
@@ -16,7 +16,7 @@ public class LearningEffectJPA {
     @OneToMany
     private Set<LearningEffectRangeJPA> learningEffectRanges;
 
-    public String getIdLearningEffect() {
+    public long getIdLearningEffect() {
         return id;
     }
 
@@ -58,7 +58,7 @@ public class LearningEffectJPA {
     }
 
     public static class Builder {
-        private String id;
+        private long id;
         private String content;
         private String universalCharacteristics;
         private String qualificationCharacteristics;
@@ -75,7 +75,7 @@ public class LearningEffectJPA {
             this.universalCharacteristics = universalCharacteristics;
         }
 
-        public Builder withIdLearningEffect(String id) {
+        public Builder withIdLearningEffect(long id) {
             this.id = id;
             return this;
         }
