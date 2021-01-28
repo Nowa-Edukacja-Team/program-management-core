@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: PersistentVolume
+metadata:
+  name: main-storage
+  labels:
+    name: main-storage
+spec:
+  storageClassName: do-block-storage
+  accessModes:
+    - ReadWriteOnce
+  capacity:
+    storage: 10Gi
+  persistentVolumeReclaimPolicy: Retain
+  hostPath:
+    path: "/data/main-storage/"
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: main-storage-claim
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: do-block-storage
+  resources:
+    requests:
+      storage: 10Gi
+  selector:
+    matchLabels:
+      name: main-storage

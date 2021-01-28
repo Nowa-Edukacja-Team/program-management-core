@@ -1,0 +1,42 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  labels:
+    app: postgres-main
+  name: postgres-main
+spec:
+  volumes:
+    - name: postgress-main-storage
+      persistentVolumeClaim:
+        claimName: main-storage-claim
+  containers:
+        - env:
+          - name: POSTGRES_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: postgresDatabase
+          - name: POSTGRES_USER
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: postgresUser
+          - name: POSTGRES_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: postgresPassword
+          - name: POSTGRES_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: postgres-secret
+                key: postgresRootPassword
+          image: postgres:9.6
+          imagePullPolicy: IfNotPresent
+          name: postgres-main
+          volumeMounts:
+            - mountPath: '/data/main-storage'
+              name: postgress-main-storage
+          ports:
+          - containerPort: 5432
+            protocol: TCP
