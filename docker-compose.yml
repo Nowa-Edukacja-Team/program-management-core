@@ -1,0 +1,41 @@
+version: '3'
+services:
+  db:
+    build:
+      context: './db/'
+      dockerfile: Dockerfile
+    image: 'management-db:latest'
+    container_name: 'management-db'
+    restart: always
+    env_file:
+      - .environment
+    ports:
+      - "5432:5432"
+    networks:
+      - 'management-bridge'
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: 'management-core:latest'
+    container_name: 'management-core'
+    restart: always
+    env_file:
+      - .environment
+    ports:
+      - "80:8080"
+    networks:
+      - "management-bridge"
+  frontend:
+    image: 'neweducation/new-education-ui:v0.0.12'
+    container_name: 'management-ui'
+    restart: always
+    env_file:
+      - .environment
+    ports:
+      - "8080:80"
+    networks:
+      - "management-bridge"
+networks:
+  management-bridge:
+    driver: bridge
